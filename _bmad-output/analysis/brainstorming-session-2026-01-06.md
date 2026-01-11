@@ -24,6 +24,18 @@ Dựa trên tài liệu bối cảnh dự án, chúng ta sẽ tập trung vào:
 ### Session Setup
 
 Người dùng đã cung cấp danh sách 10 tính năng cụ thể với sự phân chia giữa tính năng bắt buộc và tùy chọn (optional).
+1. Quản lý danh mục tài sản
+2. Quản lý tài sản
+3. Quy trình lập kế hoạch mua sắm
+4. Quy trình mua sắm tài sản
+5. Ghi nhận tăng tài sản
+6. Quy trình bảo trì/sửa chữa tài sản
+7. Quy trình thanh lý tài sản
+8. Điều chuyển tài sản
+9. Cấp phát tài sản
+10. Báo cáo thống kê
+mục 3,4,6,7 là các option làm thêm, còn lại là bắt buộc
+
 
 ## Technique Selection
 
@@ -97,14 +109,3 @@ Mô tả luồng dữ liệu vào/ra (Input/Output) giữa Người và Hệ th�
 
 *(Lưu ý: Hệ thống KHÔNG kết nối trực tiếp với Bộ Giáo dục. Việc gửi đơn và nhận hàng là quy trình thủ công bên ngoài, hệ thống chỉ hỗ trợ xuất file và nhập liệu).*
 
-1. Quản lý danh mục tài sản
-2. Quản lý tài sản
-3. Quy trình lập kế hoạch mua sắm
-4. Quy trình mua sắm tài sản
-5. Ghi nhận tăng tài sản
-6. Quy trình bảo trì/sửa chữa tài sản
-7. Quy trình thanh lý tài sản
-8. Điều chuyển tài sản
-9. Cấp phát tài sản
-10. Báo cáo thống kê
-mục 3,4,6,7 là các option làm thêm, còn lại là bắt buộc
