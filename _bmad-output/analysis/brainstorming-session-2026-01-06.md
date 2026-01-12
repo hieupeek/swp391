@@ -20,7 +20,7 @@ The Asset Management System (AMS) is a web-based platform designed for public hi
 ### 2. External Entities
 | # | Entity | Description |
 |---|--------|-------------|
-| 1 | **Guest** | Anonymous users (Students/Visitors) who report damaged property via QR codes. |
+| 1 | **Guest** | Anonymous users (Students/Visitors/Teachers) who report damaged property via QR codes. |
 | 2 | **Facilities Staff** | Operational users who manage inventory, verify reports, and handle physical asset movements. |
 | 3 | **Vice Principal** | Secondary approver and internal overseer of facility status and maintenance requests. |
 | 4 | **Principal** | High-level approver for provisioning requests and consumer of executive reports. |
