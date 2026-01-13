@@ -33,6 +33,57 @@ The system follows the "Provisioning & Handover" model typical of public institu
 
 ---
 
+## 4. User Requirements
+This section identifies all Use Cases (UC) for the system actors.
+
+| ID | Use Case | Feature | Main Actor | Use Case Description |
+|---|---|---|---|---|
+| UC01 | Report Damage | Maintenance/Repair | Guest | Report asset issues via QR code without login (photo + description). |
+| UC02 | View Inventory | Asset Management | Facilities Staff | Browse, filter, and search all school assets. |
+| UC03 | Add Inventory | Inventory Addition | Facilities Staff | Input new items from Ministry documentation. |
+| UC04 | Allocate Asset | Asset Allocation | Facilities Staff | Assign assets to specific rooms or personnel. |
+| UC05 | Create Provisioning | Provisioning | Facilities Staff | Compile needs and generate request documents. |
+| UC06 | Review Request | Provisioning | Vice Principal | Initial review/revision of provisioning or maintenance requests. |
+| UC07 | Final Approval | Provisioning | Principal | Final check and formal approval of annual asset requests. |
+| UC08 | View Dashboard | Reports/Stats | Principal | Access interactive charts and summary reports of school CSVC. |
+| UC09 | Manage Master Data| System Admin | Facilities Staff | Coordinate settings (Room types, Asset categories, Statuses). |
+
+### 4.1 UCs for Guest
+- **UC01: Report Damage:** Allows any person on site to scan a QR code on an object/room to report a fault.
+
+### 4.2 UCs for Facilities Staff
+- **UC02-UC05, UC09:** Full operational control over assets, allocations, and system master data.
+
+### 4.3 UCs for Vice Principal & Principal
+- **UC06-UC08:** High-level oversight, multi-stage approval workflow, and strategic reporting.
+
+---
+
+## 5. System Functionalities
+
+### 5.1 Screens Flow
+- **Public:** Landing Page (QR Form) -> Success Message.
+- **Internal:** Login -> Dashboard -> [Module Lists] -> [Detail Views] -> [Approval Workflows].
+
+### 5.2 Screen Authorization
+| Screen Name | Guest | Facilities Staff | Vice Principal | Principal |
+|---|:---:|:---:|:---:|:---:|
+| Anonymous Report Form | X | | | |
+| Dashboard Overview | | X (View) | X (View) | X (Full) |
+| Asset Inventory List | | X (Full) | X (View) | X (View) |
+| Provisioning Workflow | | X (Create) | X (Review) | X (Approve) |
+| Master Data Settings | | X (Full) | | |
+| User Management | | X (Admin) | | |
+
+### 5.3 Non-UI Functions
+| # | Feature | System Function | Description |
+|---|---|---|---|
+| 1 | Provisioning | PDF Generator | Generates the official Ministry request form as a PDF document. |
+| 2 | QR Management | QR Seed Generator | System generates unique URLs for each asset/room to be printed as QR codes. |
+| 3 | Notifications | Activity Logger | Tracks all approval steps (Who, When, Action) for audit purposes. |
+
+---
+
 ## II. Functional Requirements
 
 ### 1. Main Features (Group 6 Asset Modules)
