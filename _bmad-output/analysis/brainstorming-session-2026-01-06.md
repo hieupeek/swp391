@@ -149,12 +149,37 @@ Based on the defined scope, the system includes 10 core modules:
 
 ## III. System Design
 
-### 1. Context Diagram (Data Flow)
-- **Guest** -> [Damage Description, Photo] -> **System**
-- **Facilities Staff** -> [Inventory Data, Allocation Update, Verification] -> **System**
-- **Vice Principal** -> [Approval Commands] -> **System**
-- **Principal** -> [Final Approval, Report Request] -> **System**
-- **System** -> [PDF Asset Forms, Handover Receipts, Dashboard Charts] -> **Users**
+### 1. Context Diagram (Data Flow) / Sơ đồ ngữ cảnh (Luồng dữ liệu)
+Below are the detailed interactions between external actors and the System / Chi tiết các tương tác giữa tác nhân bên ngoài và Hệ thống:
+
+#### 1.1 Guest (Khách/Người dùng)
+- **Actor -> System:** Incident Report (Photo, Description) / Báo cáo sự cố (Ảnh, mô tả).
+- **System -> Actor:** Submission Confirmation / Xác nhận đã gửi báo cáo thành công.
+
+#### 1.2 Facilities Staff (Nhân viên thiết bị)
+- **Actor -> System:** 
+    - Asset Allocation/Transfer details / Chi tiết phân bổ và điều chuyển tài sản.
+    - Maintenance Logs / Nhật ký bảo trì và kết quả sửa chữa.
+    - Inventory Data / Dữ liệu kiểm kê thực tế.
+    - Damage Verification / Kết quả xác minh hư hỏng.
+- **System -> Actor:** 
+    - New Incident Notifications / Thông báo về báo cáo sự cố mới.
+    - Inventory Documents/Reports / Các tài liệu, biên bản và báo cáo kiểm kê.
+    - Approval/Rejection Notifications / Thông báo phê duyệt hoặc từ hồi yêu cầu.
+
+#### 1.3 Vice Principal (Phó Hiệu trưởng)
+- **Actor -> System:** Approval/Rejection for Provisioning and Maintenance / Phê duyệt hoặc từ chối các yêu cầu cung ứng và bảo trì.
+- **System -> Actor:** 
+    - Inventory Status Summaries / Báo cáo tóm tắt tình trạng kho và tài sản.
+    - Pending Request Lists / Danh sách các yêu cầu đang chờ xử lý.
+
+#### 1.4 Principal (Hiệu trưởng)
+- **Actor -> System:** Final Approval (Final sign-off) / Phê duyệt cuối cùng (Ký duyệt chính thức).
+- **System -> Actor:** 
+    - Generated PDF Request Forms / Các mẫu đơn đề xuất đã được tạo dưới dạng PDF.
+    - Pending Requests for Approval / Danh sách các yêu cầu cấp cao chờ phê duyệt.
+    - Statistical Dashboards & Asset Reports / Bảng điều khiển thống kê và báo cáo tài sản cấp cao.
+    - Asset Audit/Status Summary / Tóm tắt tình trạng và kiểm toán tài sản.
 
 ### 2. Database Design (Entity Relationships)
 - **Entities:** `Users`, `Roles`, `Settings`, `Assets`, `Categories`, `Rooms`, `Allocations`, `Transfers`, `MaintenanceRequests`.
