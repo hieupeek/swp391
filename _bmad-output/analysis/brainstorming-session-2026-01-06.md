@@ -21,6 +21,24 @@ The Asset Management System (AMS) is a web-based platform designed for public hi
 **Tiếng Việt:**
 Hệ thống Quản lý Tài sản (AMS) là một nền tảng web dành cho các trường THPT công lập. Hệ thống tối ưu hóa toàn bộ vòng đời của tài sản—từ khâu đề xuất lên Bộ Giáo dục, tiếp nhận, cấp phát, bảo trì, cho đến khi hoàn trả hoặc thanh lý. AMS thay thế việc quản lý thủ công bằng giấy tờ bằng sổ cái kỹ thuật số, giúp tăng cường tính minh bạch và hiệu quả quản lý.
 
+### 1.2 Operational Insights / Phân tích quy trình thực tế
+The system logic is built upon the following real-world operational patterns / Logic hệ thống được xây dựng dựa trên các đặc thù vận hành thực tế sau:
+
+#### A. Office Supplies / Nhóm Văn phòng phẩm (Consumables)
+- **Requesting (Đề xuất):** Facilities staff aggregates quantity needs from all departments -> Principal reviews and prints the official request form for the Ministry. / (Bộ phận CSVC tổng kết số lượng -> Hiệu trưởng duyệt và in đơn gửi Bộ).
+- **Intake (Tiếp nhận):** Upon delivery, facilities staff conducts an on-site inventory check -> Finalize quantities -> Sign the official handover record. / (Khi Bộ cấp xuống, nhân viên CSVC kiểm kê tại chỗ -> Chốt số lượng -> Ký biên bản bàn giao).
+- **Allocation (Cấp phát):** Assets are distributed based on the initial collected needs or divided equally among teachers. / (Chia đều cho giáo viên bộ môn hoặc đáp ứng theo nhu cầu đã thu thập ban đầu).
+
+#### B. Fixed Assets / Nhóm Tài sản cố định (Furniture & Electronics)
+- **Provisioning (Cung ứng):** Focuses on "Ministry Provisioning" (direct grants) for simplicity. / (Lựa chọn phương án xin Bộ cấp trực tiếp để tối ưu quy trình).
+- **Quantity Logic (Logic số lượng):** 
+    - **Tables/Chairs:** Often requested in surplus for maintenance/replacement purposes. / (Bàn ghế thường xin dư ra để dự phòng thay thế).
+    - **Electronics (TVs/Projectors):** Strictly matched 1:1 with the number of classrooms/rooms. / (Tivi, máy chiếu cấp đúng theo số lượng phòng học).
+
+#### C. Liquidation & Repair / Thanh lý và Sửa chữa
+- **Liquidation (Thanh lý):** Assets are packed and sent back to the Ministry for resale or disposal. / (Đóng gói gửi về Bộ nếu muốn thanh lý/bán).
+- **Maintenance (Bảo trì):** If the asset is still salvageable, an internal repair process is initiated. / (Nếu vẫn dùng được thì ưu tiên quy trình sửa chữa).
+
 ### 2. External Entities / Các đối tượng liên quan
 | # | Entity | Mô tả (Description) |
 |---|--------|-------------|
