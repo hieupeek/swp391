@@ -42,7 +42,7 @@ The system logic is built upon the following real-world operational patterns / L
 ### 2. External Entities / Các đối tượng liên quan
 | # | Entity | Mô tả (Description) |
 |---|--------|-------------|
-| 1 | **Guest** (Khách) | **EN:** Anonymous users (Students/Visitors/Teachers) who report damaged property via QR codes. <br> **VN:** Người dùng ẩn danh (Học sinh/Khách/Giáo viên) báo cáo hỏng hóc qua mã QR. |
+| 1 | **Guest** (Khách) | **EN:** Anonymous users who report damaged property via an online form (requires entering and validating a valid Asset Code). <br> **VN:** Người dùng ẩn danh báo cáo hỏng hóc qua trang web (nhập và hệ thống kiểm tra mã tài sản tồn tại trước khi cho phép báo cáo). |
 | 2 | **Facilities Staff** (NV Thiết bị) | **EN:** Operational users who manage inventory, verify reports, and handle physical asset movements. <br> **VN:** Người vận hành chính: quản lý kho, xác minh báo cáo và điều chuyển tài sản. |
 | 3 | **Vice Principal** (Phó Hiệu trưởng) | **EN:** Secondary approver and internal overseer of facility status and maintenance requests. <br> **VN:** Người kiểm duyệt cấp 1, giám sát tình trạng cơ sở vật chất và các yêu cầu bảo trì. |
 | 4 | **Principal** (Hiệu trưởng) | **EN:** High-level approver for provisioning requests and consumer of executive reports. <br> **VN:** Người phê duyệt cao nhất cho các đề xuất mua sắm và theo dõi báo cáo tổng hợp. |
@@ -65,7 +65,7 @@ The system follows the "Provisioning & Handover" model / Hệ thống tuân theo
 5. **Facilities Staff:** Prints QR labels and performs physical allocation (M04). / (In nhãn QR và thực hiện bàn giao/cấp phát thực tế).
 
 #### 3.3 Maintenance Flow / Quy trình Bảo trì (Damage Reporting)
-1. **Guest/Staff:** Scans the asset's QR code and submits a damage report (Photo + Description). / (Quét mã QR của tài sản và gửi báo cáo hỏng hóc kèm ảnh + mô tả).
+1. **Guest/Staff:** Accesses the Damage Report page, enters the Asset Code (System validates existence), and submits report (Photo + Description). / (Truy cập trang báo hỏng, nhập mã tài sản (Hệ thống kiểm tra tồn tại), và gửi báo cáo kèm ảnh + mô tả).
 2. **System:** Records the request and notifies the Facilities Staff. / (Ghi nhận yêu cầu và thông báo cho Nhân viên thiết bị).
 3. **Facilities Staff:** On-site verification of the reported issue. / (Xác minh thực tế tình trạng hỏng hóc).
 4. **Vice Principal:** Reviews the verification and approves the repair budget/plan. / (Xem xét xác minh và phê duyệt kế hoạch/kinh phí sửa chữa).
@@ -85,7 +85,7 @@ This section identifies all Use Cases (UC) for the system actors. / Phần này 
 
 | ID | Use Case Name | Feature Module | Primary Actor | Description (Mô tả) |
 | :--- | :--- | :--- | :--- | :--- |
-| **UC01** | Report Damage | Maintenance | Guest | **EN:** Report asset issues via QR code (anonymous, photo attachment). <br> **VN:** Báo cáo hỏng hóc qua mã QR (ẩn danh, kèm ảnh). |
+| **UC01** | Report Damage | Maintenance | Guest | **EN:** Submit damage reports by entering and validating an Asset Code (anonymous, photo attachment). <br> **VN:** Báo cáo hỏng hóc bằng cách nhập và xác thực mã tài sản (ẩn danh, kèm ảnh). |
 | **UC02** | View Inventory | Asset Management | Facilities Staff | **EN:** Browse, filter, and search the school's asset registry. <br> **VN:** Xem, lọc và tìm kiếm danh mục tài sản của trường. |
 | **UC03** | Add Inventory | Inventory Addition | Facilities Staff | **EN:** Record new assets received from Ministry documentation. <br> **VN:** Ghi nhận tài sản mới từ danh mục của Bộ bàn giao. |
 | **UC04** | Allocate Asset | Asset Allocation | Facilities Staff | **EN:** Assign assets to specific rooms, departments, or personnel. <br> **VN:** Cấp phát tài sản cho phòng học hoặc cá nhân cụ thể. |
@@ -96,7 +96,7 @@ This section identifies all Use Cases (UC) for the system actors. / Phần này 
 | **UC09** | Manage Master Data | System Admin | Facilities Staff | **EN:** Configure system settings (Room types, Categories, Statuses). <br> **VN:** Cấu hình cài đặt hệ thống (Loại phòng, Danh mục, Trạng thái). |
 
 ### 4.1 UCs for Guest / Ca sử dụng cho Khách
-- **UC01: Report Damage (Báo cáo hỏng hóc):** Allows scanning QR code to report issues without login. / (Cho phép quét mã QR để báo cáo sự cố không cần đăng nhập).
+- **UC01: Report Damage (Báo cáo hỏng hóc):** Allows entering an Asset Code to report issues. The system must verify the code's existence before proceeding. / (Cho phép nhập mã tài sản để báo cáo sự cố. Hệ thống phải kiểm tra mã có tồn tại trước khi tiếp tục).
 
 ### 4.2 UCs for Facilities Staff / Ca sử dụng cho NV Thiết bị
 - **UC02: View Inventory (Xem kho):** Browse and search the entire school asset registry. / (Xem và tìm kiếm toàn bộ danh mục tài sản của trường).
@@ -115,7 +115,7 @@ This section identifies all Use Cases (UC) for the system actors. / Phần này 
 ## 5. System Functionalities
 
 ### 5.1 Screens Flow
-- **Public:** Landing Page (QR Form) -> Success Message.
+- **Public:** Landing Page (Asset Search/Report Form) -> Success Message.
 - **Internal:** Login -> Dashboard -> [Module Lists] -> [Detail Views] -> [Approval Workflows].
 
 ### 5.2 Screen Authorization
@@ -177,7 +177,7 @@ Based on the defined scope, the system includes 10 core modules:
 Below are the detailed interactions between external actors and the System / Chi tiết các tương tác giữa tác nhân bên ngoài và Hệ thống:
 
 #### 1.1 Guest (Khách/Người dùng)
-- **Actor -> System:** Incident Report (Photo, Description) / Báo cáo sự cố (Ảnh, mô tả).
+- **Actor -> System:** Incident Report (Asset Code, Photo, Description) / Báo cáo sự cố (Mã tài sản, Ảnh, mô tả).
 - **System -> Actor:** Submission Confirmation / Xác nhận đã gửi báo cáo thành công.
 
 #### 1.2 Facilities Staff (Nhân viên thiết bị)
