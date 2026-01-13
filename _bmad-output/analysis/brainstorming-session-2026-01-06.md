@@ -24,10 +24,10 @@ Hệ thống Quản lý Tài sản (AMS) là một nền tảng web dành cho c�
 ### 2. External Entities / Các đối tượng liên quan
 | # | Entity | Mô tả (Description) |
 |---|--------|-------------|
-| 1 | **Guest** (Khách) | Người dùng ẩn danh (Học sinh/Khách/Giáo viên) báo cáo hỏng hóc qua mã QR. |
-| 2 | **Facilities Staff** (NV Thiết bị) | Người vận hành chính: quản lý kho, xác minh báo cáo và điều chuyển tài sản. |
-| 3 | **Vice Principal** (Phó Hiệu trưởng) | Người kiểm duyệt cấp 1, giám sát tình trạng cơ sở vật chất và các yêu cầu bảo trì. |
-| 4 | **Principal** (Hiệu trưởng) | Người phê duyệt cao nhất cho các đề xuất mua sắm và theo dõi báo cáo tổng hợp. |
+| 1 | **Guest** (Khách) | **EN:** Anonymous users (Students/Visitors/Teachers) who report damaged property via QR codes. <br> **VN:** Người dùng ẩn danh (Học sinh/Khách/Giáo viên) báo cáo hỏng hóc qua mã QR. |
+| 2 | **Facilities Staff** (NV Thiết bị) | **EN:** Operational users who manage inventory, verify reports, and handle physical asset movements. <br> **VN:** Người vận hành chính: quản lý kho, xác minh báo cáo và điều chuyển tài sản. |
+| 3 | **Vice Principal** (Phó Hiệu trưởng) | **EN:** Secondary approver and internal overseer of facility status and maintenance requests. <br> **VN:** Người kiểm duyệt cấp 1, giám sát tình trạng cơ sở vật chất và các yêu cầu bảo trì. |
+| 4 | **Principal** (Hiệu trưởng) | **EN:** High-level approver for provisioning requests and consumer of executive reports. <br> **VN:** Người phê duyệt cao nhất cho các đề xuất mua sắm và theo dõi báo cáo tổng hợp. |
 
 ### 3. Business Processes / Quy trình nghiệp vụ
 The system follows the "Provisioning & Handover" model / Hệ thống tuân theo mô hình "Cung ứng & Bàn giao":
@@ -42,15 +42,15 @@ This section identifies all Use Cases (UC) for the system actors. / Phần này 
 
 | ID | Use Case Name | Feature Module | Primary Actor | Description (Mô tả) |
 | :--- | :--- | :--- | :--- | :--- |
-| **UC01** | Report Damage | Maintenance | Guest | Báo cáo hỏng hóc qua mã QR (ẩn danh, kèm ảnh). |
-| **UC02** | View Inventory | Asset Management | Facilities Staff | Xem, lọc và tìm kiếm danh mục tài sản của trường. |
-| **UC03** | Add Inventory | Inventory Addition | Facilities Staff | Ghi nhận tài sản mới từ danh mục của Bộ bàn giao. |
-| **UC04** | Allocate Asset | Asset Allocation | Facilities Staff | Cấp phát tài sản cho phòng học hoặc cá nhân cụ thể. |
-| **UC05** | Create Provisioning | Provisioning | Facilities Staff | Tổng hợp nhu cầu và tạo văn bản đề xuất mua sắm. |
-| **UC06** | Review Request | Approval Workflow | Vice Principal | Xem xét, chỉnh sửa hoặc duyệt sơ bộ các yêu cầu. |
-| **UC07** | Final Approval | Approval Workflow | Principal | Kiểm tra cuối cùng và phê duyệt chính thức yêu cầu tài sản. |
-| **UC08** | View Dashboard | Reports & Stats | Principal | Xem biểu đồ phân tích và báo cáo tổng hợp cơ sở vật chất. |
-| **UC09** | Manage Master Data | System Admin | Facilities Staff | Cấu hình cài đặt hệ thống (Loại phòng, Danh mục, Trạng thái). |
+| **UC01** | Report Damage | Maintenance | Guest | **EN:** Report asset issues via QR code (anonymous, photo attachment). <br> **VN:** Báo cáo hỏng hóc qua mã QR (ẩn danh, kèm ảnh). |
+| **UC02** | View Inventory | Asset Management | Facilities Staff | **EN:** Browse, filter, and search the school's asset registry. <br> **VN:** Xem, lọc và tìm kiếm danh mục tài sản của trường. |
+| **UC03** | Add Inventory | Inventory Addition | Facilities Staff | **EN:** Record new assets received from Ministry documentation. <br> **VN:** Ghi nhận tài sản mới từ danh mục của Bộ bàn giao. |
+| **UC04** | Allocate Asset | Asset Allocation | Facilities Staff | **EN:** Assign assets to specific rooms, departments, or personnel. <br> **VN:** Cấp phát tài sản cho phòng học hoặc cá nhân cụ thể. |
+| **UC05** | Create Provisioning | Provisioning | Facilities Staff | **EN:** Compile asset needs and generate formal request documents. <br> **VN:** Tổng hợp nhu cầu và tạo văn bản đề xuất mua sắm. |
+| **UC06** | Review Request | Approval Workflow | Vice Principal | **EN:** Review, revise, or provide initial approval for requests. <br> **VN:** Xem xét, chỉnh sửa hoặc duyệt sơ bộ các yêu cầu. |
+| **UC07** | Final Approval | Approval Workflow | Principal | **EN:** Final validation and formal sign-off on asset requests. <br> **VN:** Kiểm tra cuối cùng và phê duyệt chính thức yêu cầu tài sản. |
+| **UC08** | View Dashboard | Reports & Stats | Principal | **EN:** Access visual analytics and summary reports of school assets. <br> **VN:** Xem biểu đồ phân tích và báo cáo tổng hợp cơ sở vật chất. |
+| **UC09** | Manage Master Data | System Admin | Facilities Staff | **EN:** Configure system settings (Room types, Categories, Statuses). <br> **VN:** Cấu hình cài đặt hệ thống (Loại phòng, Danh mục, Trạng thái). |
 
 ### 4.1 UCs for Guest / Ca sử dụng cho Khách
 - **UC01: Report Damage:** Allows any person on site to scan a QR code on an object/room to report a fault. (Cho phép bất kỳ ai tại trường quét mã QR để báo cáo hỏng hóc vật dụng/phòng học).
@@ -80,11 +80,11 @@ This section identifies all Use Cases (UC) for the system actors. / Phần này 
 | User Management | | X (Admin) | | |
 
 ### 5.3 Non-UI Functions
-| # | Feature | System Function | Description |
+| # | Feature | System Function | Description (Mô tả) |
 |---|---|---|---|
-| 1 | Provisioning | PDF Generator | Generates the official Ministry request form as a PDF document. |
-| 2 | QR Management | QR Seed Generator | System generates unique URLs for each asset/room to be printed as QR codes. |
-| 3 | Notifications | Activity Logger | Tracks all approval steps (Who, When, Action) for audit purposes. |
+| 1 | Provisioning | PDF Generator | **EN:** Generates the official Ministry request form as a PDF document. <br> **VN:** Tự động tạo mẫu đơn đề xuất gửi Bộ dưới dạng tệp PDF. |
+| 2 | QR Management | QR Seed Generator | **EN:** System generates unique URLs for each asset/room to be printed as QR codes. <br> **VN:** Hệ thống tạo các liên kết duy nhất cho mỗi tài sản/phòng để in mã QR. |
+| 3 | Notifications | Activity Logger | **EN:** Tracks all approval steps (Who, When, Action) for audit purposes. <br> **VN:** Theo dõi tất cả các bước phê duyệt (Ai, Khi nào, Hành động) phục vụ mục đích kiểm toán. |
 
 ---
 
@@ -107,18 +107,18 @@ Based on the defined scope, the system includes 10 core modules:
 - **M06. Maintenance/Repair Process:** Tracking the repair lifecycle including Guest QR reporting.
 - **M07. Asset Return/Liquidation Process:** Formal process for returning items to the Ministry or decommissioning.
 
-### 2. User Authentication
-- **F01. Login/Logout:** Secure access for defined roles.
-- **F02. Profile Management:** Users can update their personal information.
+### 2. User Authentication / Xác thực người dùng
+- **F01. Login/Logout:** **EN:** Secure access for defined roles. <br> **VN:** Truy cập bảo mật cho các vai trò đã được xác định.
+- **F02. Profile Management:** **EN:** Users can update their personal information. <br> **VN:** Người dùng có thể cập nhật thông tin cá nhân.
 
-### 3. System Administration (Standard RDS Requirements)
-#### 3.1 Master Data (Settings)
-- **F03. Setting List:** View, filter, and search master data (e.g., Asset Statuses, Room Types, Roles).
-- **F04. Setting Details:** Add/Update master data entries, including setting priority and status (Active/Inactive).
+### 3. System Administration (Standard RDS Requirements) / Quản trị hệ thống
+#### 3.1 Master Data (Settings) / Dữ liệu danh mục (Cài đặt)
+- **F03. Setting List:** **EN:** View, filter, and search master data (e.g., Asset Statuses, Room Types, Roles). <br> **VN:** Xem, lọc và tìm kiếm dữ liệu danh mục (ví dụ: Trạng thái tài sản, Loại phòng, Vai trò).
+- **F04. Setting Details:** **EN:** Add/Update master data entries, including setting priority and status (Active/Inactive). <br> **VN:** Thêm/Cập nhật các mục dữ liệu danh mục, bao gồm thứ tự ưu tiên và trạng thái (Hoạt động/Ngừng hoạt động).
 
-#### 3.2 User Management
-- **F05. User List:** Administrator can view and manage all system users (Principal, Staff, etc.).
-- **F06. Role Authorization:** Assigning permissions to specific modules based on organizational structure.
+#### 3.2 User Management / Quản lý người dùng
+- **F05. User List:** **EN:** Administrator can view and manage all system users (Principal, Staff, etc.). <br> **VN:** Quản trị viên có thể xem và quản lý tất cả người dùng hệ thống (Hiệu trưởng, Nhân viên, v.v.).
+- **F06. Role Authorization:** **EN:** Assigning permissions to specific modules based on organizational structure. <br> **VN:** Phân quyền cho từng mô-đun cụ thể dựa trên cấu trúc tổ chức.
 
 ---
 
