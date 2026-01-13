@@ -12,50 +12,54 @@ stepsCompleted: [1, 2]
 
 ---
 
-## I. Overview
+## I. Overview / Tổng quan
 
-### 1. System Context
+### 1. System Context / Bối cảnh hệ thống
+**English:**
 The Asset Management System (AMS) is a web-based platform designed for public high schools. It streamlines the lifecycle of assets—from the initial request to the Ministry of Education, through intake, allocation, maintenance, and final return or liquidation. It replaces manual, paper-based tracking with a digital ledger to ensure accountability and efficiency.
 
-### 2. External Entities
-| # | Entity | Description |
-|---|--------|-------------|
-| 1 | **Guest** | Anonymous users (Students/Visitors/Teachers) who report damaged property via QR codes. |
-| 2 | **Facilities Staff** | Operational users who manage inventory, verify reports, and handle physical asset movements. |
-| 3 | **Vice Principal** | Secondary approver and internal overseer of facility status and maintenance requests. |
-| 4 | **Principal** | High-level approver for provisioning requests and consumer of executive reports. |
+**Tiếng Việt:**
+Hệ thống Quản lý Tài sản (AMS) là một nền tảng web dành cho các trường THPT công lập. Hệ thống tối ưu hóa toàn bộ vòng đời của tài sản—từ khâu đề xuất lên Bộ Giáo dục, tiếp nhận, cấp phát, bảo trì, cho đến khi hoàn trả hoặc thanh lý. AMS thay thế việc quản lý thủ công bằng giấy tờ bằng sổ cái kỹ thuật số, giúp tăng cường tính minh bạch và hiệu quả quản lý.
 
-### 3. Business Processes
-The system follows the "Provisioning & Handover" model typical of public institutions:
-- **Provisioning Flow:** Staff summarizes needs -> Vice Principal reviews -> Principal approves -> Export PDF to Ministry.
-- **Intake Flow:** Ministry delivers items -> Staff performs physical verify -> Input data into System (Inventory Addition).
-- **Maintenance Flow:** Guest/Staff reports damage -> Staff verifies -> Vice Principal approves repair -> Staff records result.
+### 2. External Entities / Các đối tượng liên quan
+| # | Entity | Mô tả (Description) |
+|---|--------|-------------|
+| 1 | **Guest** (Khách) | Người dùng ẩn danh (Học sinh/Khách/Giáo viên) báo cáo hỏng hóc qua mã QR. |
+| 2 | **Facilities Staff** (NV Thiết bị) | Người vận hành chính: quản lý kho, xác minh báo cáo và điều chuyển tài sản. |
+| 3 | **Vice Principal** (Phó Hiệu trưởng) | Người kiểm duyệt cấp 1, giám sát tình trạng cơ sở vật chất và các yêu cầu bảo trì. |
+| 4 | **Principal** (Hiệu trưởng) | Người phê duyệt cao nhất cho các đề xuất mua sắm và theo dõi báo cáo tổng hợp. |
+
+### 3. Business Processes / Quy trình nghiệp vụ
+The system follows the "Provisioning & Handover" model / Hệ thống tuân theo mô hình "Cung ứng & Bàn giao":
+- **Provisioning Flow (Quy trình Cung ứng):** Staff summarizes needs -> Vice Principal reviews -> Principal approves -> Export PDF to Ministry. (Nhân viên tổng hợp nhu cầu -> Phó Hiệu trưởng soát xét -> Hiệu trưởng phê duyệt -> Xuất PDF gửi Bộ).
+- **Intake Flow (Quy trình Tiếp nhận):** Ministry delivers items -> Staff performs physical verify -> Input data into System. (Bộ bàn giao tài sản -> Nhân viên kiểm kê thực tế -> Nhập dữ liệu vào hệ thống).
+- **Maintenance Flow (Quy trình Bảo trì):** Guest/Staff reports damage -> Staff verifies -> Vice Principal approves repair -> Staff records result. (Khách/NV báo hỏng -> NV xác minh -> Phó Hiệu trưởng duyệt sửa chữa -> NV cập nhật kết quả).
 
 ---
 
-## 4. User Requirements
-This section identifies all Use Cases (UC) for the system actors.
+## 4. User Requirements / Yêu cầu người dùng
+This section identifies all Use Cases (UC) for the system actors. / Phần này xác định các ca sử dụng (UC) cho các đối tượng trong hệ thống.
 
-| ID | Use Case | Feature | Main Actor | Use Case Description |
-|---|---|---|---|---|
-| UC01 | Report Damage | Maintenance/Repair | Guest | Report asset issues via QR code without login (photo + description). |
-| UC02 | View Inventory | Asset Management | Facilities Staff | Browse, filter, and search all school assets. |
-| UC03 | Add Inventory | Inventory Addition | Facilities Staff | Input new items from Ministry documentation. |
-| UC04 | Allocate Asset | Asset Allocation | Facilities Staff | Assign assets to specific rooms or personnel. |
-| UC05 | Create Provisioning | Provisioning | Facilities Staff | Compile needs and generate request documents. |
-| UC06 | Review Request | Provisioning | Vice Principal | Initial review/revision of provisioning or maintenance requests. |
-| UC07 | Final Approval | Provisioning | Principal | Final check and formal approval of annual asset requests. |
-| UC08 | View Dashboard | Reports/Stats | Principal | Access interactive charts and summary reports of school CSVC. |
-| UC09 | Manage Master Data| System Admin | Facilities Staff | Coordinate settings (Room types, Asset categories, Statuses). |
+| ID | Use Case Name | Feature Module | Primary Actor | Description (Mô tả) |
+| :--- | :--- | :--- | :--- | :--- |
+| **UC01** | Report Damage | Maintenance | Guest | Báo cáo hỏng hóc qua mã QR (ẩn danh, kèm ảnh). |
+| **UC02** | View Inventory | Asset Management | Facilities Staff | Xem, lọc và tìm kiếm danh mục tài sản của trường. |
+| **UC03** | Add Inventory | Inventory Addition | Facilities Staff | Ghi nhận tài sản mới từ danh mục của Bộ bàn giao. |
+| **UC04** | Allocate Asset | Asset Allocation | Facilities Staff | Cấp phát tài sản cho phòng học hoặc cá nhân cụ thể. |
+| **UC05** | Create Provisioning | Provisioning | Facilities Staff | Tổng hợp nhu cầu và tạo văn bản đề xuất mua sắm. |
+| **UC06** | Review Request | Approval Workflow | Vice Principal | Xem xét, chỉnh sửa hoặc duyệt sơ bộ các yêu cầu. |
+| **UC07** | Final Approval | Approval Workflow | Principal | Kiểm tra cuối cùng và phê duyệt chính thức yêu cầu tài sản. |
+| **UC08** | View Dashboard | Reports & Stats | Principal | Xem biểu đồ phân tích và báo cáo tổng hợp cơ sở vật chất. |
+| **UC09** | Manage Master Data | System Admin | Facilities Staff | Cấu hình cài đặt hệ thống (Loại phòng, Danh mục, Trạng thái). |
 
-### 4.1 UCs for Guest
-- **UC01: Report Damage:** Allows any person on site to scan a QR code on an object/room to report a fault.
+### 4.1 UCs for Guest / Ca sử dụng cho Khách
+- **UC01: Report Damage:** Allows any person on site to scan a QR code on an object/room to report a fault. (Cho phép bất kỳ ai tại trường quét mã QR để báo cáo hỏng hóc vật dụng/phòng học).
 
-### 4.2 UCs for Facilities Staff
-- **UC02-UC05, UC09:** Full operational control over assets, allocations, and system master data.
+### 4.2 UCs for Facilities Staff / Ca sử dụng cho NV Thiết bị
+- **UC02-UC05, UC09:** Full operational control over assets, allocations, and system master data. (Toàn quyền vận hành tài sản, cấp phát và quản lý dữ liệu hệ thống).
 
-### 4.3 UCs for Vice Principal & Principal
-- **UC06-UC08:** High-level oversight, multi-stage approval workflow, and strategic reporting.
+### 4.3 UCs for Vice Principal & Principal / Ca sử dụng cho BGH
+- **UC06-UC08:** High-level oversight, multi-stage approval workflow, and strategic reporting. (Giám sát cấp cao, quy trình phê duyệt đa cấp và báo cáo chiến lược).
 
 ---
 
