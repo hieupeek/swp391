@@ -96,13 +96,19 @@ This section identifies all Use Cases (UC) for the system actors. / Phần này 
 | **UC09** | Manage Master Data | System Admin | Facilities Staff | **EN:** Configure system settings (Room types, Categories, Statuses). <br> **VN:** Cấu hình cài đặt hệ thống (Loại phòng, Danh mục, Trạng thái). |
 
 ### 4.1 UCs for Guest / Ca sử dụng cho Khách
-- **UC01: Report Damage:** Allows any person on site to scan a QR code on an object/room to report a fault. (Cho phép bất kỳ ai tại trường quét mã QR để báo cáo hỏng hóc vật dụng/phòng học).
+- **UC01: Report Damage (Báo cáo hỏng hóc):** Allows scanning QR code to report issues without login. / (Cho phép quét mã QR để báo cáo sự cố không cần đăng nhập).
 
 ### 4.2 UCs for Facilities Staff / Ca sử dụng cho NV Thiết bị
-- **UC02-UC05, UC09:** Full operational control over assets, allocations, and system master data. (Toàn quyền vận hành tài sản, cấp phát và quản lý dữ liệu hệ thống).
+- **UC02: View Inventory (Xem kho):** Browse and search the entire school asset registry. / (Xem và tìm kiếm toàn bộ danh mục tài sản của trường).
+- **UC03: Add Inventory (Nhập kho):** Record new assets delivered from the Ministry. / (Ghi nhận tài sản mới được Bộ bàn giao).
+- **UC04: Allocate Asset (Cấp phát):** Assign assets to specific rooms or personnel. / (Cấp phát tài sản cho phòng học hoặc cá nhân).
+- **UC05: Create Provisioning (Lập đề xuất):** Compile annual needs for Ministry requests. / (Tổng hợp nhu cầu hàng năm để gửi đề xuất lên Bộ).
+- **UC09: Manage Master Data (Quản lý danh mục):** Configure system settings like room types and categories. / (Sửa đổi các cài đặt danh mục hệ thống).
 
-### 4.3 UCs for Vice Principal & Principal / Ca sử dụng cho BGH
-- **UC06-UC08:** High-level oversight, multi-stage approval workflow, and strategic reporting. (Giám sát cấp cao, quy trình phê duyệt đa cấp và báo cáo chiến lược).
+### 4.3 UCs for Vice Principal & Principal / Ca sử dụng cho Ban Giám Hiệu
+- **UC06: Review Request (Kiểm duyệt - VP):** Initial check and revision of staff requests. / (Phó Hiệu trưởng kiểm tra và chỉnh sửa đề xuất).
+- **UC07: Final Approval (Phê duyệt - P):** Formal digital sign-off by the Principal. / (Hiệu trưởng ký duyệt chính thức trên hệ thống).
+- **UC08: View Dashboard (Xem báo cáo):** Access visual analytics and general statistics. / (Xem biểu đồ phân tích và thống kê tổng hợp).
 
 ---
 
