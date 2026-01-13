@@ -34,6 +34,7 @@ The system follows the "Provisioning & Handover" model / Hệ thống tuân theo
 - **Provisioning Flow (Quy trình Cung ứng):** Staff summarizes needs -> Vice Principal reviews -> Principal approves -> Export PDF to Ministry. (Nhân viên tổng hợp nhu cầu -> Phó Hiệu trưởng soát xét -> Hiệu trưởng phê duyệt -> Xuất PDF gửi Bộ).
 - **Intake Flow (Quy trình Tiếp nhận):** Ministry delivers items -> Staff performs physical verify -> Input data into System. (Bộ bàn giao tài sản -> Nhân viên kiểm kê thực tế -> Nhập dữ liệu vào hệ thống).
 - **Maintenance Flow (Quy trình Bảo trì):** Guest/Staff reports damage -> Staff verifies -> Vice Principal approves repair -> Staff records result. (Khách/NV báo hỏng -> NV xác minh -> Phó Hiệu trưởng duyệt sửa chữa -> NV cập nhật kết quả).
+- **Liquidation/Return Flow (Quy trình Thanh lý/Thu hồi):** Staff identifies unrepairable/obsolete assets -> Principal approves -> Generate return document -> Physical return to Ministry -> Update inventory status. (Nhân viên xác định tài sản hỏng không thể sửa chữa/hết hạn -> Hiệu trưởng phê duyệt -> Tạo biên bản bàn giao -> Hoàn trả thực tế về Bộ -> Cập nhật trạng thái trên hệ thống).
 
 ---
 
