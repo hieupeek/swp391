@@ -30,11 +30,35 @@ Hệ thống Quản lý Tài sản (AMS) là một nền tảng web dành cho c�
 | 4 | **Principal** (Hiệu trưởng) | **EN:** High-level approver for provisioning requests and consumer of executive reports. <br> **VN:** Người phê duyệt cao nhất cho các đề xuất mua sắm và theo dõi báo cáo tổng hợp. |
 
 ### 3. Business Processes / Quy trình nghiệp vụ
-The system follows the "Provisioning & Handover" model / Hệ thống tuân theo mô hình "Cung ứng & Bàn giao":
-- **Provisioning Flow (Quy trình Cung ứng):** Staff summarizes needs -> Vice Principal reviews -> Principal approves -> Export PDF to Ministry. (Nhân viên tổng hợp nhu cầu -> Phó Hiệu trưởng soát xét -> Hiệu trưởng phê duyệt -> Xuất PDF gửi Bộ).
-- **Intake Flow (Quy trình Tiếp nhận):** Ministry delivers items -> Staff performs physical verify -> Input data into System. (Bộ bàn giao tài sản -> Nhân viên kiểm kê thực tế -> Nhập dữ liệu vào hệ thống).
-- **Maintenance Flow (Quy trình Bảo trì):** Guest/Staff reports damage -> Staff verifies -> Vice Principal approves repair -> Staff records result. (Khách/NV báo hỏng -> NV xác minh -> Phó Hiệu trưởng duyệt sửa chữa -> NV cập nhật kết quả).
-- **Liquidation/Return Flow (Quy trình Thanh lý/Thu hồi):** Staff identifies unrepairable/obsolete assets -> Principal approves -> Generate return document -> Physical return to Ministry -> Update inventory status. (Nhân viên xác định tài sản hỏng không thể sửa chữa/hết hạn -> Hiệu trưởng phê duyệt -> Tạo biên bản bàn giao -> Hoàn trả thực tế về Bộ -> Cập nhật trạng thái trên hệ thống).
+The system follows the "Provisioning & Handover" model / Hệ thống tuân theo mô hình "Cung ứng & Bàn giao". Below are detailed steps for diagramming (Activity/BPMN):
+
+#### 3.1 Provisioning Flow / Quy trình Cung ứng (Annual Needs)
+1. **Facilities Staff:** Collects requests from rooms/departments and inputs them into AMS. / (Thu thập nhu cầu từ các phòng ban và nhập vào hệ thống).
+2. **Vice Principal:** Reviews the summary and provides initial approval or requests revisions. / (Xem xét danh sách tổng hợp, phê duyệt sơ bộ hoặc yêu cầu chỉnh sửa).
+3. **Principal:** Reviews the final proposal and provides formal digital approval. / (Xem xét đề xuất cuối cùng và phê duyệt chính thức trên hệ thống).
+4. **System:** Auto-generates a standardized Ministry Request PDF form. / (Tự động tạo mẫu đơn đề xuất gửi Bộ dưới dạng PDF).
+5. **Principal:** Signs the physical/digital document to send to the Ministry. / (Ký văn bản để gửi lên Bộ).
+
+#### 3.2 Intake Flow / Quy trình Tiếp nhận (From Ministry)
+1. **Ministry:** Delivers physical assets along with handover documentation. / (Bộ bàn giao tài sản thực tế kèm theo biên bản bàn giao).
+2. **Facilities Staff:** Performs physical verification (Quantity/Quality) against the documentation. / (Nhân viên thiết bị kiểm tra thực tế số lượng/chất lượng so với biên bản).
+3. **Facilities Staff:** Inputs asset data into AMS (M05 - Inventory Addition). / (Nhập dữ liệu tài sản vào hệ thống - Mô-đun M05).
+4. **System:** Generates unique QR codes for each asset/batch. / (Hệ thống tạo mã QR duy nhất cho từng tài sản hoặc lô tài sản).
+5. **Facilities Staff:** Prints QR labels and performs physical allocation (M04). / (In nhãn QR và thực hiện bàn giao/cấp phát thực tế).
+
+#### 3.3 Maintenance Flow / Quy trình Bảo trì (Damage Reporting)
+1. **Guest/Staff:** Scans the asset's QR code and submits a damage report (Photo + Description). / (Quét mã QR của tài sản và gửi báo cáo hỏng hóc kèm ảnh + mô tả).
+2. **System:** Records the request and notifies the Facilities Staff. / (Ghi nhận yêu cầu và thông báo cho Nhân viên thiết bị).
+3. **Facilities Staff:** On-site verification of the reported issue. / (Xác minh thực tế tình trạng hỏng hóc).
+4. **Vice Principal:** Reviews the verification and approves the repair budget/plan. / (Xem xét xác minh và phê duyệt kế hoạch/kinh phí sửa chữa).
+5. **Facilities Staff:** Executes the repair and updates the result in AMS. / (Thực hiện sửa chữa và cập nhật kết quả lên hệ thống).
+
+#### 3.4 Liquidation/Return Flow / Quy trình Thanh lý/Thu hồi
+1. **Facilities Staff:** Identifies unrepairable/obsolete assets and updates status to "Pending Liquidation". / (Xác định tài sản hỏng không thể sửa hoặc hết hạn, cập nhật trạng thái "Chờ thanh lý").
+2. **Principal:** Reviews the liquidation list and provides official approval. / (Xem xét danh sách thanh lý và phê duyệt chính thức).
+3. **System:** Generates a Return Handover Document. / (Hệ thống tạo Biên bản bàn giao hoàn trả).
+4. **Facilities Staff:** Physically returns items to the Ministry and obtains a receipt. / (Hoàn trả tài sản thực tế về Bộ và nhận biên bản xác nhận).
+5. **Facilities Staff:** Updates AMS status to "Returned/Disposed" and attaches the scanned receipt. / (Cập nhật trạng thái "Đã hoàn trả/Thanh lý" và đính kèm minh chứng chứng từ).
 
 ---
 
