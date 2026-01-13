@@ -50,7 +50,7 @@ The system logic is built upon the following real-world operational patterns / L
 ### 3. Business Processes / Quy trình nghiệp vụ
 The system follows the "Provisioning & Handover" model / Hệ thống tuân theo mô hình "Cung ứng & Bàn giao". Below are detailed steps for diagramming (Activity/BPMN):
 
-#### 3.1 Provisioning Flow / Quy trình Cung ứng (Annual Needs)
+#### 3.1 Provisioning Flow / Quy trình Cấp Phát (Annual Needs)
 1. **Facilities Staff:** Collects requests from rooms/departments and inputs them into AMS. / (Thu thập nhu cầu từ các phòng ban và nhập vào hệ thống).
 2. **Vice Principal:** Reviews the summary and provides initial approval or requests revisions. / (Xem xét danh sách tổng hợp, phê duyệt sơ bộ hoặc yêu cầu chỉnh sửa).
 3. **Principal:** Reviews the final proposal and provides formal digital approval. / (Xem xét đề xuất cuối cùng và phê duyệt chính thức trên hệ thống).
