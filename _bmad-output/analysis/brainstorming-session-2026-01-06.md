@@ -70,26 +70,62 @@ User requirements are defined as Use Cases (UC) categorized by user roles and mo
     *   UC32: Notification System
 
 ## 5. System Functionalities
+
 ### 5.1. Screens Flow
-*(Placeholder for Screen Flow Diagram)*
-*   Login -> Dashboard (role-based)
-*   Dashboard -> Asset Management -> Asset Details -> Edit/History
-*   Dashboard -> Requests -> Create New Request
-*   Dashboard -> Reports -> View Report
+The system navigation is designed based on user roles. Below are the primary screen flows:
 
-### 5.2. Screen Authorization
-| Role | Category Mgmt | Asset Mgmt | Requests | Transfers | Reports | User Mgmt |
-| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **Principal** | View | View | Approve | Approve | **Full Access** | View |
-| **Finance Head** | **Full Access** | **Full Access** | Approve | Approve | **Full Access** | View |
-| **Asset Staff** | View | **Edit/Update** | View | **Create** | View | No |
-| **HOD** | View | View Dept Assets | **Create** | **Confirm** | View Dept | No |
-| **Teacher** | No | View Room Assets | **Create** | No | No | No |
+*   **Authentication Flow (All Users):**
+    *   `Login Screen` -> (Success) -> `Role-Based Dashboard`
+    *   `Login Screen` -> (Forgot Password) -> `Password Recovery Screen` -> (Email Sent) -> `Reset Password Screen`
 
-### 5.3. Non-UI Functions
-*   **Automatic Code Generation:** System automatically generates Asset Codes based on Category rules (e.g., `BAN-2024-001`).
-*   **Email Notifications:** Sending emails to HOD/Principal when a request needs approval.
-*   **Audit Logging:** Recording all changes to critical data (assets, users) for security audit.
+*   **Asset Management Flow (Asset Staff/Finance Head):**
+    *   `Dashboard` -> `Asset List` -> `Asset Details` -> `Edit Asset` -> `Save`
+    *   `Dashboard` -> `Import Asset` -> `Preview Import` -> `Confirm Import`
+
+*   **Request & Procurement Flow:**
+    *   **Requester (Teacher):** `Dashboard` -> `My Requests` -> `Create New Request` -> `Submit` -> `Request Details (Pending)`
+    *   **Approver (HOD/Principal):** `Dashboard` -> `Pending Approvals List` -> `Request Details` -> `Approve/Reject` with Comment
+
+*   **Transfer Flow:**
+    *   `Dashboard` -> `Transfer Management` -> `Create Transfer Ticket` -> `Select Asset & Destination` -> `Submit for Approval`
+    *   `Dashboard` -> `Transfer Tasks` -> `Confirm Handover(Source)` -> `Confirm Receipt(Destination)` -> `Complete`
+
+### 5.2. Screen Authorization Matrix
+Key: **C** (Create), **R** (Read/View), **U** (Update/Edit), **D** (Delete), **A** (Approve), **X** (No Access)
+
+| Feature / Module | Principal | Finance Head | Asset Staff | HOD | Teacher |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **Dashboard** | R (Executive) | R (Financial) | R (Operational) | R (Dept) | R (Personal) |
+| **Category Mgmt** | R | C, R, U, D | R | X | X |
+| **Asset Mgmt** | R | C, R, U, D | C, R, U | R (Dept Assets) | R (Room Assets) |
+| **Request Creation** | C, R | C, R | C, R | C, R | C, R |
+| **Request Approval** | **A** (High Value) | **A** (Budget) | R | **A** (Dept Level) | R (Own only) |
+| **Procurement Plan** | **A** | C, R, U | R | R | X |
+| **Transfer Ticket** | **A** | **A** | C, R, U | **A** (Dept Transfer) | X |
+| **Reports** | R, Export | R, Export | R (Basic) | R (Dept) | X |
+| **User Mgmt** | R | R | X | X | X |
+
+### 5.3. Non-UI Functions (System Services)
+These functions run in the background without direct user interaction via screens:
+
+*   **SCH-01: Asset Code Generator:**
+    *   **Trigger:** When a new asset is imported or created.
+    *   **Logic:** Generates a unique ID based on format: `[CATEGORY-PREFIX]-[YEAR]-[SEQ]` (e.g., `LAP-2024-0056`). Ensures no duplicates in DB.
+
+*   **SCH-02: Depreciation Calculator (Scheduled Job):**
+    *   **Trigger:** Runs automatically on the 1st of every month (Cron job).
+    *   **Logic:** Updates the "Current Value" of assets based on the purchase date, initial value, and predefined annual depreciation rate (e.g., 10%/year).
+
+*   **SCH-03: Status Auto-Update:**
+    *   **Trigger:** When a Transfer Ticket is completed (Both Handover and Receipt confirmed).
+    *   **Logic:** Automatically updates the `Current Room` field of the Asset entity to the new location and sets Asset Status to "In Use".
+
+*   **SEC-01: Session Timeout:**
+    *   **Logic:** Automatically logs out users after 30 minutes of inactivity to ensure security on shared school computers.
+
+*   **NOT-01: Email Notification Service:**
+    *   **Trigger:** Events like "New Request Submitted", "Transfer Approved".
+    *   **Logic:** Asynchronously sends an HTML email to the relevant Approver or Requester using SMTP.
 
 ---
 
