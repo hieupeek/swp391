@@ -111,3 +111,46 @@ Các tính năng nâng cao sẽ được phát triển trong các giai đoạn t
 *   **EX-3 (Không hỗ trợ Offline):** Hệ thống yêu cầu kết nối Internet liên tục để hoạt động, không có chế độ offline-sync.
 *   **EX-4 (Chưa hỗ trợ Mobile App):** Phiên bản đầu chỉ là Web Application, giao diện có thể Responsive nhưng chưa có App riêng cho iOS/Android.
 
+
+## 3. BUSINESS CONTEXT (BỐI CẢNH DOANH NGHIỆP)
+
+### 3.1. Stakeholder Profiles (Hồ sơ các bên liên quan)
+
+| Bên liên quan (Stakeholder) | Giá trị nhận được (Value/Benefit) | Thái độ (Attitude) | Lợi ích chính & Mối quan tâm | Ràng buộc (Constraints) |
+| :--- | :--- | :--- | :--- | :--- |
+| **Hiệu trưởng (Principal)** | Minh bạch hóa tài sản công, tối ưu ngân sách chi tiêu. | Ủng hộ mạnh mẽ, mong đợi báo cáo tổng quan nhanh chóng. | Theo dõi tổng giá trị tài sản, duyệt các khoản mua sắm lớn, tránh thất thoát. | Thời gian hạn hẹp, không dùng hệ thống thường xuyên (chỉ xem dashboard). |
+| **Trưởng phòng TC-KT (Finance Head)** | Giảm thời gian kiểm kê, báo cáo chính xác số liệu khấu hao. | Rất quan tâm đến tính chính xác của dữ liệu. | Quản lý danh mục chuẩn, kiểm soát quy trình mua sắm, báo cáo quyết toán. | Cần hệ thống tuân thủ đúng quy tắc tài chính kế toán nhà nước. |
+| **Nhân viên quản lý tài sản (Asset Staff)** | Giảm tải việc nhập liệu thủ công (Excel), dễ dàng tra cứu vị trí tài sản. | Sẵn sàng học hỏi công nghệ mới để giảm việc tay chân. | Theo dõi vòng đời tài sản (nhập, xuất, hỏng, hủy), in tem nhãn/mã vạch. | Trình độ CNTT có thể không đồng đều, cần giao diện đơn giản. |
+| **Trưởng bộ môn (HOD)** | Nắm rõ tài sản của bộ môn mình, chủ động trong việc đề xuất mua mới. | Mong muốn quy trình xin duyệt nhanh gọn hơn. | Quản lý tài sản phòng thí nghiệm/chức năng, xác nhận bàn giao nội bộ. | Chỉ quan tâm đến tài sản thuộc phạm vi quản lý của mình. |
+| **Giáo viên (Teacher)** | Dễ dàng báo hỏng thiết bị để được sửa chữa kịp thời phục vụ dạy học. | Mong muốn sự tiện lợi, không rườm rà thủ tục. | Báo hỏng nhanh, xem lịch sử sửa chữa, đăng ký mượn thiết bị. | Sử dụng chủ yếu trên điện thoại hoặc máy tính chung tại phòng giáo viên. |
+
+### 3.2. Project Priorities (Các ưu tiên dự án)
+Để hỗ trợ việc ra quyết định khi có xung đột về tài nguyên, các ưu tiên dự án được xác định theo 3 chiều:
+
+*   **Ràng buộc (Constraints - Phải tuân thủ tuyệt đối):**
+    *   **Lịch trình (Schedule):** Dự án phải hoàn thành phiên bản 1.0 trước [Ngày kết thúc kỳ học/Dự án] để kịp nghiệm thu.
+    *   **Ngân sách (Budget):** Chi phí triển khai gần như bằng 0 (Sử dụng nhân lực sinh viên, server cây nhà lá vườn hoặc free tier).
+
+*   **Động lực (Drivers - Yếu tố then chốt để thành công):**
+    *   **Chất lượng (Quality):** Tính chính xác của dữ liệu tài sản và sự ổn định của hệ thống là quan trọng nhất. Dữ liệu sai lệch sẽ dẫn đến việc Kế toán từ chối sử dụng.
+    *   **Tính dễ sử dụng (Usability):** Do nhân viên trường học không chuyên về IT, giao diện phải cực kỳ thân thiện và trực quan.
+
+*   **Độ linh hoạt (Degrees of Freedom - Có thể điều chỉnh):**
+    *   **Phạm vi (Scope):** Các tính năng nâng cao (như Mobile App, Tích hợp Accounting System, QR Code Scanner phức tạp) có thể cắt giảm hoặc đẩy sang Release 2.0 nếu bị chậm tiến độ.
+
+### 3.3. Deployment Considerations (Các cân nhắc khi triển khai)
+*   **Hạ tầng kỹ thuật:**
+    *   Hệ thống sẽ được triển khai dưới dạng **Web Application** chạy trên Server nội bộ của trường hoặc Cloud Server (AWS/Azure) chi phí thấp.
+    *   Yêu cầu trình duyệt web hiện đại (Chrome, Edge, Firefox) trên máy trạm của nhân viên.
+
+*   **Chuyển đổi dữ liệu (Data Migration):**
+    *   Đây là thách thức lớn nhất. Cần xây dựng công cụ **Import Excel** mạnh mẽ để nạp hàng nghìn dòng dữ liệu tài sản cũ từ các file Excel rời rạc vào hệ thống mới ngay khi Go-live.
+    *   Cần quy trình làm sạch dữ liệu (Data Cleansing) trước khi import.
+
+*   **Đào tạo & Hỗ trợ (Training):**
+    *   Tổ chức buổi đào tạo tập trung cho Tổ Tài sản và Phòng Kế toán (User Manual chi tiết).
+    *   Hướng dẫn nhanh (Quick Guide) cho Giáo viên về cách Báo hỏng và Tạo yêu cầu.
+
+*   **Bảo trì & Sao lưu:**
+    *   Thiết lập cơ chế Backup Database tự động hàng ngày (Daily Backup) để phòng ngừa sự cố mất dữ liệu.
+
