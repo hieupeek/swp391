@@ -1,112 +1,160 @@
----
-selected_approach: 'progressive-flow'
-techniques_used: ['Context Analysis', 'Use Case Mapping', 'Process Design']
-stepsCompleted: [1, 2, 3]
----
-
-# Asset Management System (AMS) - Requirements Specification
-
-**Project:** Asset Management System for High Schools (AMS)
-**Framework:** JSP/Servlet, Java, MySQL
-**Last Updated:** 2026-01-15
+# ASSET MANAGEMENT SYSTEM (AMS) - REQUIREMENTS SPECIFICATION
+**Version:** 2.0 (Restructured based on RDS Template)
+**Date:** 2026-01-15
 
 ---
 
-## I. ORGANIZATIONAL STRUCTURE (5 ROLES)
+# I. OVERVIEW
 
-Based on the official Use Case document, the system defines 5 core users:
+## 1. System Context
+The Asset Management System (AMS) is a web-based platform designed for public high schools. It streamlines the lifecycle of assets—from the initial request, procurement, allocation, maintenance, to final liquidation. It replaces manual, paper-based tracking and Excel spreadsheets with a centralized digital ledger to ensure accountability, transparency, and efficiency in school resource management.
 
-1.  **Principal/Vice Principal (Hiệu trưởng/Phó hiệu trưởng):** High-level management, approves major procurement requests (UC18), views strategic dashboards.
-2.  **Head of Finance & Accounting (Trưởng phòng TC-KT):** Manages Asset Categories (UC01-03), Approves Transfers (UC22), Liquidates assets (UC10), and views financial reports.
-3.  **Asset Management Staff (Nhân viên quản lý tài sản):** Primary operator. Handles daily CRUD of assets (UC05, UC08), Approves Allocation Requests (UC14), Creates Purchase Proposals (UC16), and Initiates Transfers (UC20).
-4.  **Head of Department (Trưởng/Phụ trách bộ môn):** Requests assets (UC11), Confirms Handover/Receipt of transfers for their department (UC23, UC24).
-5.  **Teacher (Giáo viên):** End user. Requests assets for classrooms (UC11) and Updates asset status/Reports issues (UC09).
+The system interacts with various stakeholders within the school (Principal, Finance Head, Staff, Teachers) to facilitate asset tracking and reporting.
+
+## 2. External Entities
+| Entity | Description |
+| :--- | :--- |
+| **Principal (Hiệu trưởng)** | The highest authority in the school, responsible for final approval of procurement and high-value asset transfers. Needs comprehensive reports for decision making. |
+| **Finance Head (Trưởng phòng TC-KT)** | Responsible for managing the asset budget, approving purchases, overseeing the asset registry, and generating financial reports. |
+| **Asset Staff (Nhân viên quản lý tài sản)** | The primary operator of the system. Responsibilities include physical inventory, updating asset status, managing maintenance requests, and executing transfers. |
+| **Head of Department (Trưởng bộ môn)** | Responsible for assets assigned to their department. Initiates requests for new equipment and approves transfers within their department. |
+| **Teacher (Giáo viên)** | End-users of assets. They report issues (damages/loss) and can view the assets assigned to the rooms they are teaching in. |
+
+## 3. Business Processes
+The system supports the following core business processes:
+
+*   **category_management_flow:** Finance Head creates and manages asset categories -> System generates codes automatically.
+*   **acquisition_flow:** Teacher/HOD Request -> Asset Staff Checks Inventory -> Finance Head Approves -> Procurement (Outside System) -> Asset Staff Inputs New Asset -> Asset Assigned.
+*   **asset_transfer_flow:** Asset Staff initiates Transfer Ticket -> Finance Head Approves -> Current HOD hands over -> New HOD accepts.
+*   **maintenance_flow:** Teacher reports damage -> Asset Staff verifies -> Finance Head approves repair -> Status updated to "Maintenance" -> Repair completed -> Status updated to "In Use".
+*   **liquidation_flow:** Asset Staff identifies broken/obsolete assets -> Proposal created -> Finance Head & Principal Approve -> Asset Status set to "Liquidated".
+
+## 4. User Requirements
+User requirements are defined as Use Cases (UC) categorized by user roles and modules.
+
+*   **Group 1: Category Management** (Primary: Finance Head)
+    *   UC01: Create new asset category
+    *   UC02: Update category information
+    *   UC03: Delete/Deactivate category
+    *   UC04: View/Search categories
+
+*   **Group 2: Asset Management** (Primary: Asset Staff, Finance Head)
+    *   UC05: Import New Asset (Procurement)
+    *   UC06: Update Asset Information
+    *   UC07: Update Asset Status (Operational/Broken/Maintenance)
+    *   UC08: Search and View Asset Details
+    *   UC09: Delete Asset (Soft delete)
+
+*   **Group 3: Acquisition & Procurement** (Primary: Teacher, HOD, Finance Head)
+    *   UC10: Submit Resource Request (Teacher/Staff)
+    *   UC11: Review & Approve Request (HOD/Principal)
+    *   UC12: Create Procurement Plan
+    *   UC13: Approve Procurement Plan
+
+*   **Group 4: Transfer & Handover** (Primary: Asset Staff, HOD)
+    *   UC14: Create Transfer Ticket
+    *   UC15: Approve/Reject Transfer Ticket
+    *   UC16: Confirm Handover (Sending Dept)
+    *   UC17: Confirm Receipt (Receiving Dept)
+
+*   **Group 5: Reporting** (Primary: Principal, Finance Head)
+    *   UC21: Generate Asset Inventory Report
+    *   UC22: Generate Maintenance/Repair Report
+    *   UC23: View Dashboard (Statistics)
+
+*   **Group 6: Common** (All Users)
+    *   UC28: Login
+    *   UC29: Logout
+    *   UC30: Change Password
+    *   UC31: Update Profile
+    *   UC32: Notification System
+
+## 5. System Functionalities
+### 5.1. Screens Flow
+*(Placeholder for Screen Flow Diagram)*
+*   Login -> Dashboard (role-based)
+*   Dashboard -> Asset Management -> Asset Details -> Edit/History
+*   Dashboard -> Requests -> Create New Request
+*   Dashboard -> Reports -> View Report
+
+### 5.2. Screen Authorization
+| Role | Category Mgmt | Asset Mgmt | Requests | Transfers | Reports | User Mgmt |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Principal** | View | View | Approve | Approve | **Full Access** | View |
+| **Finance Head** | **Full Access** | **Full Access** | Approve | Approve | **Full Access** | View |
+| **Asset Staff** | View | **Edit/Update** | View | **Create** | View | No |
+| **HOD** | View | View Dept Assets | **Create** | **Confirm** | View Dept | No |
+| **Teacher** | No | View Room Assets | **Create** | No | No | No |
+
+### 5.3. Non-UI Functions
+*   **Automatic Code Generation:** System automatically generates Asset Codes based on Category rules (e.g., `BAN-2024-001`).
+*   **Email Notifications:** Sending emails to HOD/Principal when a request needs approval.
+*   **Audit Logging:** Recording all changes to critical data (assets, users) for security audit.
+
+---
+
+# II. FUNCTIONAL REQUIREMENTS
+
+## 1. Feature: Account Management (Common)
+### 1.1. Login (UC28)
+*   **Screen:** Login Page
+*   **Description:** Allows users to access the system using Email/Username and Password.
+*   **Fields:** Username, Password, Remember Me (checkbox), Login Button, Forgot Password Link.
+
+## 2. Feature: Asset Management
+### 2.1. Feature: Category Management
+#### 2.1.1. List Categories (UC04)
+*   **Description:** Display a paginated list of asset categories.
+*   **Fields:** Category Code, Category Name, Description, Active Status, Action Buttons (Edit, Delete).
+
+#### 2.1.2. Create/Edit Category (UC01, UC02)
+*   **Description:** Form to add or update an asset category.
+*   **Fields:** Name (Required), Prefix Code (Required, unique), Description.
+
+### 2.2. Feature: Asset Lifecycle
+#### 2.2.1. Asset List (UC08)
+*   **Description:** Main operational screen for Asset Staff. Filters by Category, Status, Room.
+*   **Fields:** Asset Code, Name, Category, Purchase Date, Price, Status (New, Good, Broken, Maintenance, Liquidated), Current Room.
+
+#### 2.2.2. Import Asset (UC05)
+*   **Description:** Form to register a new asset into the system (usually after procurement).
+*   **Fields:** Name, Category (Dropdown), Supplier, Price, Purchase Date, Warranty Expiry, Initial Status, Image Upload.
+
+## 3. Feature: Business Processes
+### 3.1. Transfer Management
+#### 3.1.1. Transfer Ticket List
+*   **Description:** Tracks all movement of assets.
+*   **Fields:** Ticket ID, Asset Name, From Room, To Room, Created By, Status (Pending, Approved, Completed).
+
+#### 3.1.2. Create Transfer Ticket (UC14)
+*   **Description:** Asset Staff selects an asset and a destination room.
+*   **Fields:** Asset (Searchable), Destination Room, Reason for Transfer, Transfer Date.
 
 ---
 
-## II. SYSTEM SCOPE (6 MODULES)
+# III. SYSTEM DESIGN
 
-The system is structured into 6 main functional groups corresponding to the 32 Use Cases:
+## 1. Software Architecture
+*   **Architecture Pattern:** MVC (Model-View-Controller) using JSP/Servlet.
+*   **Frontend:** JSP, HTML5, CSS3, JavaScript (Bootstrap/Plain CSS).
+*   **Backend:** Java Servlets.
+*   **Database:** MySQL.
+*   **External Diagram:** (See `architecture.png` - *to be created*)
 
-| # | Group | Use Cases | Description |
-|---|---|---|---|
-| I | **Category Management** | UC01 - UC04 | Managing asset standard templates/types. (Role: Finance Head) |
-| II | **Asset Management** | UC05 - UC10 | Managing individual asset records, status updates, and liquidation. |
-| III | **Acquisition (Increase)** | UC11 - UC19 | Flow from Allocation Request -> Stock Check -> Purchase Proposal -> Approval. |
-| IV | **Asset Transfer** | UC20 - UC25 | Moving assets between rooms/departments (Request -> Approve -> Handover -> Receive). |
-| V | **Reporting** | UC26 - UC27 | View and Export reports based on role permissions. |
-| VI | **Common** | UC28 - UC32 | Authentication and Profile management. |
+## 2. Code Package Design
+*   `com.ams.controller`: Servlet classes handling HTTP requests.
+*   `com.ams.model`: JAVA POJO classes representing DB entities (Asset, User, Category).
+*   `com.ams.dao`: Data Access Object classes for DB interaction.
+*   `com.ams.service`: Business logic layer.
+*   `com.ams.utils`: Helper classes (DBConnection, PasswordHasher).
 
----
+## 3. Database Design
+### 3.1. Database Schema
+*(Placeholder for ERD Image)*
 
-## III. USER REQUIREMENTS (USE CASE LIST)
-
-### 1. Group 1: Asset Category Management
-*   **UC01:** Create New Category (Head of Finance)
-*   **UC02:** Update Category Information (Head of Finance)
-*   **UC03:** Delete Category (Head of Finance - validation required)
-*   **UC04:** View/Search Categories (All Actors)
-
-### 2. Group 2: Asset Management
-*   **UC05:** Add New Asset (Asset Staff) - Auto-generate Asset ID (e.g., MT-2024-001).
-*   **UC06:** View/Search Assets (All Actors)
-*   **UC07:** View Asset Details (All Actors) - Full history and location.
-*   **UC08:** Update Asset Info (Asset Staff) - Edit details/value.
-*   **UC09:** Update Asset Status (Asset Staff, Teacher) - Report status (New, Used, Broken, Maintenance, Liquidated).
-*   **UC10:** Liquidate/Delete Asset (Head of Finance)
-
-### 3. Group 3: Asset Acquisition (Request & Procurement)
-*   **UC11:** Create Allocation Request (Teacher, HOD)
-*   **UC12:** View Allocation Requests (All involved actors)
-*   **UC13:** Check Inventory Availability (Asset Staff)
-*   **UC14:** Approve/Reject Personnel Request (Asset Staff)
-*   **UC15:** Cancel Allocation Request (Requester)
-*   **UC16:** Create Purchase Proposal (Asset Staff - if stock is insufficient)
-*   **UC17:** View Purchase Requests (Asset Staff, Finance, Principal)
-*   **UC18:** Approve/Reject Purchase Proposal (Principal/VP)
-*   **UC19:** Cancel Purchase Proposal (Asset Staff)
-
-### 4. Group 4: Asset Transfer
-*   **UC20:** Create Transfer Voucher (Asset Staff) - From Source Room to Target Room.
-*   **UC21:** View/Search Transfer Vouchers (Asset Staff, Finance, HOD)
-*   **UC22:** Approve/Reject Transfer (Head of Finance)
-*   **UC23:** Confirm Handover (HOD - Source Room)
-*   **UC24:** Confirm Receipt (HOD - Target Room)
-*   **UC25:** Cancel Transfer Voucher (Asset Staff, Finance)
-
-### 5. Group 5: Reporting & Analytics
-*   **UC26:** View Reports (Role-based views):
-    *   *Principal:* Dashboards, Procurement stats.
-    *   *Finance:* Dashboard, Detailed Inventory, Depreciation, Transfers.
-    *   *Asset Staff:* Inventory, Repairs/Status, Transfer logs.
-    *   *HOD:* Departmental Assets & History.
-*   **UC27:** Export Reports (Excel/PDF)
-
-### 6. Group 6: Common Functions
-*   **UC28:** Login
-*   **UC29:** Logout
-*   **UC30:** Profile Management
-*   **UC31:** Forgot Password
-*   **UC32:** Change Password
-
----
-
-## IV. KEY PROCESS FLOWS (ALIGNED WITH WORKFLOW.MD)
-
-### 1. Request & Procurement Process
-1.  **Start:** Teacher/HOD creates **Allocation Request** (UC11).
-2.  **Check:** Asset Staff checks inventory (UC13).
-    *   *Case A (Stock Available):* Staff **Approves** (UC14) -> Asset assigned.
-    *   *Case B (Out of Stock):* Staff creates **Purchase Proposal** (UC16).
-3.  **Approval (If B):** Principal reviews Proposal (UC18).
-    *   *Approved:* Items bought -> Staff **Adds to System** (UC05) -> Staff **Approves** original Request (UC14).
-    *   *Rejected:* Staff **Rejects** original Request (UC14).
-
-### 2. Asset Transfer Process
-1.  **Start:** Staff creates **Transfer Voucher** (UC20).
-2.  **Approval:** Head of Finance approves (UC22). (Status: *Approved - Waiting Handover*)
-3.  **Handover:** Source HOD confirms handover (UC23). (Status: *Handed Over - Waiting Receipt*)
-4.  **Receipt:** Target HOD confirms receipt (UC24). (Status: *Completed*) -> Location updated.
-
----
-*This specification is now fully synchronized with project artifacts `use case.md` and `workflow.md`.*
+### 3.2. Table Descriptions
+*   **Users:** `user_id` (PK), `username`, `password`, `role`, `full_name`, `email`.
+*   **Categories:** `category_id` (PK), `name`, `code_prefix`.
+*   **Assets:** `asset_id` (PK), `category_id` (FK), `name`, `code`, `status`, `location_id` (FK).
+*   **Requests:** `request_id` (PK), `requester_id` (FK), `type`, `status`, `created_date`.
+*   **Transfers:** `transfer_id` (PK), `asset_id` (FK), `from_room`, `to_room`, `status`.
