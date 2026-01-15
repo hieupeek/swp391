@@ -131,40 +131,130 @@ These functions run in the background without direct user interaction via screen
 
 # II. FUNCTIONAL REQUIREMENTS
 
-## 1. Feature: Account Management (Common)
-### 1.1. Login (UC28)
-*   **Screen:** Login Page
-*   **Description:** Allows users to access the system using Email/Username and Password.
-*   **Fields:** Username, Password, Remember Me (checkbox), Login Button, Forgot Password Link.
+## 1. Feature Group: Category Management (Map to UC01-UC04)
+This module allows the Finance Head to manage standardized asset classifications.
 
-## 2. Feature: Asset Management
-### 2.1. Feature: Category Management
-#### 2.1.1. List Categories (UC04)
-*   **Description:** Display a paginated list of asset categories.
-*   **Fields:** Category Code, Category Name, Description, Active Status, Action Buttons (Edit, Delete).
+### 1.1. Category List (UC04)
+*   **Screen:** `Category Management List`
+*   **Description:** Displays a table of all asset categories (e.g., "IT Equipment", "Lab Tables").
+*   **Operations:** Search by name, Filter by status (Active/Inactive).
+*   **Fields:** Category ID, Name, Prefix Code (e.g., "COMP"), Description, Status.
 
-#### 2.1.2. Create/Edit Category (UC01, UC02)
-*   **Description:** Form to add or update an asset category.
-*   **Fields:** Name (Required), Prefix Code (Required, unique), Description.
+### 1.2. Create/Update Category (UC01, UC02)
+*   **Screen:** `Category Details Form`
+*   **Description:** Modal or separate page to input category details.
+*   **Validation:** "Prefix Code" must be unique (used for asset ID generation).
+*   **Logic:** Creating a category automatically enables it for selection in Asset Import.
 
-### 2.2. Feature: Asset Lifecycle
-#### 2.2.1. Asset List (UC08)
-*   **Description:** Main operational screen for Asset Staff. Filters by Category, Status, Room.
-*   **Fields:** Asset Code, Name, Category, Purchase Date, Price, Status (New, Good, Broken, Maintenance, Liquidated), Current Room.
+### 1.3. Delete/Deactivate Category (UC03)
+*   **Function:** `Soft Delete`
+*   **Description:** Marking a category as "Inactive".
+*   **Constraint:** Cannot delete a category if it already contains assets.
 
-#### 2.2.2. Import Asset (UC05)
-*   **Description:** Form to register a new asset into the system (usually after procurement).
-*   **Fields:** Name, Category (Dropdown), Supplier, Price, Purchase Date, Warranty Expiry, Initial Status, Image Upload.
+## 2. Feature Group: Asset Management (Map to UC05-UC09)
+This is the core operational module for Asset Staff.
 
-## 3. Feature: Business Processes
-### 3.1. Transfer Management
-#### 3.1.1. Transfer Ticket List
-*   **Description:** Tracks all movement of assets.
-*   **Fields:** Ticket ID, Asset Name, From Room, To Room, Created By, Status (Pending, Approved, Completed).
+### 2.1. Asset Dashboard & List (UC08)
+*   **Screen:** `Asset Registry`
+*   **Description:** The central view of all school assets.
+*   **Features:**
+    *   **Advanced Search:** By Code, Name, Room, category.
+    *   **Quick Scan:** Search input focused for Barcode scanner.
+    *   **Status Filter:** View only "Broken" or "In Use" items.
 
-#### 3.1.2. Create Transfer Ticket (UC14)
-*   **Description:** Asset Staff selects an asset and a destination room.
-*   **Fields:** Asset (Searchable), Destination Room, Reason for Transfer, Transfer Date.
+### 2.2. Import New Asset (UC05)
+*   **Screen:** `New Asset Entry`
+*   **Description:** Registering new assets into the system, typically after procurement.
+*   **Fields:** Name, Category (Select), Supplier, Cost, Purchase Date, Warranty Date, Initial Room Location.
+*   **Logic:** System auto-generates `Asset Code` upon specific Category selection (SCH-01).
+
+### 2.3. Edit Asset Info (UC06)
+*   **Screen:** `Asset Details View` -> `Edit Mode`
+*   **Description:** Updating non-critical info (e.g., Description, Image) or correcting typos.
+*   **Constraint:** Cannot change `Asset Code` or `Purchase Date` without Admin privileges.
+
+### 2.4. Update Asset Status (UC07)
+*   **Screen:** `Asset Status Dialog`
+*   **Description:** Manually changing status (e.g., from "In Use" to "Broken" or "Under Maintenance").
+*   **Requirement:** Must provide a comment/reason when changing status to Broken.
+
+### 2.5. Delete Asset (UC09)
+*   **Function:** `Archive Asset`
+*   **Description:** Removing an asset record (Soft delete). Only allowed for "Wrong Entry" or "Draft" assets. Liquidated assets use a different process (Liquidation).
+
+## 3. Feature Group: Acquisition & Procurement (Map to UC10-UC13)
+Handles the flow from "Need" to "Plan".
+
+### 3.1. Request Submission (UC10)
+*   **Screen:** `My Requests` -> `New Request`
+*   **Actor:** Teacher, Staff.
+*   **Description:** Form to request general supplies or specific equipment.
+*   **Fields:** Item Name, Quantity, Urgency (Low/Med/High), Justification, Desired Date.
+
+### 3.2. Request Approval (UC11)
+*   **Screen:** `Pending Approvals`
+*   **Actor:** HOD, Finance Head, Principal.
+*   **Description:** List of requests waiting for action.
+*   **Actions:** Approve, Reject (with reason), Request Info.
+
+### 3.3. Procurement Plan Management (UC12, UC13)
+*   **Screen:** `Procurement Planning`
+*   **Actor:** Finance Head.
+*   **Description:** Aggregating approved requests into a purchasing plan.
+*   **Logic:** Once a plan is Approved (UC13) by Principal, the status of linked Requests changes to "In Procurement".
+
+## 4. Feature Group: Transfer & Handover (Map to UC14-UC17)
+Strictly controls asset movement between locations/owners.
+
+### 4.1. Create Transfer Ticket (UC14)
+*   **Screen:** `New Transfer Ticket`
+*   **Actor:** Asset Staff.
+*   **Description:** Initiating a move.
+*   **Fields:** Source Room, Destination Room, List of Assets (Multi-select), Transfer Date, Reason.
+
+### 4.2. Ticket Approval (UC15)
+*   **Screen:** `Transfer Approvals`
+*   **Actor:** Finance Head / Principal.
+*   **Description:** Required for high-value or inter-department transfers.
+
+### 4.3. Handover & Receipt (UC16, UC17)
+*   **Screen:** `My Transfer Tasks`
+*   **Actor:** HOD (Source & Destination).
+*   **Description:** Digital signature/confirmation step.
+    *   **Step 1:** Source HOD clicks "Confirm Handover" -> Assets transit.
+    *   **Step 2:** Dest HOD clicks "Confirm Receipt" -> Transfer Closing.
+*   **Logic:** Trigger SCH-03 (Update Asset Location) upon Step 2.
+
+## 5. Feature Group: Maintenance & Reporting (Map to UC18-UC27)
+*(Assuming UC18-20 are Maintenance, UC21-27 are Reporting based on typical AMS structure)*
+
+### 5.1. Maintenance Feature (UC18, UC19, UC20)
+*   **UC18: Report Damage:** Teacher reports an issue -> Asset Status becomes "Reported".
+*   **UC19: Verify Damage:** Asset Staff checks -> Status becomes "Broken" or "Maintenance".
+*   **UC20: Record Repair Result:** Updates cost of repair and sets status back to "In Use".
+
+### 5.2. Reporting Module (UC21-UC27)
+*   **Screen:** `Reports Hub`
+*   **UC21: Asset Inventory Report:** PDF export of all assets by Room/Category.
+*   **UC22: Maintenance History Report:** List of all repairs and costs.
+*   **UC23: Transfer History Log:** Audit trail of movements.
+*   **UC24: Budget/Procurement Report:** Financial summary.
+*   **UC25: Dashboard Stats (Principal):** Charts (Pie/Bar).
+*   **UC26: Depreciation Report:** Value loss analysis.
+*   **UC27: Cancellation/Liquidation Report:** List of disposed assets.
+
+## 6. Feature Group: Common System Functions (Map to UC28-UC32)
+### 6.1. Authentication (UC28, UC29)
+*   **Screen:** `Login Page`
+*   **Features:** JWT Authentication, Session management, Logout.
+
+### 6.2. User Profile (UC30, UC31)
+*   **Screen:** `My Profile`
+*   **Features:** Change Password (UC30), Update Email/Phone (UC31).
+
+### 6.3. Notifications (UC32)
+*   **Screen:** `Notification Bell` (Top bar)
+*   **Features:** Real-time dropdown list of alerts (e.g., "Your request #123 was approved"). Also handles sending of emails (Non-UI).
 
 ---
 
