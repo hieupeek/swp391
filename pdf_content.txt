@@ -1,715 +1,199 @@
-  77CHAPTER 5
-Establishing the business 
-requirements
-Karen is a business analyst on a project to implement a new online product catalog for the company’s 
-customer service representatives. The drafted SRS is going through review when the marketing  mana ger 
-says he wants to add a “Like this product” feature. Karen’s first instinct is to push back; there is already 
-concern about meeting schedules with the current requirements set. But then she realizes that maybe 
-that’s a smart feature to add, because customer service representatives can promote the most-liked 
-products with other customers. Before she elicits and documents functional requirements for this 
- feature, she needs an objective analysis about whether this feature should be added to the scope or not.
-When she explains to the marketing manager the need to analyze this request further, he responds, 
-“Well, soon the developers are going to be in there changing code anyway. How hard is it to add just 
-one tiny feature?” Karen’s analysis determines that the proposed feature lies outside the project’s scope: 
-it won’t contribute to the business objectives to reduce the customer service representatives’ average call 
-time, and it wouldn’t be simple to implement. Karen needs to be able to clearly articulate why the feature 
-isn’t in scope to the marketing manager, who doesn’t have the business objectives readily in mind.
-As you saw in &hapter 1, “The essential software requirement,µ business requirements represent the 
-top of the requirements chain. They deÀne the vision of the solution and the scope of the proMect that 
-will implement the solution. The user requirements and functional requirements must align with the 
-context and obMectives that the business requirements establish. Requirements that don’t help the 
-proMect achieve its business obMectives shouldn’t be implemented.
-A proMect without a clearly deÀned and well-communicated direction invites disaster. ProMect 
- participants can unwittingly work at cross-purposes if they have different obMectives and priorities. 
-The stakeholders will never agree on the requirements if they lack a common understanding of the 
-proMect’s business obMectives. Without this understanding up front, proMect deadlines will likely be 
-missed and budgets will likely be overrun as the team struggles to deliver the right product.
-This chapter describes the vision and scope document, a deliverable that contains the proMect’s 
-business requirements. )igure 5-3 later in this chapter suggests a template for the vision and scope 
-document. But before we get to the template, let’s see Must what we mean by “business requirements.µ
-78 PART II Requirements developmentDefining business requirements
-“Business requirementsµ refers to a set of information that, in the aggregate, describes a need that 
-leads to one or more proMects to deliver a solution and the desired ultimate business outcomes. 
- Business opportunities, business obMectives, success metrics, and a vision statement make up the 
- business requirements.
-Business requirements issues must be resolved before the functional and nonfunctional 
- requirements can be fully speciÀed. A statement of the proMect’s scope and limitations helps greatly 
-with discussions of proposed features and target releases. The business requirements provide a 
- reference for making decisions about proposed requirement changes and enhancements. We 
- recommend displaying the business obMectives, vision, and scope highlights in every requirements 
- elicitation session so the team can quickly Mudge whether a proposed requirement is in or out of scope.
-Identifying desired business benefits
-The business requirements set the context for, and enable the measurement of, the beneÀts the 
-business hopes to achieve from undertaking a proMect. 2rgani]ations should not initiate any proMect 
-without a clear understanding of the value it will add to the business. Set measurable targets with 
-business obMectives, and then deÀne success metrics that allow you to measure whether you are on 
-track to meet those obMectives.
-Business requirements might come from funding sponsors, corporate executives, marketing 
- managers, or product visionaries. +owever, it can be challenging to identify and communicate the 
-business beneÀts. Team members sometimes aren’t exactly sure what the proMect is intended to 
- accomplish. Sometimes, sponsors don’t want to set obMectives in a measurable fashion and then be 
-held accountable for achieving them. There could be multiple important stakeholders who don’t 
-agree on what the obMectives should be. The business analyst can ensure that the right stakeholders 
-are setting the business requirements and facilitate elicitation, prioriti]ation, and conÁict resolution. 
-Karl Wiegers 2006  sugg ests some questions that the BA can ask to help elicit business requirements.
-The business beneÀt has to represent a true value for the proMect’s sponsors and to the product’s 
-customers. )or example, simply merging two systems into one is not a reasonable business obMective. 
-&ustomers don’t care if they are using an application that involves 1, 5, or even 10 systems. They care 
-about issues like increasing revenue and decreasing costs. Merging two systems might be part of the 
-solution, but it is rarely the true business obMective. Regulatory and legal compliance proMects also 
-have clear business obMectives. 2ften the obMectives are phrased as risk avoidance, possibly to avoid 
-getting sued or being put out of business.
-Product vision and project scope
-Two core elements of the business requirements are the vision and the scope. The product vision  
-succinctly describes the ultimate product that will achieve the business obMectives. This product could 
-serve as the complete solution for the business requirements or as Must a portion of the solution. 
-The vision describes what the product is about and what it ultimately could become. It provides the 
- CHAPTER 5  (stablishing the business requirements  79context for making decisions throughout the product’s life, and it aligns all stakeholders in a common 
-direction. The project scope  identiÀes what portion of the ultimate product vision the current proMect 
-or development iteration will address. The statement of scope draws the boundary between what’s in 
-and what’s out for this proMect.
-Important  The product vision ensures that we all know where we are hoping to go 
- eventually. The proMect scope ensures that we are all talking about the same thing for the 
-immediate proMect or iteration.
-Make sure the vision solves the problem
-In one of our training courses, we give students a business problem and a corresponding 
- business obMective. Throughout the exercise, we periodically provide additional details about 
-the requirements. At each step, we ask the students to conceive a solution to the problem, 
-given the information they have. By the end of the exercise, all of the students’ solution ideas 
-are similar, but rarely do any of them actually solve the original problem!
-This mimics what we see on real proMects. Teams might set clear obMectives and then specify, 
-develop, and test the system, without checking against the obMectives along the way.  
-A stakeholder might come up with a “shinyµ new feature she wants implemented. The team 
-adds it because it seems reasonable and interesting. +owever, months down the road, the 
- delivered system doesn’t solve the original problem, despite all of its cool features.
-The vision applies to the product as a whole. The vision should change relatively slowly as a 
- product’s strategic positioning or a company’s business obMectives evolve over time. The scope 
- pertains to a speciÀc proMect or iteration that will implement the next increment of the product’s 
- functionality, as shown in )igure 5-1. Scope is more dynamic than vision because the  stakeholders 
- adMust the contents of each release within its schedule, budget, resource, and quality constraints. 
-Scope for the current release should be clear, but the scope of future releases will be fu]]ier 
-the  farther out you look. The team’s goal is to manage the scope of a speciÀc development or 
- enhancement proMect as a deÀned subset of the strategic vision for the product.
-FIGURE 5-1  The product vision encompasses the scope for each planned release, which is less well deÀned the 
-farther out you look.
-
-80 PART II Requirements development 
-Interlocking scopes
-A federal government agency is undertaking a massive Àve-year information system 
- development effort. The agency deÀned the business obMectives and vision for this system early 
-in the process; they won’t change substantially over the next few years. The agency has planned 
-15 releases of portions of the ultimate system, each created by a separate proMect team and 
-having its own scope description. Some proMects will run in parallel, because certain of them are 
-relatively independent of each other and some have  longer timelines than others. (ach scope 
-description must align with the overall product vision and interlock with the scope for the other 
-proMects to ensure that nothing is inadvertently  omit ted and that lines of responsibility are clear.
-Conflicting business requirements
-Business requirements collected from multiple sources might conÁict. &onsider a kiosk that will be 
-used by a retail store’s customers. )igure 5-2 shows the likely business interests of the kiosk developer, 
-retailer, and customer as we envision how each of these stakeholders hopes the kiosk will provide an 
-advantage over their current way of doing business.
-FIGURE 5-2  Stakeholders for a kiosk don’t always have congruent business interests.
-The various stakeholders’ obMectives sometimes are in alignment. )or instance, both the kiosk 
-developers and the customers want to have a wide variety of products or services available through 
-the kiosk. +owever, some business obMectives could conÁict. The customer wants to spend less time 
-purchasing goods and services, but the retailer would prefer to have customers linger in the store and 
-
- CHAPTER 5  Establishing the business requirements  81spend more money. The tension among stakeholders with different goals and  constraints can lead to 
-clashing business requirements. The proMect’s decision makers must resolve these conÁicts before the 
-analyst can detail the kiosk’s requirements. The focus should be on delivering the maximum business 
-value to the primary stakeholders. It’s easy to be distracted by superÀcial product characteristics that 
-don’t really address the business objectives.
-The proMect’s decision makers shouldn’t expect the software team to resolve conÁicts among 
-various stakeholders. As more constituencies with diverse interests climb aboard, scope will grow. 
- Uncontrolled scope creep, in which stakeholders overstuff the new system in an attempt to satisfy 
-every interest, can cause the project to topple under its own weight. A BA can help by surfacing 
-potential areas of conÁict and differing assumptions, Áagging conÁicting business obMectives, noting 
-when requested features don’t achieve those obMectives, and facilitating conÁict resolution. Resolving 
-such issues is often a political and power struggle, which lies outside the scope of this book.
-Long-duration projects often experience a change in decision makers partway through. If this 
- happens to you, immediately revisit the baselined business requirements with the new  decision 
- makers. They need to be aware of the existing business requirements, which they might want to 
-modify. If so, the project manager will have to adjust budgets, schedules, and resources, while the 
-BA might need to work with stakeholders to update user and functional requirements and reset their 
-priorities.
+CHAPTER5
+Establishing the business requirements
+Karen is a business analyst on a project to implement a new online product catalog for the company’s customer service representatives. The drafted SRS is going through review when the marketing manager says he wants to add a “Like this product” feature. Karen’s first instinct is to push back; there is already concern about meeting schedules with the current requirements set. But then she realizes that maybe that’s a smart feature to add, because customer service representatives can promote the most-liked products with other customers. Before she elicits and documents functional requirements for this feature, she needs an objective analysis about whether this feature should be added to the scope or not.
+When she explains to the marketing manager the need to analyze this request further, he responds, “Well, soon the developers are going to be in there changing code anyway. How hard is it to add just one tiny feature?” Karen’s analysis determines that the proposed feature lies outside the project’s scope: it won’t contribute to the business objectives to reduce the customer service representatives’ average call time, and it wouldn’t be simple to implement. Karen needs to be able to clearly articulate why the feature isn’t in scope to the marketing manager, who doesn’t have the business objectives readily in mind.
+As you saw in hapter 1, “The essential software requirement, business requirements represent the top of the requirements chain. They de ne the vision of the solution and the scope of the pro ect that will implement the solution. The user requirements and functional requirements must align with the context and ob ectives that the business requirements establish. Requirements that don’t help the pro ect achieve its business ob ectives shouldn’t be implemented.
+A pro ect without a clearly de ned and well-communicated direction invites disaster. Pro ect participants can unwittingly work at cross-purposes if they have different ob ectives and priorities. The stakeholders will never agree on the requirements if they lack a common understanding of the pro ect’s business ob ectives. Without this understanding up front, pro ect deadlines will likely be missed and budgets will likely be overrun as the team struggles to deliver the right product.
+This chapter describes the vision and scope document, a deliverable that contains the pro ect’s business requirements. igure 5-3 later in this chapter suggests a template for the vision and scope document. But before we get to the template, let’s see ust what we mean by “business requirements.
+Defining business requirements
+“Business requirements refers to a set of information that, in the aggregate, describes a need that leads to one or more pro ects to deliver a solution and the desired ultimate business outcomes. Business opportunities, business ob ectives, success metrics, and a vision statement make up the business requirements.
+Business requirements issues must be resolved before the functional and nonfunctional requirements can be fully speci ed. A statement of the pro ect’s scope and limitations helps greatly with discussions of proposed features and target releases. The business requirements provide a reference for making decisions about proposed requirement changes and enhancements. We recommend displaying the business ob ectives, vision, and scope highlights in every requirements elicitation session so the team can quickly udge whether a proposed requirement is in or out of scope.
+Identifying desired business benefits The business requirements set the context for, and enable the measurement of, the bene ts the business hopes to achieve from undertaking a pro ect. rgani ations should not initiate any pro ect without a clear understanding of the value it will add to the business. Set measurable targets with business ob ectives, and then de ne success metrics that allow you to measure whether you are on track to meet those ob ectives.
+Business requirements might come from funding sponsors, corporate executives, marketing managers, or product visionaries. owever, it can be challenging to identify and communicate the business bene ts. Team members sometimes aren’t exactly sure what the pro ect is intended to accomplish. Sometimes, sponsors don’t want to set ob ectives in a measurable fashion and then be held accountable for achieving them. There could be multiple important stakeholders who don’t agree on what the ob ectives should be. The business analyst can ensure that the right stakeholders are setting the business requirements and facilitate elicitation, prioriti ation, and con ict resolution. Karl Wiegers 2006 suggests some questions that the BA can ask to help elicit business requirements.
+The business bene t has to represent a true value for the pro ect’s sponsors and to the product’s customers. or example, simply merging two systems into one is not a reasonable business ob ective.
+ustomers don’t care if they are using an application that involves 1, 5, or even 10 systems. They care about issues like increasing revenue and decreasing costs. Merging two systems might be part of the solution, but it is rarely the true business ob ective. Regulatory and legal compliance pro ects also have clear business ob ectives. ften the ob ectives are phrased as risk avoidance, possibly to avoid getting sued or being put out of business.
+Product vision and project scope Two core elements of the business requirements are the vision and the scope. The product vision succinctly describes the ultimate product that will achieve the business ob ectives. This product could serve as the complete solution for the business requirements or as ust a portion of the solution. The vision describes what the product is about and what it ultimately could become. It provides the
+https://lh3.googleusercontent.com/notebooklm/AG60hOp-FC44f04JTWTUfQ5awUf68MFs0GQDkzAUwMqcfuWvcfI3USipNw9HyxUmml3CqmTfAzIGuUyhyJHwijC5igBCqLi3YuNpitLB6DnravDhpp5vbixEQHO8HTAn-9De-gBgkAegsQ=w1280-h303-v0
+https://lh3.googleusercontent.com/notebooklm/AG60hOqqdjr7I7lo890rAj5zuzSCzEgESFPCmiULVZlLAXjB6oCewtVn0CwnVLKgu7g_UiqRXn-CJEboyeU1qvyNKnpYOXWn3YwgYEGj1rhz0hDpfvW0vUyA4CWlCWQJhNVOQWtQ5LZ2=w100-h84-v0
+https://lh3.googleusercontent.com/notebooklm/AG60hOpG9a1TsWT21QEgfnpuRXjfJOgVFVyiZB8KYwcamIbSIOant8QVL5LvOGzan81rO36FMPcTmGUwfr8k6TlB1r7XoIUXqp0vxgqudbtXr8kE2sodizbFxMeWH1ZIyCk38GYQ36IALg=w67-h112-v0
+context for making decisions throughout the product’s life, and it aligns all stakeholders in a common direction. The project scope identi es what portion of the ultimate product vision the current pro ect or development iteration will address. The statement of scope draws the boundary between what’s in and what’s out for this pro ect.
+Important The product vision ensures that we all know where we are hoping to go eventually. The pro ect scope ensures that we are all talking about the same thing for the immediate pro ect or iteration.
+Make sure the vision solves the problem In one of our training courses, we give students a business problem and a corresponding business ob ective. Throughout the exercise, we periodically provide additional details about the requirements. At each step, we ask the students to conceive a solution to the problem, given the information they have. By the end of the exercise, all of the students’ solution ideas are similar, but rarely do any of them actually solve the original problem!
+This mimics what we see on real pro ects. Teams might set clear ob ectives and then specify, develop, and test the system, without checking against the ob ectives along the way. A stakeholder might come up with a “shiny new feature she wants implemented. The team adds it because it seems reasonable and interesting. owever, months down the road, the delivered system doesn’t solve the original problem, despite all of its cool features.
+The vision applies to the product as a whole. The vision should change relatively slowly as a product’s strategic positioning or a company’s business ob ectives evolve over time. The scope pertains to a speci c pro ect or iteration that will implement the next increment of the product’s functionality, as shown in igure 5-1. Scope is more dynamic than vision because the stakeholders ad ust the contents of each release within its schedule, budget, resource, and quality constraints. Scope for the current release should be clear, but the scope of future releases will be fu ier the farther out you look. The team’s goal is to manage the scope of a speci c development or enhancement pro ect as a de ned subset of the strategic vision for the product.
+FIGURE 5-1 The product vision encompasses the scope for each planned release, which is less well de ned the farther out you look.
+https://lh3.googleusercontent.com/notebooklm/AG60hOpjNEnJ5n9iHWIw3hwQm3Ib2RPch0CRoNchqOJ6YoX7YHbAP6CEvQd8uGUmYR2oI4h1JKTaSKnOIwJL5FnjgvaCXAwm1fpDT_fO6YVBB5vOj0tL8I8XDZ1BqRlAcWrvT5O7NtL0=w1280-h856-v0
+https://lh3.googleusercontent.com/notebooklm/AG60hOobgLRXRzZJMUgzVfaEtBhvtPUdm3Nh_ksjnKXBji4kfMxor0S8yN9XL1fbJKng38NYM9ZY8XIHHW-1qB6rZ8OuU_ZAXHTzbDJcHkmFil3qhxojVTs53U1oR2kRklPApHBuq6LX=w67-h112-v0
+Interlocking scopes A federal government agency is undertaking a massive ve-year information system development effort. The agency de ned the business ob ectives and vision for this system early in the process; they won’t change substantially over the next few years. The agency has planned 15 releases of portions of the ultimate system, each created by a separate pro ect team and having its own scope description. Some pro ects will run in parallel, because certain of them are relatively independent of each other and some have longer timelines than others. ach scope description must align with the overall product vision and interlock with the scope for the other pro ects to ensure that nothing is inadvertently omitted and that lines of responsibility are clear.
+Conflicting business requirements Business requirements collected from multiple sources might con ict. onsider a kiosk that will be used by a retail store’s customers. igure 5-2 shows the likely business interests of the kiosk developer, retailer, and customer as we envision how each of these stakeholders hopes the kiosk will provide an advantage over their current way of doing business.
+FIGURE 5-2 Stakeholders for a kiosk don’t always have congruent business interests.
+The various stakeholders’ ob ectives sometimes are in alignment. or instance, both the kiosk developers and the customers want to have a wide variety of products or services available through the kiosk. owever, some business ob ectives could con ict. The customer wants to spend less time purchasing goods and services, but the retailer would prefer to have customers linger in the store and
+spend more money. The tension among stakeholders with different goals and constraints can lead to clashing business requirements. The pro ect’s decision makers must resolve these con icts before the analyst can detail the kiosk’s requirements. The focus should be on delivering the maximum business value to the primary stakeholders. It’s easy to be distracted by super cial product characteristics that don’t really address the business objectives.
+The pro ect’s decision makers shouldn’t expect the software team to resolve con icts among various stakeholders. As more constituencies with diverse interests climb aboard, scope will grow. Uncontrolled scope creep, in which stakeholders overstuff the new system in an attempt to satisfy every interest, can cause the project to topple under its own weight. A BA can help by surfacing potential areas of con ict and differing assumptions, agging con icting business ob ectives, noting when requested features don’t achieve those ob ectives, and facilitating con ict resolution. Resolving such issues is often a political and power struggle, which lies outside the scope of this book.
+Long-duration projects often experience a change in decision makers partway through. If this happens to you, immediately revisit the baselined business requirements with the new decision makers. They need to be aware of the existing business requirements, which they might want to modify. If so, the project manager will have to adjust budgets, schedules, and resources, while the BA might need to work with stakeholders to update user and functional requirements and reset their priorities.
 Vision and scope document
-The vision and scope document  collects the business requirements into a single deliverable that 
-sets the stage for the subsequent development work. Some organizations create a project  charter 
- (Wiegers 2007) or a business case document that serves a similar purpose. Organizations that build 
-commercial software often create a market or marketing requirements document MRD. An 
-MRD might go into more detail about the target market segments and the issues that pertain to 
- commercial success.
-The owner of the vision and scope document is the project’s executive sponsor, funding authority, 
-or someone in a similar role. A business analyst can work with this individual to articulate the business 
-requirements and write the vision and scope document. Input to the business requirements should 
-come from people who have a clear sense of why they are undertaking the project. These individuals 
-might include the customer or development organization’s senior management, a product visionary, a 
-product manager, a subject matter expert, or members of the marketing department.
-Figure 5-3 suggests a template for a vision and scope document; the sections that follow describe 
-each of the template headings in more detail. As with any template, adapt this to meet the speciÀc 
-needs of your own projects. If you already have recorded some of this information elsewhere, do not 
-duplicate it in the vision and scope document. Some elements of the vision and scope document might 
-be reusable from proMect to proMect, such as business obMectives, business risks, and stakeholder proÀles. 
-Appendix C includes an example vision and scope document written according to this template.
-82 PART II Requirements development
- 
-FIGURE 5-3  Suggested template for a vision and scope document.
-The vision and scope document only deÀnes the scope at a high level; the scope details are 
-represented by each release baseline that the team deÀnes. MaMor new proMects should have both a 
-complete vision and scope document and an SRS. See &hapter 10, “Documenting the requirements,µ 
-for an SRS template. (ach iteration, release, or enhancement proMect for an evolving product can 
-include its own scope statement in that proMect’s requirements documentation, rather than creating a 
-separate vision and scope document.
-Template tactics
-Templates provide a consistent way to organi]e information from one proMect to the next. They 
-help me remember information that I might overlook if I started with a blank piece of paper.
-I don’t Àll out a template from top to bottom. Instead, I populate the various sections as I 
-accumulate information during the course of the proMect. (mpty sections highlight gaps in our 
-current knowledge. Suppose one section of my document template is titled “Business risks.µ 
-Partway through the proMect, I reali]e this section is empty. Does the proMect really have no 
-business risks? +ave we identiÀed some business risks but stored them someplace else? 2r have 
-we not yet worked with appropriate stakeholders to identify possible risks? Blank sections in 
-the template help me conduct a richer exploration for important proMect information. If there 
-are common questions you ask to elicit content for a section, consider embedding those in the 
- appropriate section of the template, perhaps in the form of hidden text, for others to reuse.
-I use the term “shrink to Àtµ when working with templates. I begin with a rich template with 
-many categories that might be important. Then I condense it down to Must what I need for each 
-situation. Suppose that a certain section of the template³business risks, say³doesn’t  pertain 
-to the current proMect. I can remove that section from my document or I can retain the  headin g 
-but leave the contents blank. Both options run the risk that a reader will notice the hole and  
- 
- CHAPTER 5  (stablishing the business requirements  83question whether there are indeed any business risks. The best solution is to put an explicit 
-message in that section: “1o business risks have been  ident iÀed.µ
-If certain sections of a template rarely get used, delete them. You might want to create a 
-small set of templates for use on different types of proMects, such as SRS templates suitable for 
-use on large, new development proMects; small websites; and enhancement proMects. (ven if you 
-store your requirements in some repository other than a traditional document, a template can 
-help you consider all the requirements information you need to accumulate for your proMect.
-2ne proMect manager described the beneÀts his team received from adopting requirements 
-document templates: “They are time consuming to Àll in. The Àrst couple of times I created 
-them, I was surprised at the amount of detail required to make them useful, and then the 
-amount of work taken to review and tidy up the documents, cleaning up any ambiguities, Àlling 
-in gaps, etc. But it’s worth it. The Àrst two products that were developed after introducing the 
-documents came in on time and were of much higher quality than before.µ
-1. Business requirements
-ProMects are launched in the belief that creating or changing a product will provide worthwhile 
- beneÀts for someone and a suitable return on investment. The business requirements describe 
-the primary beneÀts that the new system will provide to its sponsors, buyers, and users. Business 
- requirements directly inÁuence which user requirements to implement and in what sequence.
-1.1 Background
-Summari]e the rationale and context for the new product or for changes to be made to an existing 
-one. Describe the history or situation that led to the decision to build this product.
-1.2 Business opportunity
-)or a corporate information system, describe the business problem that is being solved or the  process 
-being improved, as well as the environment in which the system will be used. )or a  comme rcial 
-product, describe the business opportunity that exists and the market in which the product will be 
-competing. This section could include a comparative evaluation of existing products, indicating 
-why the proposed product is attractive and the advantages it provides. Describe the problems that 
-cannot currently be solved without the envisioned solution. Show how it aligns with market trends, 
- technology evolution, or corporate strategic directions. /ist any other technologies, processes, or 
-resources required to provide a complete customer solution.
-Describe the needs of typical customers or of the target market. Present customer problems that 
-the new  product will address. Provide examples of how customers would use the product. DeÀne any 
-known critical interface or quality requirements, but omit design or implementation speciÀcs.
-84 PART II Requirements development1.3 Business objectives
-Summari]e the important business beneÀts the product will provide in a quantitative and  meas urable 
-way. Platitudes “become recogni]ed as a world-class whatever!µ and vaguely stated  impro vements 
-“provide a more rewarding customer experienceµ are neither helpful nor veriÀable. Table 5-1 presents 
-some simpliÀed examples of both Ànancial and nonÀnancial business obMectives Wiegers 200.
-TABLE 5-1  (xamples of Ànancial and nonÀnancial business obMectives
+The vision and scope document collects the business requirements into a single deliverable that sets the stage for the subsequent development work. Some organizations create a project charter (Wiegers 2007) or a business case document that serves a similar purpose. Organizations that build commercial software often create a market or marketing requirements document MRD . An MRD might go into more detail about the target market segments and the issues that pertain to commercial success.
+The owner of the vision and scope document is the project’s executive sponsor, funding authority, or someone in a similar role. A business analyst can work with this individual to articulate the business requirements and write the vision and scope document. Input to the business requirements should come from people who have a clear sense of why they are undertaking the project. These individuals might include the customer or development organization’s senior management, a product visionary, a product manager, a subject matter expert, or members of the marketing department.
+Figure 5-3 suggests a template for a vision and scope document; the sections that follow describe each of the template headings in more detail. As with any template, adapt this to meet the speci c needs of your own projects. If you already have recorded some of this information elsewhere, do not duplicate it in the vision and scope document. Some elements of the vision and scope document might be reusable from pro ect to pro ect, such as business ob ectives, business risks, and stakeholder pro les. Appendix C includes an example vision and scope document written according to this template.
+https://lh3.googleusercontent.com/notebooklm/AG60hOo3FBqNBiyxo5MQ7K7KJ3EAsPJDt39-y8HbRnkz10iSidiNRqyMRh04rIqxcJay8v2QQTRPCxkHPAzjLDuhdepiETTHP5lioTzhDT58dxUyO7pCnlRhngQCwP2dKo6LT-X01bsx=w839-h841-v0
+FIGURE 5-3 Suggested template for a vision and scope document.
+The vision and scope document only de nes the scope at a high level; the scope details are represented by each release baseline that the team de nes. Ma or new pro ects should have both a complete vision and scope document and an SRS. See hapter 10, “Documenting the requirements, for an SRS template. ach iteration, release, or enhancement pro ect for an evolving product can include its own scope statement in that pro ect’s requirements documentation, rather than creating a separate vision and scope document.
+Template tactics Templates provide a consistent way to organi e information from one pro ect to the next. They help me remember information that I might overlook if I started with a blank piece of paper.
+I don’t ll out a template from top to bottom. Instead, I populate the various sections as I accumulate information during the course of the pro ect. mpty sections highlight gaps in our current knowledge. Suppose one section of my document template is titled “Business risks. Partway through the pro ect, I reali e this section is empty. Does the pro ect really have no business risks? ave we identi ed some business risks but stored them someplace else? r have we not yet worked with appropriate stakeholders to identify possible risks? Blank sections in the template help me conduct a richer exploration for important pro ect information. If there are common questions you ask to elicit content for a section, consider embedding those in the appropriate section of the template, perhaps in the form of hidden text, for others to reuse.
+I use the term “shrink to t when working with templates. I begin with a rich template with many categories that might be important. Then I condense it down to ust what I need for each situation. Suppose that a certain section of the template business risks, say doesn’t pertain to the current pro ect. I can remove that section from my document or I can retain the heading but leave the contents blank. Both options run the risk that a reader will notice the hole and
+question whether there are indeed any business risks. The best solution is to put an explicit message in that section: “ o business risks have been identi ed.
+If certain sections of a template rarely get used, delete them. You might want to create a small set of templates for use on different types of pro ects, such as SRS templates suitable for use on large, new development pro ects; small websites; and enhancement pro ects. ven if you store your requirements in some repository other than a traditional document, a template can help you consider all the requirements information you need to accumulate for your pro ect.
+ne pro ect manager described the bene ts his team received from adopting requirements document templates: “They are time consuming to ll in. The rst couple of times I created them, I was surprised at the amount of detail required to make them useful, and then the amount of work taken to review and tidy up the documents, cleaning up any ambiguities, lling in gaps, etc. But it’s worth it. The rst two products that were developed after introducing the documents came in on time and were of much higher quality than before.
+1. Business requirements Pro ects are launched in the belief that creating or changing a product will provide worthwhile bene ts for someone and a suitable return on investment. The business requirements describe the primary bene ts that the new system will provide to its sponsors, buyers, and users. Business requirements directly in uence which user requirements to implement and in what sequence.
+1.1 Background Summari e the rationale and context for the new product or for changes to be made to an existing one. Describe the history or situation that led to the decision to build this product.
+1.2 Business opportunity or a corporate information system, describe the business problem that is being solved or the process
+being improved, as well as the environment in which the system will be used. or a commercial product, describe the business opportunity that exists and the market in which the product will be competing. This section could include a comparative evaluation of existing products, indicating why the proposed product is attractive and the advantages it provides. Describe the problems that cannot currently be solved without the envisioned solution. Show how it aligns with market trends, technology evolution, or corporate strategic directions. ist any other technologies, processes, or resources required to provide a complete customer solution.
+Describe the needs of typical customers or of the target market. Present customer problems that the new product will address. Provide examples of how customers would use the product. De ne any known critical interface or quality requirements, but omit design or implementation speci cs.
+1.3 Business objectives Summari e the important business bene ts the product will provide in a quantitative and measurable way. Platitudes “become recogni ed as a world-class whatever and vaguely stated improvements “provide a more rewarding customer experience are neither helpful nor veri able. Table 5-1 presents
+some simpli ed examples of both nancial and non nancial business ob ectives Wiegers 200 .
+TABLE 5-1 xamples of nancial and non nancial business ob ectives
 Financial Nonfinancial
- �&apture a market share of ; within Y months.
- �Increase market share in country W from ; to Y 
-within = months.
- �Reach a sales volume of ; units or revenue of $Y within 
-= months.
- �Achieve ; return on investment within Y months.
- �Achieve positive cash Áow on this product within  
-Y months.
- �Save $; per year currently spent on a high-maintenance 
-legacy system.
- �Reduce monthly support costs from $; to $Y within  
-= months.
- �Increase gross margin on existing business from ; to 
-Y within 1 year. �Achieve a customer satisfaction measure of at least  
-; within Y months of release.
- �Increase transaction-processing productivity by ; and 
-reduce data error rate to no more than Y.
- �Develop an extensible platform for a family of related 
-products.
- �Develop speciÀc core technology competencies.
- �Be rated as the top product for reliability in published 
-product reviews by a speciÀed date.
- �&omply with speciÀc federal and state regulations.
- �Receive no more than ; service calls per unit and  
-Y warranty calls per unit within = months after shipping.
- �Reduce turnaround time to ; hours on Y of support 
+� apture a market share of within Y months. � Increase market share in country W from to Y
+within months. � Reach a sales volume of units or revenue of $Y within
+months. � Achieve return on investment within Y months. � Achieve positive cash ow on this product within
+Y months. � Save $ per year currently spent on a high-maintenance
+legacy system. � Reduce monthly support costs from $ to $Y within
+months. � Increase gross margin on existing business from to
+Y within 1 year.
+� Achieve a customer satisfaction measure of at least within Y months of release.
+� Increase transaction-processing productivity by and reduce data error rate to no more than Y .
+� Develop an extensible platform for a family of related products.
+� Develop speci c core technology competencies. � Be rated as the top product for reliability in published
+product reviews by a speci ed date. � omply with speci c federal and state regulations. � Receive no more than service calls per unit and
+Y warranty calls per unit within months after shipping. � Reduce turnaround time to hours on Y of support
 calls.
-2rgani]ations generally undertake a proMect to solve a problem or exploit an opportunity. A 
-business obMectives model shows a hierarchy of related business problems and measurable business 
-obMectives Beatty and &hen 2012. The problems describe what is keeping the business from  meet ing 
-their goals at present, whereas the obMectives deÀne ways to measure achievement of those goals. 
-Problems and obMectives are intertwined: understanding one can reveal the other.
-Given a set of business obMectives, ask, “What is keeping us from achieving the goal?µ to identify 
-a more detailed business problem. 2r work backward by asking, “Why do we care about that goal?µ 
-to better understand the top-level business problem or opportunity. Given a business problem, ask, 
-“+ow will we assess whether the problem is solved?µ to identify the measurable obMective. The process 
-is iterative, cycling through the hierarchy of problems and obMectives until you see a list of features 
-emerge that would help solve the problems and meet the obMectives.
-A conversation between a business analyst and an executive sponsor to identify business problems 
-and obMectives might look similar to the one in )igure 5-. This illustration is for the &hemical Tracking 
-System proMect at &ontoso Pharmaceuticals that was introduced in &hapter 2, “Requirements from the 
-customer’s perspective.µ )rom the executive’s responses to these questions, the BA could construct a 
-business obMectives model for the &hemical Tracking System, as shown in )igure 5-5.
- CHAPTER 5  (stablishing the business requirements  85
-FIGURE 5-4  (xample of a conversation between a business analyst and an executive sponsor.
-1.4 Success metrics
-Specify the indicators that stakeholders will use to deÀne and measure success on this proMect 
- Wiegers 200. Identify the factors that have the greatest impact on achieving that success, including 
-factors both within and outside the organi]ation’s control.
-Business obMectives sometimes cannot be measured until well after a proMect is complete. In other 
-cases, achieving the business obMectives might be dependent on proMects beyond your current one. 
-+owever, it’s still important to evaluate the success of an individual proMect. Success metrics  indica te 
-whether a proMect is on track to meet its business obMectives. The metrics can be tracked during 
- testing or shortly after product release. )or the &hemical Tracking System, one  succe ss metric might 
-be the same as Business 2bMective 3 in )igure 5-5 to “Reduce time spent  orde ring chemicals to  
-10 minutes on 80 percent of orders,µ because you can measure the  average order time during  testing 
-or soon after release. Another success metric might relate to Business 2bMective 2 with a timeline 
-that can be measured much earlier than a year after release, such as “Track 60 percent of commercial 
-chemical containers and 50 percent of proprietary chemicals within  weeks.µ
-86 PART II Requirements development
-FIGURE 5-5  (xample business obMectives model for the &hemical Tracking System.
- 
-Important  &hoose your success metrics wisely. Make sure they measure what is important 
-to your business, not Must what is easy to measure. A success metric to “Reduce product 
-development costs by 20 percentµ is easy to measure. It might also be easy to achieve 
-by laying off employees or investing less in innovation. +owever, these might not be the 
- intended outcomes of the obMectives.
-
- CHAPTER 5  (stablishing the business requirements  871.5 Vision statement
-Write a concise vision statement that summari]es the long-term purpose and intent of the  prod uct. 
-The vision statement should reÁect a balanced view that will satisfy the expectations of diverse 
- stakeholders. It can be somewhat idealistic but should be grounded in the realities of existing or 
-anticipated markets, enterprise architectures, corporate strategic directions, and resource limitations. 
-The following keyword template works well for crafting a product vision statement Moore 2002:
- �For >target customer@
- �Who  >statement of the need or opportunity@
- �The >product name@
- �Is >product category@
- �That  >maMor capabilities, key beneÀt, compelling reason to buy or use@
- �Unlike  >primary competitive alternative, current system, current business process@
- �Our product  >statement of primary differentiation and advantages of new product@
-+ere’s a sample vision statement for the &hemical Tracking System, with the keywords in boldface:
-For scientists who need to request containers of chemicals, the Chemical Tracking 
-System is an information system that will provide a single point of access to the 
-chemical stockroom and to vendors. The system will store the location of every 
-chemical container within the company, the quantity of material remaining in it, and 
-the complete history of each container’s locations and usage. This system will save 
-the company 25 percent on chemical costs in the first year of use by allowing the 
-company to fully exploit chemicals that are already available within the company, 
-dispose of fewer partially used or expired containers, and use a standard chemical 
-purchasing process. Unlike  the current manual ordering processes, our product  
-will generate all reports required to comply with federal and state government 
-regulations that require the reporting of chemical usage, storage, and disposal.
-Crafting the product vision
-I use the vision statement in my own consulting work. 2ne longtime client and I work together 
-very well, but occasionally Bill asks me to undertake a new proMect that’s a little different. If we 
-aren’t exactly sure what he wants me to do, I ask him to write a vision statement. Bill always 
-grumbles a bit because he knows that this will force him to think carefully about exactly what 
-outcome he is expecting. But Bill’s vision statement invariably gives me a clear idea of Must what 
-we are trying to accomplish so we can work efÀciently together. It’s well worth the time it takes.
-
-88 PART II Requirements developmentYou might have several key stakeholders write their vision statements separately, rather 
-than doing it as a group exercise. &omparing their vision statements is a good way to spot 
- different understandings about the proMect’s obMectives. And it’s never too late to write a vision 
- statement. (ven if the proMect is under way, crafting a vision statement can help keep the rest of 
-the proMect work on track and in focus. Though drafting a vision statement is quick, crafting the 
-right vision statement and reaching agreement among the key stakeholders will take more time.
-1.6 Business risks
-Summari]e the maMor business risks associated with developing³or not developing³this product. 
-Risk categories include marketplace competition, timing issues, user acceptance, implementation 
- issues, and possible negative impacts on the business. Business risks are not the same as proMect risks, 
-which often include resource availability concerns and technology factors. (stimate the potential loss 
-from each risk, the likelihood of it occurring, and any potential mitigation actions. See &hapter 32, 
-“Software requirements and risk management,µ for more about this topic.
-1.7 Business assumptions and dependencies
-An assumption  is a statement that is believed to be true in the absence of proof or deÀnitive 
- knowledge. Business assumptions are speciÀcally related to the business requirements.  Incor rect 
- assumptions can potentially keep you from meeting your business obMectives. )or example, an 
- executive sponsor might set a business obMective that a new website will increase revenue by $100,000 
-per month. To establish this revenue target, the sponsor made some assumptions, perhaps that the 
-new site will attract 200 additional unique visitors per day and that each visitor will spend an average 
-of $1. If the new site does not attract enough visitors with a high enough average sale per visitor, the 
-proMect might not achieve its business obMective. If you learn that certain assumptions are wrong, you 
-might have to change scope, adMust the schedule, or launch other proMects to achieve the obMectives.
-Record any assumptions that the stakeholders made when conceiving the proMect and writing their 
-vision and scope document. 2ften, one party’s assumptions are not shared by others. If you write 
-them down and review them, you can avoid possible confusion and aggravation in the future.
-Record any maMor dependencies the proMect has on external factors. (xamples are pending 
- industry standards or government regulations, deliverables from other proMects, third-party suppliers, 
-or development partners. Some business assumptions and dependencies might turn into risks that 
-the proMect manager must monitor regularly. Broken dependencies are a common source of proMect 
-delays. 1ote the impact of an assumption not being true, or the impact of a broken dependency, to 
-help stakeholders understand why it is critical.
-2. Scope and limitations
-When a chemist invents a new reaction that transforms one kind of chemical into another, he writes a 
-paper that includes a “Scope and limitationsµ section, which describes what the reaction will and will 
-not do. Similarly, a software proMect should deÀne its scope and limitations. You need to state both 
-what the solution being developed is and what it is not .
- CHAPTER 5  (stablishing the business requirements  89Many proMects suffer from scope creep³rampant growth as more and more functionality gets 
-stuffed into the product. The Àrst step to controlling scope creep is to deÀne the proMect’s scope. 
-The scope describes the concept and range of the proposed solution. The  limita tions itemi]e certain 
- capabilities that the product will not include that some people might assume will be there. The scope 
-and limitations help to establish realistic stakeholder expectations because  custo mers sometimes 
-request features that are too expensive or that lie outside the intended proMect scope.
-Scope can be represented in numerous ways see “Scope representation techniquesµ later in this 
-chapter. At the highest level, scope is deÀned when the customer decides which business obMectives 
-to target. At a lower level, scope is deÀned at the level of features, user stories, use cases, or events 
-and responses to include. Scope ultimately is deÀned through the set of functional requirements 
-planned for implementation in a speciÀc release or iteration. At each level, the scope must stay within 
-the bounds of the level above it. )or example, in-scope user requirements must map to the business 
-obMectives, and functional requirements must map to user requirements that are in scope.
-Blue-sky requirements
-A manager at a product development company that suffered near-catastrophic scope creep 
-once told me ruefully, “We blue-skied the requirements too much.µ She meant that any idea 
-anyone had was included in the requirements. This company had a solid product  vision, but 
-they didn’t manage the scope by planning a series of releases and deferring some  suggested 
-features to later perhaps inÀnitely later releases. The team Ànally released an  overinÁated 
-product after four years of development. It can be valuable to Mot down the  blue-sky 
- requirements for future consideration. +owever, thoughtful scope management and an 
- incremental development approach would have let the team ship a useful product much earlier.
-2.1 Major features
-/ist the product’s maMor features or user capabilities, emphasi]ing those that distinguish it from 
-previous or competing products. Think about how users will use the features, to ensure that the list is 
-complete and that it does not include unnecessary features that sound interesting but don’t provide 
-customer value. Give each feature a unique and persistent label to permit tracing it to other system 
- elements. You might include a feature tree diagram, as described later in this chapter.
-2.2 Scope of initial release
-Summari]e the capabilities that are planned for inclusion in the initial product release. Scope is often 
-deÀned in terms of features, but you can also deÀne scope in terms of user stories, use cases, use case 
-Áows, or external events. Also describe the quality characteristics that will let the  prod uct  provide 
-the intended beneÀts to its various user classes. To focus the development effort and  mainta in 
-a  reasonable proMect schedule, avoid the temptation to include every feature that any  potential 
- customer might eventually want in release 1.0. Bloatware and slipped schedules are common 
- outcomes of such insidious scope stufÀng. )ocus on those features that will provide the most value, at 
-the most acceptable cost, to the broadest community, in the earliest time frame.
-
-90 PART II Requirements developmentAs an illustration, a recent proMect team decided that users had to be able to run their  pack age 
-delivery business with the Àrst release of the software application. Version 1 didn’t have to be fast, 
-pretty, or easy to use, but it had to be reliable; this focus drove everything the team did. The  initial 
- release accomplished the basic obMectives of the system. )uture releases will include additional 
- features, options, and usability aids. Be careful not to neglect nonfunctional requirements in the initial 
-release, though. The ones that directly affect architecture are particularly critical to establish from the 
-outset. Rearchitecting to try to Àx quality deÀciencies can be almost as expensive as a total rewrite. 
-See &hapter 1, “Beyond functionality,µ for more about software quality attributes.
-2.3 Scope of subsequent releases
-If you envision a staged evolution of the product, or if you are following an iterative or incremental 
-life cycle, build a release roadmap that indicates which functionality chunks will be deferred and 
-the desired timing of later releases. Subsequent releases let you implement additional use cases 
-and features, as well as enriching the capabilities of the initial ones. The farther out you look, the 
-fu]]ier these future scope statements will be and the more they will change over time. (xpect to shift 
- functionality from one planned release to another and to add unanticipated capabilities. Short release 
-cycles provide frequent opportunities for learning based on customer feedback.
-2.4 Limitations and exclusions
-/ist any product capabilities or characteristics that a stakeholder might expect but that are not 
-planned for inclusion in the product or in a speciÀc release. /ist items that were cut from scope, so the 
-scope decision is not forgotten. Maybe a user requested that she be able to access the system from 
-her phone while away from her desk, but this was deemed to be out of scope. State that explicitly in 
-this section: “The new system will not provide mobile platform support.µ
-3. Business context
-This section presents proÀles of maMor stakeholder categories, management’s priorities for the proMect, 
-and a summary of some factors to consider when planning deployment of the solution.
-3.1 Stakeholder profiles
-Stakeholders  are the people, groups, or organi]ations that are actively involved in a proMect, are 
- affected by its outcome, or are able to inÁuence its outcome Smith 2000; IIBA 2009; PMI 2013. 
-The stakeholder proÀles describe different categories of customers and other key stakeholders 
-for the proMect. You needn’t describe every stakeholder group, such as legal staff who must check 
-for  compliance with pertinent laws on a website development proMect. )ocus on different types 
-of  customers, target market segments, and the various user classes within those segments. (ach 
- stakeholder proÀle should include the following information:
- �The maMor value or beneÀt that the stakeholder will receive from the product. Stakeholder 
-value could be deÀned in terms of:
- Improved productivity.
-
- CHAPTER 5  (stablishing the business requirements  91 Reduced rework and waste.
- &ost savings.
- Streamlined business processes.
- Automation of previously manual tasks.
- Ability to perform entirely new tasks.
- &ompliance with pertinent standards or regulations.
- Improved usability compared to current products.
- �Their likely attitudes toward the product.
- �MaMor features and characteristics of interest.
- �Any known constraints that must be accommodated.
-You might include a list of key stakeholders by name for each proÀle or an organi]ation chart that 
-shows the relationships among the stakeholders within the organi]ation.
-3.2 Project priorities
-To enable effective decision making, the stakeholders must agree on the proMect’s priorities. 2ne 
-way to approach this is to consider the Àve dimensions of features, quality, schedule, cost, and staff 
- Wiegers 1996. (ach dimension Àts in one of the following three categories on any given proMect:
- �Constraint  A limiting factor within which the proMect manager must operate
- �Driver A signiÀcant success obMective with limited Áexibility for adMustment
- �Degree of freedom  A factor that the proMect manager has some latitude to adMust and 
- balance against the other dimensions
-The proMect manager’s challenge is to adMust the degrees of freedom to achieve the proMect’s 
- success drivers within the limits imposed by the constraints. Suppose marketing suddenly demands 
-that you release the product one month earlier than scheduled. +ow do you respond? Do you:
- �Defer certain requirements to a later release?
- �Shorten the planned system test cycle?
- �Demand overtime from your staff or hire contractors to accelerate development?
- �Shift resources from other proMects to help out?
-The proMect priorities drive the actions you take when such eventualities arise. Realistically, when 
-change happens, you need to have conversations with the key stakeholders to determine the most 
-appropriate actions to take based on the change requested. )or example, marketing might want to 
-add features or shorten a timeline, but perhaps they are willing to defer certain features in exchange. 
-See Appendix & for an example of how to document these proMect priorities.
-92 PART II Requirements development 
-Important  1ot all of the Àve dimensions can be constraints, and they cannot all be drivers. 
-The  proMect manager needs some degrees of freedom to be able to respond appropriately 
-when  requirements or proMect realities change.
-3.3 Deployment considerations
-Summari]e the information and activities that are needed to ensure an effective deployment of the 
-solution into its operating environment. Describe the access that users will require to use the system, 
-such as whether the users are distributed over multiple time ]ones or located close to each other. 
-State when the users in various locations need to access the system. If infrastructure changes are 
-needed to support the software’s need for capacity, network access, data storage, or data migration, 
-describe those changes. Record any information that will be needed by people who will be preparing 
-training or modifying business processes in conMunction with deployment of the new solution.
+rgani ations generally undertake a pro ect to solve a problem or exploit an opportunity. A business ob ectives model shows a hierarchy of related business problems and measurable business ob ectives Beatty and hen 2012 . The problems describe what is keeping the business from meeting their goals at present, whereas the ob ectives de ne ways to measure achievement of those goals. Problems and ob ectives are intertwined: understanding one can reveal the other.
+Given a set of business ob ectives, ask, “What is keeping us from achieving the goal? to identify a more detailed business problem. r work backward by asking, “Why do we care about that goal? to better understand the top-level business problem or opportunity. Given a business problem, ask, “ ow will we assess whether the problem is solved? to identify the measurable ob ective. The process is iterative, cycling through the hierarchy of problems and ob ectives until you see a list of features emerge that would help solve the problems and meet the ob ectives.
+A conversation between a business analyst and an executive sponsor to identify business problems and ob ectives might look similar to the one in igure 5- . This illustration is for the hemical Tracking System pro ect at ontoso Pharmaceuticals that was introduced in hapter 2, “Requirements from the customer’s perspective. rom the executive’s responses to these questions, the BA could construct a business ob ectives model for the hemical Tracking System, as shown in igure 5-5.
+https://lh3.googleusercontent.com/notebooklm/AG60hOq3EHnFLWXMSa_KQI11JY6j34FO_XxW8lHFk65LspiLScDdLKRQbummNva_6JAQcOkrgex67tq0vu02CBlBR9dEmdtLEb6DMNLHoXRWzFTEEY-4a0HTLm5hUUvI8WhDWveHl5GkNw=w1280-h1078-v0
+FIGURE 5-4 xample of a conversation between a business analyst and an executive sponsor.
+1.4 Success metrics Specify the indicators that stakeholders will use to de ne and measure success on this pro ect Wiegers 200 . Identify the factors that have the greatest impact on achieving that success, including factors both within and outside the organi ation’s control.
+Business ob ectives sometimes cannot be measured until well after a pro ect is complete. In other cases, achieving the business ob ectives might be dependent on pro ects beyond your current one.
+owever, it’s still important to evaluate the success of an individual pro ect. Success metrics indicate whether a pro ect is on track to meet its business ob ectives. The metrics can be tracked during testing or shortly after product release. or the hemical Tracking System, one success metric might be the same as Business b ective 3 in igure 5-5 to “Reduce time spent ordering chemicals to 10 minutes on 80 percent of orders, because you can measure the average order time during testing or soon after release. Another success metric might relate to Business b ective 2 with a timeline that can be measured much earlier than a year after release, such as “Track 60 percent of commercial chemical containers and 50 percent of proprietary chemicals within weeks.
+https://lh3.googleusercontent.com/notebooklm/AG60hOo2j5_uYpd3Y0orIOsd59RQHljFC4Tr79TEIvaygfaFLFBazBYE5rFMLLgFedaqDFFdcMiEzwGusUdsgDpi3UUzsP3lLTNliA1QvKHEmnacpjnIKjAc3qRRYXKJ0dFWJpY_tJpdNw=w943-h1280-v0
+https://lh3.googleusercontent.com/notebooklm/AG60hOrg9jPKlfz6yUPj8k7o2zHFK49bLFMdW_1ws1nPSufEueB2KZk06vWpOkM7SIRr6yyc8LbswbsQgvqpcIdzMoVtAIFwJkoaXKjfv6eXy6UujJyrhyCzjDXvVDog_v_lH4SBsPDeXA=w100-h84-v0
+FIGURE 5-5 xample business ob ectives model for the hemical Tracking System.
+Important hoose your success metrics wisely. Make sure they measure what is important to your business, not ust what is easy to measure. A success metric to “Reduce product development costs by 20 percent is easy to measure. It might also be easy to achieve by laying off employees or investing less in innovation. owever, these might not be the intended outcomes of the ob ectives.
+https://lh3.googleusercontent.com/notebooklm/AG60hOognorZ6dhcAUMMklK_jUp9fWKD0wjZ0FyljVDZb5y8vDIAlAyFRAO1ugeSDN9dz9zcQ9Wvx9gZv-pAUNP2ydzJN-GsITjrRJNkZjvJ0OGCcXz1SduzXpctKG66-pD4FlrO4g8Cvw=w67-h112-v0
+1.5 Vision statement Write a concise vision statement that summari es the long-term purpose and intent of the product. The vision statement should re ect a balanced view that will satisfy the expectations of diverse stakeholders. It can be somewhat idealistic but should be grounded in the realities of existing or anticipated markets, enterprise architectures, corporate strategic directions, and resource limitations. The following keyword template works well for crafting a product vision statement Moore 2002 :
+� For target customer
+� Who statement of the need or opportunity
+� The product name
+� Is product category
+� That ma or capabilities, key bene t, compelling reason to buy or use
+� Unlike primary competitive alternative, current system, current business process
+� Our product statement of primary differentiation and advantages of new product
+ere’s a sample vision statement for the hemical Tracking System, with the keywords in boldface:
+For scientists who need to request containers of chemicals, the Chemical Tracking System is an information system that will provide a single point of access to the chemical stockroom and to vendors. The system will store the location of every chemical container within the company, the quantity of material remaining in it, and the complete history of each container’s locations and usage. This system will save the company 25 percent on chemical costs in the first year of use by allowing the company to fully exploit chemicals that are already available within the company, dispose of fewer partially used or expired containers, and use a standard chemical purchasing process. Unlike the current manual ordering processes, our product will generate all reports required to comply with federal and state government regulations that require the reporting of chemical usage, storage, and disposal.
+Crafting the product vision I use the vision statement in my own consulting work. ne longtime client and I work together very well, but occasionally Bill asks me to undertake a new pro ect that’s a little different. If we aren’t exactly sure what he wants me to do, I ask him to write a vision statement. Bill always grumbles a bit because he knows that this will force him to think carefully about exactly what outcome he is expecting. But Bill’s vision statement invariably gives me a clear idea of ust what we are trying to accomplish so we can work ef ciently together. It’s well worth the time it takes.
+You might have several key stakeholders write their vision statements separately, rather than doing it as a group exercise. omparing their vision statements is a good way to spot different understandings about the pro ect’s ob ectives. And it’s never too late to write a vision statement. ven if the pro ect is under way, crafting a vision statement can help keep the rest of the pro ect work on track and in focus. Though drafting a vision statement is quick, crafting the right vision statement and reaching agreement among the key stakeholders will take more time.
+1.6 Business risks Summari e the ma or business risks associated with developing or not developing this product. Risk categories include marketplace competition, timing issues, user acceptance, implementation issues, and possible negative impacts on the business. Business risks are not the same as pro ect risks, which often include resource availability concerns and technology factors. stimate the potential loss from each risk, the likelihood of it occurring, and any potential mitigation actions. See hapter 32, “Software requirements and risk management, for more about this topic.
+1.7 Business assumptions and dependencies An assumption is a statement that is believed to be true in the absence of proof or de nitive knowledge. Business assumptions are speci cally related to the business requirements. Incorrect assumptions can potentially keep you from meeting your business ob ectives. or example, an executive sponsor might set a business ob ective that a new website will increase revenue by $100,000 per month. To establish this revenue target, the sponsor made some assumptions, perhaps that the new site will attract 200 additional unique visitors per day and that each visitor will spend an average of $1 . If the new site does not attract enough visitors with a high enough average sale per visitor, the pro ect might not achieve its business ob ective. If you learn that certain assumptions are wrong, you might have to change scope, ad ust the schedule, or launch other pro ects to achieve the ob ectives.
+Record any assumptions that the stakeholders made when conceiving the pro ect and writing their vision and scope document. ften, one party’s assumptions are not shared by others. If you write them down and review them, you can avoid possible confusion and aggravation in the future.
+Record any ma or dependencies the pro ect has on external factors. xamples are pending industry standards or government regulations, deliverables from other pro ects, third-party suppliers, or development partners. Some business assumptions and dependencies might turn into risks that the pro ect manager must monitor regularly. Broken dependencies are a common source of pro ect delays. ote the impact of an assumption not being true, or the impact of a broken dependency, to help stakeholders understand why it is critical.
+2. Scope and limitations When a chemist invents a new reaction that transforms one kind of chemical into another, he writes a paper that includes a “Scope and limitations section, which describes what the reaction will and will not do. Similarly, a software pro ect should de ne its scope and limitations. You need to state both what the solution being developed is and what it is not.
+https://lh3.googleusercontent.com/notebooklm/AG60hOrBoiye3acE9iU-_j__SttKJw09fbI1ZskQVS-tJQVPI0yuFBL_cK6IVr8QXeUew702PTXj5QZdwlbbAoMJ5Djge66YMP7nz1PYYAuSRnIv3DFEI-F5LCQWlBWfY23K_74Wmemh=w67-h112-v0
+Many pro ects suffer from scope creep rampant growth as more and more functionality gets stuffed into the product. The rst step to controlling scope creep is to de ne the pro ect’s scope. The scope describes the concept and range of the proposed solution. The limitations itemi e certain capabilities that the product will not include that some people might assume will be there. The scope and limitations help to establish realistic stakeholder expectations because customers sometimes request features that are too expensive or that lie outside the intended pro ect scope.
+Scope can be represented in numerous ways see “Scope representation techniques later in this chapter . At the highest level, scope is de ned when the customer decides which business ob ectives to target. At a lower level, scope is de ned at the level of features, user stories, use cases, or events and responses to include. Scope ultimately is de ned through the set of functional requirements planned for implementation in a speci c release or iteration. At each level, the scope must stay within the bounds of the level above it. or example, in-scope user requirements must map to the business ob ectives, and functional requirements must map to user requirements that are in scope.
+Blue-sky requirements A manager at a product development company that suffered near-catastrophic scope creep once told me ruefully, “We blue-skied the requirements too much. She meant that any idea anyone had was included in the requirements. This company had a solid product vision, but they didn’t manage the scope by planning a series of releases and deferring some suggested features to later perhaps in nitely later releases. The team nally released an overin ated product after four years of development. It can be valuable to ot down the blue-sky requirements for future consideration. owever, thoughtful scope management and an incremental development approach would have let the team ship a useful product much earlier.
+2.1 Major features ist the product’s ma or features or user capabilities, emphasi ing those that distinguish it from
+previous or competing products. Think about how users will use the features, to ensure that the list is complete and that it does not include unnecessary features that sound interesting but don’t provide customer value. Give each feature a unique and persistent label to permit tracing it to other system elements. You might include a feature tree diagram, as described later in this chapter.
+2.2 Scope of initial release Summari e the capabilities that are planned for inclusion in the initial product release. Scope is often de ned in terms of features, but you can also de ne scope in terms of user stories, use cases, use case
+ows, or external events. Also describe the quality characteristics that will let the product provide the intended bene ts to its various user classes. To focus the development effort and maintain a reasonable pro ect schedule, avoid the temptation to include every feature that any potential customer might eventually want in release 1.0. Bloatware and slipped schedules are common outcomes of such insidious scope stuf ng. ocus on those features that will provide the most value, at the most acceptable cost, to the broadest community, in the earliest time frame.
+https://lh3.googleusercontent.com/notebooklm/AG60hOotBJ6yk7nlTbTd4g5l7t0NzQUH9_VFM_ocw5PXJEhDNkaJRLiMDfuXVmT4asInz9f4X2LTCP2ygLCg3qF4Kt1-CWoCTbtJEWq2Q4-8wC9mKpX0d-ETjRHN5gcYMhT4rRr5rTRi=w67-h112-v0
+As an illustration, a recent pro ect team decided that users had to be able to run their package delivery business with the rst release of the software application. Version 1 didn’t have to be fast, pretty, or easy to use, but it had to be reliable; this focus drove everything the team did. The initial release accomplished the basic ob ectives of the system. uture releases will include additional features, options, and usability aids. Be careful not to neglect nonfunctional requirements in the initial release, though. The ones that directly affect architecture are particularly critical to establish from the outset. Rearchitecting to try to x quality de ciencies can be almost as expensive as a total rewrite. See hapter 1 , “Beyond functionality, for more about software quality attributes.
+2.3 Scope of subsequent releases If you envision a staged evolution of the product, or if you are following an iterative or incremental life cycle, build a release roadmap that indicates which functionality chunks will be deferred and the desired timing of later releases. Subsequent releases let you implement additional use cases and features, as well as enriching the capabilities of the initial ones. The farther out you look, the fu ier these future scope statements will be and the more they will change over time. xpect to shift functionality from one planned release to another and to add unanticipated capabilities. Short release cycles provide frequent opportunities for learning based on customer feedback.
+2.4 Limitations and exclusions ist any product capabilities or characteristics that a stakeholder might expect but that are not
+planned for inclusion in the product or in a speci c release. ist items that were cut from scope, so the scope decision is not forgotten. Maybe a user requested that she be able to access the system from her phone while away from her desk, but this was deemed to be out of scope. State that explicitly in this section: “The new system will not provide mobile platform support.
+3. Business context This section presents pro les of ma or stakeholder categories, management’s priorities for the pro ect, and a summary of some factors to consider when planning deployment of the solution.
+3.1 Stakeholder profiles Stakeholders are the people, groups, or organi ations that are actively involved in a pro ect, are affected by its outcome, or are able to in uence its outcome Smith 2000; IIBA 2009; PMI 2013 . The stakeholder pro les describe different categories of customers and other key stakeholders for the pro ect. You needn’t describe every stakeholder group, such as legal staff who must check for compliance with pertinent laws on a website development pro ect. ocus on different types of customers, target market segments, and the various user classes within those segments. ach stakeholder pro le should include the following information:
+� The ma or value or bene t that the stakeholder will receive from the product. Stakeholder value could be de ned in terms of:
+Improved productivity.
+Reduced rework and waste.
+ost savings.
+Streamlined business processes.
+Automation of previously manual tasks.
+Ability to perform entirely new tasks.
+ompliance with pertinent standards or regulations.
+Improved usability compared to current products.
+� Their likely attitudes toward the product.
+� Ma or features and characteristics of interest.
+� Any known constraints that must be accommodated.
+You might include a list of key stakeholders by name for each pro le or an organi ation chart that shows the relationships among the stakeholders within the organi ation.
+3.2 Project priorities To enable effective decision making, the stakeholders must agree on the pro ect’s priorities. ne way to approach this is to consider the ve dimensions of features, quality, schedule, cost, and staff Wiegers 1996 . ach dimension ts in one of the following three categories on any given pro ect:
+� Constraint A limiting factor within which the pro ect manager must operate
+� Driver A signi cant success ob ective with limited exibility for ad ustment
+� Degree of freedom A factor that the pro ect manager has some latitude to ad ust and balance against the other dimensions
+The pro ect manager’s challenge is to ad ust the degrees of freedom to achieve the pro ect’s success drivers within the limits imposed by the constraints. Suppose marketing suddenly demands that you release the product one month earlier than scheduled. ow do you respond? Do you:
+� Defer certain requirements to a later release?
+� Shorten the planned system test cycle?
+� Demand overtime from your staff or hire contractors to accelerate development?
+� Shift resources from other pro ects to help out?
+The pro ect priorities drive the actions you take when such eventualities arise. Realistically, when change happens, you need to have conversations with the key stakeholders to determine the most appropriate actions to take based on the change requested. or example, marketing might want to add features or shorten a timeline, but perhaps they are willing to defer certain features in exchange. See Appendix for an example of how to document these pro ect priorities.
+https://lh3.googleusercontent.com/notebooklm/AG60hOr4X5ubNDeHJ-zNT-xfCKCNwoK8FTdqgYwqAef04kJkG4Td2iOUcI4pvymorK5l0RCAjyaWpwDnjr_gPphm2n6C6wypU-nQPQGuvprBU5gukzQDwEPGrdFeTEGyR-4-b4fp-OXJ=w100-h84-v0
+Important ot all of the ve dimensions can be constraints, and they cannot all be drivers. The pro ect manager needs some degrees of freedom to be able to respond appropriately when requirements or pro ect realities change.
+3.3 Deployment considerations Summari e the information and activities that are needed to ensure an effective deployment of the solution into its operating environment. Describe the access that users will require to use the system, such as whether the users are distributed over multiple time ones or located close to each other. State when the users in various locations need to access the system. If infrastructure changes are needed to support the software’s need for capacity, network access, data storage, or data migration, describe those changes. Record any information that will be needed by people who will be preparing training or modifying business processes in con unction with deployment of the new solution.
 Scope representation techniques
-The models described in this section can be used to represent proMect scope in various ways. You 
-don’t need to create all of these models; consider which ones provide the most useful insight for 
-each proMect. The models can be included in the vision and scope document or stored elsewhere and 
-referenced as needed.
-The purpose of tools such as the context diagram, ecosystem map, feature tree, and event list 
-is to foster clear and accurate communication among the proMect stakeholders. That clarity is more 
-important than dogmatically adhering to the rules for a “correctµ diagram. We strongly recommend, 
-though, that you adopt the notations illustrated in the following examples as standards for drawing 
-the diagrams. )or example, in a context diagram, suppose you were to use a triangle to represent the 
-system instead of a circle, and ovals rather than rectangles for external entities. Your colleagues would 
-have difÀculty reading a diagram that follows your personal preferences rather than a team standard.
-&ontext diagrams, ecosystem maps, feature trees, and event lists are the most common ways 
-to represent scope visually. +owever, other techniques are also used. Identifying affected  busin ess 
- processes also can help deÀne the scope boundary. 8se case diagrams can depict the scope boundary 
-between use cases and actors see &hapter 8,  “8nd erstanding user requirementsµ.
-Context diagram
-The scope description establishes the boundary and connections between the system you’re 
- developing and everything else in the universe. The context diagram  visually illustrates this boundary. 
-It identiÀes external entities also called  terminators  outside the system that interface to it in some 
-way, as well as data, control, and material flows between the terminators and the system. The context 
-diagram is the top level in a data Áow diagram developed according to the principles of structured 
-analysis Robertson and Robertson 199, but it’s a useful model for all proMects.
-
- CHAPTER 5  (stablishing the business requirements  93)igure 5-6 illustrates a portion of the context diagram for the &hemical Tracking System. The 
-entire system is depicted as a single circle; the context diagram deliberately provides no visibility 
-into the system’s internal obMects, processes, or data. The “systemµ inside the circle could  encom pass 
-any combination of software, hardware, and human components. Therefore, it could include manual 
- operations as part of the entire system. The external entities in the rectangles can represent user 
-classes &hemist, Buyer, organi]ations +ealth and Safety Department, other systems Training 
- Database, or hardware devices Bar &ode Reader. The arrows on the diagram represent the Áow of 
-data such as a request for a chemical or physical items such as a chemical container between the 
-system and its external entities.
-You might expect to see chemical vendors shown as an external entity in this diagram. After all, 
-the company will route orders to vendors for fulÀllment, the vendors will send chemical containers 
-and invoices to &ontoso Pharmaceuticals, and &ontoso’s purchasing department will pay the vendors. 
-+owever, those processes take place outside the scope of the &hemical Tracking System, as part of 
-the operations of the purchasing and receiving departments. Their absence from the context diagram 
-makes it clear that this system is not directly involved in placing orders with the vendors, receiving the 
-products, or paying the bills.
-FIGURE 5-6  Partial context diagram for the &hemical Tracking System.
-94 PART II Requirements developmentEcosystem map
-An ecosystem map  shows all of the systems related to the system of interest that interact with one 
-another and the nature of those interactions Beatty and &hen 2012. An ecosystem map represents 
-scope by showing all the systems that interconnect and that therefore might need to be  modiÀ ed 
-to accommodate your new system. (cosystem maps differ from context diagrams in that they show 
- other systems that have a relationship with the system you’re working on, including those without 
- direct  interfaces. You can identify the affected systems by determining which ones consume data 
-from your system. When you reach the point that your proMect does not affect any additional data, 
-you’ve  identiÀed the scope boundary of systems that participate in the solution.
-)igure 5- is a partial ecosystem map for the &hemical Tracking System. The systems are all shown 
-in boxes such as the Purchasing System or Receiving System. In this example, the primary system 
-we are working on is shown in a bold box &hemical Tracking System, but if all systems have equal 
-status in your solution, you can use the same box style for all of them. The lines show interfaces 
-between systems for instance, the Purchasing System interfaces to the &hemical Tracking System. 
-/ines with arrows and labels show that maMor pieces of data are Áowing from one system to another 
-for  instance, “training recordsµ are passed from the &orporate Training Database to the &hemical 
- Tracking System. Some of these same Áows can also appear on the context diagram.
-FIGURE 5-7  Partial ecosystem map for the &hemical Tracking System.
-The ecosystem map in )igure 5- shows that the &hemical Tracking System does not directly connect 
-to the 2S+A(PA Reporting Interface. 1onetheless, you need to consider whether any requirements 
-in the &hemical Tracking System arise because of the data that Áows from it, through the +ealth and 
-Safety Incident Database, and to that reporting interface.
- CHAPTER 5  (stablishing the business requirements  95Feature tree
-A feature tree  is a visual depiction of the product’s features organi]ed in logical groups,  hierarchically 
-subdividing each feature into further levels of detail Beatty and &hen 2012. The feature tree 
- provides a concise view of all of the features planned for a proMect, making it an ideal model to show 
-to executives who want a quick glance at the proMect scope. A feature tree can show up to three levels 
-of features, commonly called level 1 /1, level 2 /2, and level 3 /3. /2 features are subfeatures of /1 
-features, and /3 features are subfeatures of /2 features.
-)igure 5-8 shows a partial feature tree for the &hemical Tracking System. The main branch of 
-the tree in the middle represents the product being implemented. (ach feature has its own line or 
-“branchµ coming off that central main branch. The gray boxes represent the /1 features, such as 2rder 
-&hemicals and Inventory Management. The lines coming off an /1 branch are /2 features: Search 
-and &hemical Request are subfeatures of 2rder &hemicals. The branches off an /2 branch are the /3 
-features: /ocal /ab Search is a subfeature of Search.
-FIGURE 5-8  Partial feature tree for the &hemical Tracking System.
-When planning a release or an iteration, you can deÀne its scope by selecting a speciÀc set of 
-features and subfeatures to be implemented 1eMmeh and Thomas 2002; Wiegers 2006. You could 
-implement a feature in its entirety in a speciÀc release, or you could implement only a portion of 
-it by choosing Must certain /2 and /3 subfeatures. )uture releases could enrich these rudimentary 
- implementations by adding more /2 and /3 subfeatures until each feature is fully implemented in the 
-Ànal product. So the scope of a particular release consists of a deÀned set of /1, /2, andor /3 features 
-chosen from the feature tree. You can mark up a feature tree diagram to illustrate these feature 
-96 PART II Requirements development allocations across releases by using colors or font variations. Alternatively, you can create a feature 
-roadmap table that lists the subfeatures planned for each release Wiegers 2006.
-Event list
-An event list  identiÀes external events that could trigger behavior in the system. The event list depicts the 
-scope boundary for the system by naming possible business events triggered by users, time-triggered 
-temporal events, or signal events received from external components, such as hardware devices. The 
-event list only names the events; the functional requirements that describe how the system responds 
-to the events would be detailed in the SRS by using event-response tables. See &hapter 12, “A picture is 
-worth 102 words,µ for more information about event-response tables.
-)igure 5-9 is a partial event list for the &hemical Tracking System. (ach item in the list states what 
-triggers the event “&hemistµ does something or the “Time toµ do something arrives, as well as 
- identifying the event action. An event list is a useful scoping tool because you can allocate certain 
-events to be implemented in speciÀc product releases or development iterations.
-FIGURE 5-9  Partial event list for the &hemical Tracking System.
-1otice how the event list complements the context diagram and ecosystem map. The context 
- diagram and ecosystem map collectively describe the external actors and systems involved, whereas 
-the event list identiÀes what those actors and systems might do to trigger behavior in the system 
- being  speciÀed. You can check the event list against the context diagram and ecosystem map for 
- correctness and completeness, as follows:
- �&onsider whether each external entity on the context diagram is the source of any events:  
-“Do any actions by &hemists trigger behavior in the &hemical Tracking System?µ
- �&onsider whether any systems in the ecosystem map lead to events for your system.
- �)or each event, consider whether you have corresponding external entities in the context 
-diagram or systems in the ecosystem map: “If a chemical container can be received from a 
-vendor, does Vendor appear in the context diagram andor ecosystem map?µ
-If you Ànd a disconnect, consider whether the model is missing an element. In this case, Vendor did 
-not appear on the context diagram because the &hemical Tracking System doesn’t interface directly 
-to vendors. +owever, Vendor is included in the ecosystem map.
- CHAPTER 5  (stablishing the business requirements  97Keeping the scope in focus
-A scope deÀnition is a structure, not a straitMacket. The business requirements and an understanding 
-of how customers will use the product provide valuable tools for dealing with scope change. Scope 
-change isn’t a bad thing if it helps you steer the proMect toward satisfying evolving customer needs. 
-The information in the vision and scope document lets you assess whether proposed requirements 
-are appropriate for inclusion in the proMect. You can modify the scope for a future iteration or for an 
-entire proMect if it’s done consciously, by the right people, for the right business reasons, and with 
-understanding and acceptance of the tradeoffs.
-Remember, whenever someone requests a new requirement, the analyst needs to ask, “Is this in 
-scope?µ 2ne response might be that the proposed requirement is clearly out of scope. Perhaps it’s 
-interesting, but it should be addressed in a future release or by another proMect. Another possibility 
-is that the request obviously lies within the deÀned proMect scope. You can incorporate new in-scope 
-requirements in the current proMect if they are of high priority relative to the other requirements that 
-were already committed. Including new requirements often involves making a decision to defer or 
-cancel other planned requirements, unless you’re willing to extend the proMect’s duration.
-The third possibility is that the proposed new requirement is out of scope, but it’s such a good 
-idea that the scope should be broadened to accommodate it, with corresponding changes in 
- budget, schedule, andor staff. That is, there’s a feedback loop between the user requirements and 
-the  business requirements. This will require that you update the vision and scope document, which 
-should have been placed under change control at the time it was baselined. Keep a record of why 
- requirements were reMected; they have a way of reappearing. &hapter 2, “Requirements management 
-practices,µ describes how to use a requirement attribute to track reMected or deferred requirements.
-Using business objectives to make scoping decisions
-The business obMectives are the most important factor to consider when making scope  decisions. 
- Determine which proposed features or user requirements add the most value with respect to 
-the business obMectives; schedule those for the early releases. When a stakeholder wants to add 
- functionality, consider how the suggested changes will contribute to achieving the business 
- obMectives. )or example, a business obMective to generate maximum revenue from a kiosk implies the 
-early implementation of features that sell more products or services to the customer. Glit]y features 
-that appeal to only a few technology-hungry customers and don’t contribute to the primary business 
-obMective shouldn’t have high priority.
-If possible, quantify the contribution the feature makes towards the business obMectives, so that 
-people can make scoping decisions on the basis of facts rather than emotions Beatty and &hen 
-2012. Will a speciÀc feature contribute roughly $1,000, $100,000, or $1,000,000 toward a business 
- obMective? When an executive requests a new feature that he thought of over the weekend, you can 
-use quantitative analysis to help determine if adding it is the right business decision.
-98 PART II Requirements developmentAssessing the impact of scope changes
-When the proMect’s scope increases, the proMect manager usually will have to renegotiate the 
-planned budget, resources, schedule, andor staff. Ideally, the original schedule and resources will 
- accommodate a certain amount of change because of thoughtfully included contingency buffers 
-Wiegers 200. 2therwise, you’ll need to re-plan after requirements changes are approved.
-A common consequence of scope change is that completed activities must be reworked in 
- response to the changes. Quality often suffers if the allocated resources or time are not increased 
-when new functionality is added. Documented business requirements make it easier to manage 
- legitimate scope growth as the marketplace or business needs change. They also help a harried 
- proMect manager to Mustify saying “noµ³or at least “not yetµ³when inÁuential people try to stuff 
-more features into an overly constrained proMect.
-Vision and scope on agile projects
-Managing scope on an agile proMect, in which development is performed in a series of Àxed  timeb ox 
-iterations, takes a different approach. The scope of each iteration consists of user stories selected 
-from a dynamic product backlog, based on their relative priority and the estimated delivery 
- capacity of the team for each timebox. Instead of trying to Àght scope creep, the team prioriti]es 
-new  requirements against existing items in the backlog and allocates them to future iterations. The 
- number of iterations³and hence the overall proMect duration³still depends on the total amount 
-of functionality to be implemented, but the scope of each iteration is controlled to ensure timely 
-completion. Alternatively, some agile proMects Àx the overall proMect duration, yet are willing to modify 
-the scope. The number of iterations might remain the same, but the scope addressed in remaining 
-iterations changes according to the relative priorities of existing and newly deÀned user stories.
-The team can deÀne a high-level roadmap of iterations at the beginning of the proMect, but the user story 
-allocation for an iteration will be performed at the beginning of each iteration. Referencing the business  
-requirements as the team sets the scope for each iteration helps to ensure that the proMect delivers a 
-product that meets the business obMectives. The same strategy can be used on any proMect that follows a 
-timeboxed development process see the “Scope management and timeboxed developmentµ sidebar.
-Scope management and timeboxed development
-(nrique, a proMect manager at /itware, Inc., had to deliver a web-enabled version of /itware’s 
-Áagship portfolio-management software. It would take about two years to fully supplant 
-the  mature application, but /itware needed a web presence right away. (nrique selected a 
- timeboxed development approach, promising to release a new version every 90 days. +is 
-marketing team carefully prioriti]ed the product’s requirements. The SRS for each quarterly 
-release included a committed set of new and enhanced features, as well as a list of lower-priority 
-“stretchµ requirements to be implemented as time permitted. (nrique’s team didn’t  incorp orate 
-every stretch requirement into each release, but they did ship a stable release every three 
-months through this schedule-driven approach to scope management. Schedule and quality are 
-normally constraints on a timeboxed proMect, and scope is a degree of freedom.
- CHAPTER 5  (stablishing the business requirements  99Although agile proMects might not create a formal vision and scope document, the contents from 
-the template in )igure 5-3 are both relevant and essential to delivering a successful product. Many 
-agile proMects conduct an upfront planning iteration iteration ]ero to deÀne the overarching product 
-vision and other business requirements for the proMect.
-Business requirements need to be deÀned for all software proMects, regardless of their 
- development approach. The business obMectives describe the expected value coming out of the 
- proMect, and on an agile proMect, they are used to help prioriti]e the backlog to deliver the most 
- business value in the earliest iterations. Success metrics should be deÀned so that as iterative  releases 
-go live, the success can be measured and the rest of the backlog adMusted accordingly. A vision 
- statement describes the long-term plan for what the product will be after all iterations are complete.
+The models described in this section can be used to represent pro ect scope in various ways. You don’t need to create all of these models; consider which ones provide the most useful insight for each pro ect. The models can be included in the vision and scope document or stored elsewhere and referenced as needed.
+The purpose of tools such as the context diagram, ecosystem map, feature tree, and event list is to foster clear and accurate communication among the pro ect stakeholders. That clarity is more important than dogmatically adhering to the rules for a “correct diagram. We strongly recommend, though, that you adopt the notations illustrated in the following examples as standards for drawing the diagrams. or example, in a context diagram, suppose you were to use a triangle to represent the system instead of a circle, and ovals rather than rectangles for external entities. Your colleagues would have dif culty reading a diagram that follows your personal preferences rather than a team standard.
+ontext diagrams, ecosystem maps, feature trees, and event lists are the most common ways to represent scope visually. owever, other techniques are also used. Identifying affected business processes also can help de ne the scope boundary. se case diagrams can depict the scope boundary between use cases and actors see hapter 8, “ nderstanding user requirements .
+Context diagram The scope description establishes the boundary and connections between the system you’re developing and everything else in the universe. The context diagram visually illustrates this boundary. It identi es external entities also called terminators outside the system that interface to it in some way, as well as data, control, and material flows between the terminators and the system. The context diagram is the top level in a data ow diagram developed according to the principles of structured analysis Robertson and Robertson 199 , but it’s a useful model for all pro ects.
+https://lh3.googleusercontent.com/notebooklm/AG60hOrcOkMg9TaR_2-BzADwfAzkqFf1gk7u-eJOs8vlwdzRaulpm3MnxUX-UZIWVFs5arSuYMtyEWZWVmzZsfRTLJ7QxNeq_j24O8W38TtR3n6lZPJhDZsMJZnc3gIWvdWYc59U1d41Qw=w1280-h1262-v0
+igure 5-6 illustrates a portion of the context diagram for the hemical Tracking System. The entire system is depicted as a single circle; the context diagram deliberately provides no visibility into the system’s internal ob ects, processes, or data. The “system inside the circle could encompass any combination of software, hardware, and human components. Therefore, it could include manual operations as part of the entire system. The external entities in the rectangles can represent user classes hemist, Buyer , organi ations ealth and Safety Department , other systems Training Database , or hardware devices Bar ode Reader . The arrows on the diagram represent the ow of data such as a request for a chemical or physical items such as a chemical container between the system and its external entities.
+You might expect to see chemical vendors shown as an external entity in this diagram. After all, the company will route orders to vendors for ful llment, the vendors will send chemical containers and invoices to ontoso Pharmaceuticals, and ontoso’s purchasing department will pay the vendors.
+owever, those processes take place outside the scope of the hemical Tracking System, as part of the operations of the purchasing and receiving departments. Their absence from the context diagram makes it clear that this system is not directly involved in placing orders with the vendors, receiving the products, or paying the bills.
+FIGURE 5-6 Partial context diagram for the hemical Tracking System.
+https://lh3.googleusercontent.com/notebooklm/AG60hOpDwUxt0MXGTzt2LAGRmnfTHa00O5U7MWYs5rj4PApy5Il4n4yskAmWNQ-74qOu-ZkKsV2u1zFOLu0yvK0xlMdriVL1-bGFrnTuhxB6fETvE4hD9Aron64e8vHtLktoYJXnmYqYPQ=w1280-h796-v0
+Ecosystem map An ecosystem map shows all of the systems related to the system of interest that interact with one another and the nature of those interactions Beatty and hen 2012 . An ecosystem map represents scope by showing all the systems that interconnect and that therefore might need to be modi ed to accommodate your new system. cosystem maps differ from context diagrams in that they show other systems that have a relationship with the system you’re working on, including those without direct interfaces. You can identify the affected systems by determining which ones consume data from your system. When you reach the point that your pro ect does not affect any additional data, you’ve identi ed the scope boundary of systems that participate in the solution.
+igure 5- is a partial ecosystem map for the hemical Tracking System. The systems are all shown in boxes such as the Purchasing System or Receiving System . In this example, the primary system we are working on is shown in a bold box hemical Tracking System , but if all systems have equal status in your solution, you can use the same box style for all of them. The lines show interfaces between systems for instance, the Purchasing System interfaces to the hemical Tracking System . ines with arrows and labels show that ma or pieces of data are owing from one system to another for instance, “training records are passed from the orporate Training Database to the hemical
+Tracking System . Some of these same ows can also appear on the context diagram.
+FIGURE 5-7 Partial ecosystem map for the hemical Tracking System.
+The ecosystem map in igure 5- shows that the hemical Tracking System does not directly connect to the S A PA Reporting Interface. onetheless, you need to consider whether any requirements in the hemical Tracking System arise because of the data that ows from it, through the ealth and Safety Incident Database, and to that reporting interface.
+https://lh3.googleusercontent.com/notebooklm/AG60hOpxhKo3x9ussnqUYzpPgeKsbSZ5KErkmSlDuz4Boj9Kpr5H6jdEDDIK2uF46YNnhuncvMSBgCUH0HVp7OInPqQsyshweZ0xoxVXyY1zYxH9ETmxus9374F2nzoe0nNkQ3Xxj5yhng=w1280-h813-v0
+Feature tree A feature tree is a visual depiction of the product’s features organi ed in logical groups, hierarchically subdividing each feature into further levels of detail Beatty and hen 2012 . The feature tree provides a concise view of all of the features planned for a pro ect, making it an ideal model to show to executives who want a quick glance at the pro ect scope. A feature tree can show up to three levels of features, commonly called level 1 1 , level 2 2 , and level 3 3 . 2 features are subfeatures of 1 features, and 3 features are subfeatures of 2 features.
+igure 5-8 shows a partial feature tree for the hemical Tracking System. The main branch of the tree in the middle represents the product being implemented. ach feature has its own line or “branch coming off that central main branch. The gray boxes represent the 1 features, such as rder
+hemicals and Inventory Management. The lines coming off an 1 branch are 2 features: Search and hemical Request are subfeatures of rder hemicals. The branches off an 2 branch are the 3 features: ocal ab Search is a subfeature of Search.
+FIGURE 5-8 Partial feature tree for the hemical Tracking System.
+When planning a release or an iteration, you can de ne its scope by selecting a speci c set of features and subfeatures to be implemented e meh and Thomas 2002; Wiegers 2006 . You could implement a feature in its entirety in a speci c release, or you could implement only a portion of it by choosing ust certain 2 and 3 subfeatures. uture releases could enrich these rudimentary implementations by adding more 2 and 3 subfeatures until each feature is fully implemented in the
+nal product. So the scope of a particular release consists of a de ned set of 1, 2, and or 3 features chosen from the feature tree. You can mark up a feature tree diagram to illustrate these feature
+https://lh3.googleusercontent.com/notebooklm/AG60hOqUayBLmUrdIuhLNQu-Ky2IAvmk5NbS6i2tq3ufGCT6DVLrT7rWB4We0B6GIX9dBygPVsEuUQ7QlceWtc728g9y4loKMZUJMhsZzb-pgtnNGw35IocETyUpmKU_p74rPh1EKb7b1g=w1071-h536-v0
+allocations across releases by using colors or font variations. Alternatively, you can create a feature roadmap table that lists the subfeatures planned for each release Wiegers 2006 .
+Event list An event list identi es external events that could trigger behavior in the system. The event list depicts the scope boundary for the system by naming possible business events triggered by users, time-triggered temporal events, or signal events received from external components, such as hardware devices. The
+event list only names the events; the functional requirements that describe how the system responds to the events would be detailed in the SRS by using event-response tables. See hapter 12, “A picture is worth 102 words, for more information about event-response tables.
+igure 5-9 is a partial event list for the hemical Tracking System. ach item in the list states what triggers the event “ hemist does something or the “Time to do something arrives , as well as identifying the event action. An event list is a useful scoping tool because you can allocate certain events to be implemented in speci c product releases or development iterations.
+FIGURE 5-9 Partial event list for the hemical Tracking System.
+otice how the event list complements the context diagram and ecosystem map. The context diagram and ecosystem map collectively describe the external actors and systems involved, whereas the event list identi es what those actors and systems might do to trigger behavior in the system being speci ed. You can check the event list against the context diagram and ecosystem map for correctness and completeness, as follows:
+� onsider whether each external entity on the context diagram is the source of any events: “Do any actions by hemists trigger behavior in the hemical Tracking System?
+� onsider whether any systems in the ecosystem map lead to events for your system.
+� or each event, consider whether you have corresponding external entities in the context diagram or systems in the ecosystem map: “If a chemical container can be received from a vendor, does Vendor appear in the context diagram and or ecosystem map?
+If you nd a disconnect, consider whether the model is missing an element. In this case, Vendor did not appear on the context diagram because the hemical Tracking System doesn’t interface directly to vendors. owever, Vendor is included in the ecosystem map.
+Keeping the scope in focus
+A scope de nition is a structure, not a strait acket. The business requirements and an understanding of how customers will use the product provide valuable tools for dealing with scope change. Scope change isn’t a bad thing if it helps you steer the pro ect toward satisfying evolving customer needs. The information in the vision and scope document lets you assess whether proposed requirements are appropriate for inclusion in the pro ect. You can modify the scope for a future iteration or for an entire pro ect if it’s done consciously, by the right people, for the right business reasons, and with understanding and acceptance of the tradeoffs.
+Remember, whenever someone requests a new requirement, the analyst needs to ask, “Is this in scope? ne response might be that the proposed requirement is clearly out of scope. Perhaps it’s interesting, but it should be addressed in a future release or by another pro ect. Another possibility is that the request obviously lies within the de ned pro ect scope. You can incorporate new in-scope requirements in the current pro ect if they are of high priority relative to the other requirements that were already committed. Including new requirements often involves making a decision to defer or cancel other planned requirements, unless you’re willing to extend the pro ect’s duration.
+The third possibility is that the proposed new requirement is out of scope, but it’s such a good idea that the scope should be broadened to accommodate it, with corresponding changes in budget, schedule, and or staff. That is, there’s a feedback loop between the user requirements and the business requirements. This will require that you update the vision and scope document, which should have been placed under change control at the time it was baselined. Keep a record of why requirements were re ected; they have a way of reappearing. hapter 2 , “Requirements management practices, describes how to use a requirement attribute to track re ected or deferred requirements.
+Using business objectives to make scoping decisions The business ob ectives are the most important factor to consider when making scope decisions. Determine which proposed features or user requirements add the most value with respect to the business ob ectives; schedule those for the early releases. When a stakeholder wants to add functionality, consider how the suggested changes will contribute to achieving the business ob ectives. or example, a business ob ective to generate maximum revenue from a kiosk implies the early implementation of features that sell more products or services to the customer. Glit y features that appeal to only a few technology-hungry customers and don’t contribute to the primary business ob ective shouldn’t have high priority.
+If possible, quantify the contribution the feature makes towards the business ob ectives, so that people can make scoping decisions on the basis of facts rather than emotions Beatty and hen 2012 . Will a speci c feature contribute roughly $1,000, $100,000, or $1,000,000 toward a business ob ective? When an executive requests a new feature that he thought of over the weekend, you can use quantitative analysis to help determine if adding it is the right business decision.
+Assessing the impact of scope changes When the pro ect’s scope increases, the pro ect manager usually will have to renegotiate the planned budget, resources, schedule, and or staff. Ideally, the original schedule and resources will accommodate a certain amount of change because of thoughtfully included contingency buffers Wiegers 200 . therwise, you’ll need to re-plan after requirements changes are approved.
+A common consequence of scope change is that completed activities must be reworked in response to the changes. Quality often suffers if the allocated resources or time are not increased when new functionality is added. Documented business requirements make it easier to manage legitimate scope growth as the marketplace or business needs change. They also help a harried pro ect manager to ustify saying “no or at least “not yet when in uential people try to stuff more features into an overly constrained pro ect.
+Vision and scope on agile projects Managing scope on an agile pro ect, in which development is performed in a series of xed timebox iterations, takes a different approach. The scope of each iteration consists of user stories selected from a dynamic product backlog, based on their relative priority and the estimated delivery capacity of the team for each timebox. Instead of trying to ght scope creep, the team prioriti es new requirements against existing items in the backlog and allocates them to future iterations. The number of iterations and hence the overall pro ect duration still depends on the total amount of functionality to be implemented, but the scope of each iteration is controlled to ensure timely completion. Alternatively, some agile pro ects x the overall pro ect duration, yet are willing to modify the scope. The number of iterations might remain the same, but the scope addressed in remaining iterations changes according to the relative priorities of existing and newly de ned user stories.
+The team can de ne a high-level roadmap of iterations at the beginning of the pro ect, but the user story allocation for an iteration will be performed at the beginning of each iteration. Referencing the business requirements as the team sets the scope for each iteration helps to ensure that the pro ect delivers a product that meets the business ob ectives. The same strategy can be used on any pro ect that follows a timeboxed development process see the “Scope management and timeboxed development sidebar .
+Scope management and timeboxed development nrique, a pro ect manager at itware, Inc., had to deliver a web-enabled version of itware’s agship portfolio-management software. It would take about two years to fully supplant
+the mature application, but itware needed a web presence right away. nrique selected a timeboxed development approach, promising to release a new version every 90 days. is marketing team carefully prioriti ed the product’s requirements. The SRS for each quarterly release included a committed set of new and enhanced features, as well as a list of lower-priority “stretch requirements to be implemented as time permitted. nrique’s team didn’t incorporate every stretch requirement into each release, but they did ship a stable release every three months through this schedule-driven approach to scope management. Schedule and quality are normally constraints on a timeboxed pro ect, and scope is a degree of freedom.
+Although agile pro ects might not create a formal vision and scope document, the contents from the template in igure 5-3 are both relevant and essential to delivering a successful product. Many agile pro ects conduct an upfront planning iteration iteration ero to de ne the overarching product vision and other business requirements for the pro ect.
+Business requirements need to be de ned for all software pro ects, regardless of their development approach. The business ob ectives describe the expected value coming out of the pro ect, and on an agile pro ect, they are used to help prioriti e the backlog to deliver the most business value in the earliest iterations. Success metrics should be de ned so that as iterative releases go live, the success can be measured and the rest of the backlog ad usted accordingly. A vision statement describes the long-term plan for what the product will be after all iterations are complete.
 Using business objectives to determine completion
-+ow do you know when you can stop implementing functionality? Traditionally, a proMect manager 
-manages the proMect towards completion. +owever, a business analyst is intimately familiar with the 
-business obMectives and can help determine when the desired value has been delivered, implying that 
-the work is done.
-If you begin with a clear vision for the solution, and if each release or iteration is scoped to deliver 
-Must a portion of the total functionality, then you will be done when you complete the preplanned 
-iterations. The completed iterations should have led to a fully reali]ed product vision that meets the 
-business obMectives.
-+owever, particularly in iterative development approaches, the end point might be vague. 
-Within each iteration, scope is deÀned for that iteration. As the proMect continues, the backlog of 
- uncompleted work dwindles. It’s not always necessary to implement the entire set of remaining 
- functionality. It’s critical to have clear business obMectives so that you can move toward satisfying 
-those obMectives incrementally as information becomes available. The proMect is complete when the 
-success metrics indicate that you have a good chance of meeting the business obMectives. Vague 
- business obMectives will guarantee an open-ended proMect with no way to know when you’re done. 
-)unding sponsors don’t like it because they don’t know how to budget, schedule, or plan for such 
-proMects. &ustomers don’t like it because they might receive a  solution that is delivered on time and 
-on budget but that doesn’t provide the value they need. But that might Must be the risk of working 
-on products that cannot be clearly deÀned at the outset, unless you reÀne the business obMectives 
-partway through the proMect.
-)ocus on deÀning clear business requirements for all of your proMects. 2therwise, you are Must 
-wandering about aimlessly hoping to accomplish something useful without any way to know if you’re 
-reaching your destination.
-100 PART II Requirements development 
+ow do you know when you can stop implementing functionality? Traditionally, a pro ect manager manages the pro ect towards completion. owever, a business analyst is intimately familiar with the business ob ectives and can help determine when the desired value has been delivered, implying that the work is done.
+If you begin with a clear vision for the solution, and if each release or iteration is scoped to deliver ust a portion of the total functionality, then you will be done when you complete the preplanned iterations. The completed iterations should have led to a fully reali ed product vision that meets the business ob ectives.
+owever, particularly in iterative development approaches, the end point might be vague. Within each iteration, scope is de ned for that iteration. As the pro ect continues, the backlog of uncompleted work dwindles. It’s not always necessary to implement the entire set of remaining functionality. It’s critical to have clear business ob ectives so that you can move toward satisfying those ob ectives incrementally as information becomes available. The pro ect is complete when the success metrics indicate that you have a good chance of meeting the business ob ectives. Vague business ob ectives will guarantee an open-ended pro ect with no way to know when you’re done. unding sponsors don’t like it because they don’t know how to budget, schedule, or plan for such
+pro ects. ustomers don’t like it because they might receive a solution that is delivered on time and on budget but that doesn’t provide the value they need. But that might ust be the risk of working on products that cannot be clearly de ned at the outset, unless you re ne the business ob ectives partway through the pro ect.
+ocus on de ning clear business requirements for all of your pro ects. therwise, you are ust wandering about aimlessly hoping to accomplish something useful without any way to know if you’re reaching your destination.
+https://lh3.googleusercontent.com/notebooklm/AG60hOo8q-8I4O-8IekpEKLoiP6l9rD_PKw2KmMbndy6_zRT6seGMWNn6a4i-nB4EdR5CcB_Tjm1abwh2H3sX4y_b0ZmZnamgfHD3u5Xuih_FeXAWpGf-ys8ndT-9-onI9G-n9RVwLiv4A=w67-h129-v0
 Next steps
- �Ask several stakeholders for your proMect each to write a vision statement using the 
- keyword template described in this chapter. See how similar the visions are. Rectify any 
-disconnects and come up with a uniÀed vision statement that all those stakeholders  
-agree to.
- �Whether you’re near the launch of a new proMect or in the midst of construction, 
- document the business requirements by using the template in )igure 5-3. 2r, simply 
-create a business obMectives model, and have the rest of the team review it. This might 
-reveal that your team doesn’t share a common understanding of the proMect’s obMectives 
-or scope. &orrect that problem now; it will be even more difÀcult to correct if you wait. 
-This activity will also suggest ways to modify the template to best meet the needs of your 
- organi]ation’s proMects.
- �Write down the measurable business obMectives for your proMect in a format that can 
-be shared easily in meetings throughout the proMect’s duration. Take it to your next 
- requirements-related meeting and see if the team Ànds the reminder to be useful.
-
-
+� Ask several stakeholders for your pro ect each to write a vision statement using the keyword template described in this chapter. See how similar the visions are. Rectify any disconnects and come up with a uni ed vision statement that all those stakeholders agree to.
+� Whether you’re near the launch of a new pro ect or in the midst of construction, document the business requirements by using the template in igure 5-3. r, simply create a business ob ectives model, and have the rest of the team review it. This might reveal that your team doesn’t share a common understanding of the pro ect’s ob ectives or scope. orrect that problem now; it will be even more dif cult to correct if you wait. This activity will also suggest ways to modify the template to best meet the needs of your organi ation’s pro ects.
+� Write down the measurable business ob ectives for your pro ect in a format that can be shared easily in meetings throughout the pro ect’s duration. Take it to your next requirements-related meeting and see if the team nds the reminder to be useful.
