@@ -260,27 +260,153 @@ Strictly controls asset movement between locations/owners.
 
 # III. SYSTEM DESIGN
 
-## 1. Software Architecture
-*   **Architecture Pattern:** MVC (Model-View-Controller) using JSP/Servlet.
-*   **Frontend:** JSP, HTML5, CSS3, JavaScript (Bootstrap/Plain CSS).
-*   **Backend:** Java Servlets.
-*   **Database:** MySQL.
-*   **External Diagram:** (See `architecture.png` - *to be created*)
+## 1. Software Architecture (Kiến trúc phần mềm)
+*   **Architecture Pattern:** MVC (Model-View-Controller) layered architecture.
+*   **Frontend:** JSP, JSTL, HTML5, CSS3, JavaScript (Bootstrap 5).
+*   **Backend:** Java Servlet API.
+*   **Database:** MySQL 8.0.
+*   **Security:** Session-based Authentication, Role-based Authorization (Filter).
 
 ## 2. Code Package Design
-*   `com.ams.controller`: Servlet classes handling HTTP requests.
-*   `com.ams.model`: JAVA POJO classes representing DB entities (Asset, User, Category).
-*   `com.ams.dao`: Data Access Object classes for DB interaction.
-*   `com.ams.service`: Business logic layer.
-*   `com.ams.utils`: Helper classes (DBConnection, PasswordHasher).
+*   `com.ams.controller`: Servlet classes handling HTTP requests (LoginServlet, AssetServlet).
+*   `com.ams.service`: Business logic layer (AssetService, TransferService).
+*   `com.ams.dao`: Data Access Object classes (AssetDAO, UserDAO).
+*   `com.ams.model`: Entity POJOs (Asset, User, Category).
+*   `com.ams.filter`: Authentication & Authorization Filters.
+*   `com.ams.utils`: Database connection, Constants, Helper functions.
 
-## 3. Database Design
-### 3.1. Database Schema
-*(Placeholder for ERD Image)*
+## 3. Database Design (13 Tables)
 
-### 3.2. Table Descriptions
-*   **Users:** `user_id` (PK), `username`, `password`, `role`, `full_name`, `email`.
-*   **Categories:** `category_id` (PK), `name`, `code_prefix`.
-*   **Assets:** `asset_id` (PK), `category_id` (FK), `name`, `code`, `status`, `location_id` (FK).
-*   **Requests:** `request_id` (PK), `requester_id` (FK), `type`, `status`, `created_date`.
-*   **Transfers:** `transfer_id` (PK), `asset_id` (FK), `from_room`, `to_room`, `status`.
+### 3.1. Group 1: Master Data (Dữ liệu nền tảng)
+
+#### `departments` (Phòng ban/Bộ môn)
+*   **Purpose:** Quản lý các đơn vị trong trường (Tổ Lý, Tổ Hóa, Phòng Kế toán...).
+*   **Columns:**
+    *   `dept_id` (INT, PK, AI): ID phòng ban.
+    *   `dept_name` (NVARCHAR, Not Null): Tên phòng ban (e.g., "Tổ Vật Lý").
+    *   `dept_type` (ENUM): 'ACADEMIC' (Bộ môn), 'ADMIN' (Hành chính).
+
+#### `rooms` (Phòng học/Phòng chức năng)
+*   **Purpose:** Định vị vị trí vật lý của tài sản.
+*   **Columns:**
+    *   `room_id` (INT, PK, AI)
+    *   `room_name` (NVARCHAR, Not Null): Tên phòng (e.g., "Phòng Lab 101").
+    *   `capacity` (INT): Sức chứa (Optional).
+    *   `dept_id` (INT, FK): Phòng này thuộc quyền quản lý của bộ môn nào (Optional).
+
+#### `categories` (Danh mục tài sản) - *UC01, UC02, UC04*
+*   **Purpose:** Phân loại tài sản và quy định mã hóa.
+*   **Columns:**
+    *   `cate_id` (INT, PK, AI)
+    *   `cate_name` (NVARCHAR, Not Null): Tên loại (e.g., "Laptop", "Microscope").
+    *   `prefix_code` (VARCHAR(10), Unique): Mã tiền tố (e.g., "LAP", "MIC").
+    *   `life_span` (INT): Số năm sử dụng dự kiến (để tính khấu hao).
+    *   `active` (BOOLEAN): Trạng thái (để Soft Delete UC03).
+
+#### `users` (Người dùng) - *UC28, UC30, UC31*
+*   **Purpose:** Quản lý tài khoản đăng nhập.
+*   **Columns:**
+    *   `user_id` (INT, PK, AI)
+    *   `username` (VARCHAR, Unique, Not Null)
+    *   `password` (VARCHAR, Not Null): Hashed Password.
+    *   `full_name` (NVARCHAR, Not Null)
+    *   `email` (VARCHAR, Unique)
+    *   `role` (ENUM): 'PRINCIPAL', 'FINANCE', 'STAFF', 'HOD', 'TEACHER'.
+    *   `dept_id` (INT, FK): Link tới bảng `departments`.
+    *   `status` (ENUM): 'ACTIVE', 'INACTIVE'.
+
+### 3.2. Group 2: Core Asset Data (Dữ liệu lõi)
+
+#### `assets` (Tài sản) - *UC05, UC06, UC08, UC09*
+*   **Purpose:** Bảng trung tâm lưu trữ thông tin từng tài sản.
+*   **Columns:**
+    *   `asset_id` (INT, PK, AI)
+    *   `asset_code` (VARCHAR(20), Unique): Generated (e.g., "LAP-2024-001").
+    *   `asset_name` (NVARCHAR, Not Null)
+    *   `cate_id` (INT, FK): Link tới `categories`.
+    *   `purchase_date` (DATE): Ngày mua.
+    *   `price` (DECIMAL): Giá trị ban đầu.
+    *   `warranty_expiry` (DATE): Hạn bảo hành.
+    *   `current_status` (ENUM): 'NEW', 'IN_USE', 'BROKEN', 'UNDER_MAINTENANCE', 'LIQUIDATED', 'LOST'.
+    *   `current_room_id` (INT, FK): Link tới `rooms` - Vị trí hiện tại.
+    *   `image_url` (VARCHAR): Link ảnh tài sản.
+
+#### `asset_history` (Lịch sử tài sản)
+*   **Purpose:** Nhật ký Audit log (Ai làm gì với tài sản vào lúc nào?).
+*   **Columns:**
+    *   `log_id` (INT, PK, AI)
+    *   `asset_id` (INT, FK)
+    *   `action` (VARCHAR): 'CREATE', 'UPDATE_INFO', 'TRANSFER', 'MAINTENANCE', 'LIQUIDATE'.
+    *   `performed_by` (INT, FK -> Users): Người thực hiện.
+    *   `performed_at` (TIMESTAMP): Thời gian.
+    *   `description` (TEXT): Chi tiết thay đổi (e.g., "Moved from Room 101 to 102").
+
+### 3.3. Group 3: Transactional Data (Quy trình nghiệp vụ)
+
+#### `requests` (Yêu cầu Mua sắm/Cấp phát) - *UC10, UC11, UC12*
+*   **Purpose:** Giáo viên gửi yêu cầu mua sắm/vật tư.
+*   **Columns:**
+    *   `request_id` (INT, PK, AI)
+    *   `requester_id` (INT, FK): Giáo viên yêu cầu.
+    *   `request_date` (TIMESTAMP)
+    *   `urgency` (ENUM): 'LOW', 'MEDIUM', 'HIGH'.
+    *   `status` (ENUM): 'PENDING', 'APPROVED_HOD', 'APPROVED_PRINCIPAL', 'REJECTED', 'COMPLETED'.
+    *   `approver_note` (TEXT): Lý do từ chối/duyệt.
+
+#### `request_items` (Chi tiết yêu cầu)
+*   **Purpose:** Một phiếu yêu cầu có thể gồm nhiều món (VD: 10 Bút, 2 Thước).
+*   **Columns:**
+    *   `item_id` (INT, PK, AI)
+    *   `request_id` (INT, FK)
+    *   `item_name` (NVARCHAR)
+    *   `quantity` (INT)
+    *   `reason` (TEXT)
+
+#### `transfer_tickets` (Phiếu điều chuyển) - *UC14, UC15, UC16, UC17*
+*   **Purpose:** Quản lý lệnh chuyển tài sản giữa các phòng.
+*   **Columns:**
+    *   `transfer_id` (INT, PK, AI)
+    *   `created_by` (INT, FK): Staff tạo phiếu.
+    *   `created_at` (TIMESTAMP)
+    *   `src_room_id` (INT, FK): Phòng đi.
+    *   `dest_room_id` (INT, FK): Phòng đến.
+    *   `status` (ENUM): 'PENDING', 'APPROVED', 'HANDOVER_CONFIRMED', 'COMPLETED', 'REJECTED'.
+    *   `manager_approval_date` (TIMESTAMP): Kế toán/Hiệu trưởng duyệt (nếu cần).
+
+#### `transfer_details` (Chi tiết điều chuyển)
+*   **Purpose:** Danh sách tài sản trong 1 phiếu điều chuyển.
+*   **Columns:**
+    *   `detail_id` (INT, PK, AI)
+    *   `transfer_id` (INT, FK)
+    *   `asset_id` (INT, FK)
+    *   `note` (TEXT): Ghi chú tình trạng lúc chuyển (VD: "Xước nhẹ").
+
+#### `maintenance_tickets` (Phiếu báo hỏng/Sửa chữa) - *UC18, UC19, UC20*
+*   **Purpose:** Quản lý việc sửa chữa.
+*   **Columns:**
+    *   `ticket_id` (INT, PK, AI)
+    *   `asset_id` (INT, FK)
+    *   `reported_by` (INT, FK): Người báo hỏng.
+    *   `reported_date` (TIMESTAMP)
+    *   `issue_description` (TEXT): Mô tả lỗi.
+    *   `cost` (DECIMAL): Chi phí sửa chữa.
+    *   `status` (ENUM): 'REPORTED', 'IN_PEOGRESS', 'COMPLETED', 'CANNOT_FIX'.
+    *   `technician_note` (TEXT): Ghi chú của thợ/Staff.
+
+#### `liquidation_minutes` (Biên bản thanh lý) - *UC27*
+*   **Purpose:** Quản lý quy trình thải loại tài sản.
+*   **Columns:**
+    *   `liquidation_id` (INT, PK, AI)
+    *   `created_by` (INT, FK)
+    *   `created_date` (TIMESTAMP)
+    *   `status` (ENUM): 'PENDING', 'APPROVED', 'FINALIZED'.
+    *   `total_amount` (DECIMAL): Tổng tiền thu về (nếu bán thanh lý).
+
+#### `liquidation_details`
+*   **Purpose:** Các tài sản nằm trong biên bản thanh lý.
+*   **Columns:**
+    *   `detail_id` (INT, PK, AI)
+    *   `liquidation_id` (INT, FK)
+    *   `asset_id` (INT, FK)
+    *   `reason` (TEXT): Lý do thanh lý (Hỏng, Hết khấu hao).
+    *   `resale_price` (DECIMAL): Giá bán lại (nếu có).
