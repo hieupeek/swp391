@@ -409,4 +409,40 @@ Strictly controls asset movement between locations/owners.
     *   `liquidation_id` (INT, FK)
     *   `asset_id` (INT, FK)
     *   `reason` (TEXT): Lý do thanh lý (Hỏng, Hết khấu hao).
-    *   `resale_price` (DECIMAL): Giá bán lại (nếu có).
+
+### 3.4. Schema & Process Synchronization (Mối liên hệ giữa DB và Quy trình)
+Phần này giải thích cách dòng dữ liệu chảy qua các bảng để phục vụ 5 Quy trình nghiệp vụ chính:
+
+#### 3.4.1. Quy trình 1: Quản lý Danh mục (Category Mgmt)
+*   **Use Cases:** UC01-UC04.
+*   **Logic:**
+    *   Tác động vào bảng: `categories`.
+    *   Cột `prefix_code` là tham số đầu vào quan trọng cho thuật toán sinh mã tài sản tự động (SCH-01) ở Quy trình 3.
+    *   Cột `life_span` cung cấp tham số cho thuật toán tính khấu hao (SCH-02).
+
+#### 3.4.2. Quy trình 2: Mua sắm & Cấp phát (Acquisition)
+*   **Use Cases:** UC10-UC13.
+*   **Logic:**
+    *   **Gửi yêu cầu:** Tạo 1 record `requests` + N record `request_items` (Quan hệ 1-N).
+    *   **Duyệt:** Chỉ cập nhật `requests.status` (PENDING -> APPROVED). Chưa tạo dữ liệu vào bảng `assets` vì chưa mua hàng thực tế.
+
+#### 3.4.3. Quy trình 3: Quản lý Tài sản cốt lõi (Core Asset Mgmt)
+*   **Use Cases:** UC05-UC09, UC21.
+*   **Logic:**
+    *   **Nhập mới (UC05):** INSERT vào `assets`. `asset_code` được sinh tự động.
+    *   **Kiểm kê (UC21):** Query `SELECT * FROM assets WHERE current_room_id = ?`.
+    *   **Audit Trail:** Mọi thao tác Insert/Update trên bảng `assets` đều kích hoạt Trigger (hoặc Service Logic) để ghi 1 dòng vào bảng `asset_history` nhằm truy vết trách nhiệm.
+
+#### 3.4.4. Quy trình 4: Điều chuyển (Transfer)
+*   **Use Cases:** UC14-UC17.
+*   **Logic:**
+    *   **Khởi tạo:** Tạo 1 `transfer_tickets` (trạng thái PENDING) + N `transfer_details`.
+    *   **Hoàn tất:** Khi `transfer_tickets.status` chuyển sang COMPLETED -> Hệ thống tự động cập nhật `assets.current_room_id` sang phòng mới cho tất cả tài sản trong phiếu đó.
+
+#### 3.4.5. Quy trình 5: Bảo trì & Thanh lý (Maintenance & Liquidation)
+*   **Bảo trì (UC18-20):**
+    *   Tác động bảng `maintenance_tickets`.
+    *   Khi ticket hoàn thành, cập nhật `assets.current_status` từ UNDER_MAINTENANCE về IN_USE và cộng dồn chi phí vào báo cáo.
+*   **Thanh lý (UC27):**
+    *   Dùng `liquidation_minutes` (Biên bản) và `liquidation_details`.
+    *   Kết thúc quy trình: `assets.current_status` chuyển thành LIQUIDATED (Tài sản vẫn lưu trong DB để tra cứu lịch sử nhưng không hiện trong danh sách kiểm kê hoạt động).
