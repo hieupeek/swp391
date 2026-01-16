@@ -410,3 +410,46 @@ Strictly controls asset movement between locations/owners.
     *   `asset_id` (INT, FK)
     *   `reason` (TEXT): Lý do thanh lý (Hỏng, Hết khấu hao).
     *   `resale_price` (DECIMAL): Giá bán lại (nếu có).
+
+## 4. Data Logic & Process Mapping (Giải thích Luồng Dữ liệu)
+
+### 4.1. Quy trình 1: Quản lý Danh mục (Category Mgmt)
+*   **Hành động (UC01):** Kế toán định nghĩa nhóm tài sản mới (Ví dụ: "Máy chiếu").
+*   **DB Action:** `INSERT INTO categories`.
+*   **Ý nghĩa:** Thiết lập quy tắc sinh mã (`prefix_code`) và định mức khấu hao (`life_span`). Đây là dữ liệu nền tảng bắt buộc phải có trước khi nhập bất kỳ tài sản nào.
+
+### 4.2. Quy trình 2: Cung ứng & Tiếp nhận (Provisioning Process)
+*Trong trường công, trường không tự mua mà xin cấp phát từ cơ quan chủ quản (Sở/Bộ).*
+
+*   **Bước 1 - Xin cấp (UC10):** Giáo viên/Nhân viên tạo đề xuất nhu cầu.
+    *   **DB:** `INSERT INTO requests` (Header) và `request_items` (Detail). Trạng thái ban đầu: `PENDING`.
+*   **Bước 2 - Duyệt nội bộ (UC11):** Tổ trưởng & Hiệu trưởng phê duyệt.
+    *   **DB:** `UPDATE requests SET status='APPROVED_PRINCIPAL'`.
+*   **Bước 3 - Gửi Tờ trình (Offline):** Hệ thống xuất báo cáo tổng hợp các Request đã duyệt để trường làm văn bản gửi Sở.
+    *   **DB:** Không thay đổi dữ liệu, chỉ đọc (`SELECT`).
+*   **Bước 4 - Sở cấp hiện vật & Nhập kho (UC05):** Khi xe chở hàng của Sở về trường kèm Biên bản bàn giao.
+    *   **DB:** Nhân viên thực hiện `INSERT INTO assets` dựa trên thực tế nhận được. 
+    *   **Lưu ý:** Đây là thời điểm **Tài sản thực (Asset Entity)** chính thức được sinh ra trong hệ thống.
+    *   *(Logic nâng cao)*: Hệ thống có thể đánh dấu `requests.status = 'COMPLETED'` để đóng quy trình xin.
+
+### 4.3. Quy trình 3: Quản lý Tài sản (Core Asset Operations)
+*   **Sinh mã tự động (System):** Khi nhập mới (UC05), `asset_code` được tạo tự động = `categories.prefix_code` + Năm + Số thứ tự tăng dần.
+*   **Traceability (Audit Log):** Mọi hành động cập nhật thông tin (UC06) hay đổi trạng thái (UC07) đều kích hoạt Trigger (hoặc Service Logic) để `INSERT INTO asset_history`.
+    *   Giúp trả lời câu hỏi: *"Ai đã chuyển cái máy tính này đi? Vào lúc nào?"*.
+
+### 4.4. Quy trình 4: Điều chuyển (Transfer Flow)
+*   **Bước 1 - Tạo lệnh (UC14):**
+    *   **DB:** `INSERT INTO transfer_tickets` (Ghi nhận Nguồn/Đích, Status=`PENDING`) + `transfer_details` (Danh sách ID các tài sản cần chuyển).
+*   **Bước 2 - Phê duyệt & Bàn giao (UC15, 16, 17):**
+    *   **DB:** Cập nhật `status` của ticket qua các bước: `APPROVED` -> `HANDOVER_CONFIRMED`.
+*   **Bước 3 - Hoàn tất (System Auto):**
+    *   Khi người nhận xác nhận (`COMPLETED`): Hệ thống tự động chạy `UPDATE assets SET current_room_id = [Dest_Room_ID]` cho tất cả tài sản trong phiếu.
+    *   Đồng thời ghi log vào `asset_history`.
+
+### 4.5. Quy trình 5: Bảo trì & Thanh lý
+*   **Bảo trì (Maintenance):**
+    *   Báo hỏng (UC18) -> `INSERT INTO maintenance_tickets` + `UPDATE assets SET current_status='BROKEN'`.
+    *   Sửa xong (UC20) -> Cập nhật `maintenance_tickets` (điền chi phí `cost`, ngày xong) + `UPDATE assets SET current_status='IN_USE'`.
+*   **Thanh lý (Liquidation):**
+    *   Tương tự điều chuyển, cần tạo Biên bản thanh lý (`liquidation_minutes`).
+    *   Khi hoàn tất -> `UPDATE assets SET current_status='LIQUIDATED'`. Tài sản này sẽ không còn hiện ra trong danh sách tìm kiếm thông thường nữa (nhưng vẫn còn trong DB để báo cáo lịch sử).
