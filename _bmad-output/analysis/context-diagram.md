@@ -3,24 +3,18 @@
 
 This document describes the boundary of the AMS system (Scope) by listing all interactions with External Entities.
 
-## 1. Teacher (Giáo viên)
+## 1. Head of Department (Trưởng bộ môn)
 *   **Input (-> System):**
-    *   `Resource Request`: Request for supplies or equipment.
-    *   `Damage Report`: Reporting broken items in the classroom.
-*   **Output (System ->):**
-    *   `Request Status`: Notification of approval or rejection.
-    *   `Assignment Notification`: Alert when an asset is assigned to their room.
-
-## 2. Head of Department (Trưởng bộ môn)
-*   **Input (-> System):**
-    *   `Approval Decision`: Approving requests from teachers.
+    *   `Resource Request`: Request for supplies or equipment for the department.
+    *   `Damage Report`: Reporting broken items in department rooms.
     *   `Handover Confirmation`: Confirming assets leaving their department.
     *   `Receipt Confirmation`: Confirming assets arriving at their department.
 *   **Output (System ->):**
-    *   `Pending Approval Alert`: Notification of tasks requiring attention.
+    *   `Request Status`: Notification of approval or rejection.
+    *   `Pending Approval Alert`: Notification of transfers requiring attention.
     *   `Dept Asset Report`: Inventory list of their specific department.
 
-## 3. Asset Staff (Nhân viên tài sản)
+## 2. Asset Staff (Nhân viên tài sản)
 *   **Input (-> System):**
     *   `New Asset Details`: Registering new procurements (Name, Price, Model).
     *   `Transfer Ticket Creation`: Initiating movement of assets.
@@ -29,7 +23,7 @@ This document describes the boundary of the AMS system (Scope) by listing all in
     *   `Asset Label Info`: Data for printing physical tags/stickers.
     *   `Task List`: Daily to-do list (Items to repair, Items to move).
 
-## 4. Finance Head (Kế toán trưởng)
+## 3. Finance Head (Kế toán trưởng)
 *   **Input (-> System):**
     *   `Category Rules`: Defining asset categories and depreciation rates.
     *   `Procurement Approval`: Budgetary approval for purchasing plans.
@@ -37,13 +31,13 @@ This document describes the boundary of the AMS system (Scope) by listing all in
     *   `Inventory Report`: Full school asset audit.
     *   `Depreciation Statistics`: Financial value of assets over time.
 
-## 5. Principal (Hiệu trưởng)
+## 4. Principal (Hiệu trưởng)
 *   **Input (-> System):**
     *   `High-Value Approval`: Final sign-off for expensive items or liquidation.
 *   **Output (System ->):**
     *   `Executive Dashboard`: High-level charts (Budget used, Total Asset Value).
 
-## 6. Barcode Scanner (Hardware)
+## 5. Barcode Scanner (Hardware)
 *   **Input (-> System):**
     *   `Scanned Asset ID`: Barcode string sent typically during inventory checks.
 *   **Output (System ->):**

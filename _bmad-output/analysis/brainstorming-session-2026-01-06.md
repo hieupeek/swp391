@@ -9,7 +9,7 @@
 ## 1. System Context
 The Asset Management System (AMS) is a web-based platform designed for public high schools. It streamlines the lifecycle of assets—from the initial request, procurement, allocation, maintenance, to final liquidation. It replaces manual, paper-based tracking and Excel spreadsheets with a centralized digital ledger to ensure accountability, transparency, and efficiency in school resource management.
 
-The system interacts with various stakeholders within the school (Principal, Finance Head, Staff, Teachers) to facilitate asset tracking and reporting.
+The system interacts with various stakeholders within the school (Principal, Finance Head, Staff, HOD) to facilitate asset tracking and reporting.
 
 ## 2. External Entities
 | Entity | Description |
@@ -17,16 +17,15 @@ The system interacts with various stakeholders within the school (Principal, Fin
 | **Principal (Hiệu trưởng)** | The highest authority in the school, responsible for final approval of procurement and high-value asset transfers. Needs comprehensive reports for decision making. |
 | **Finance Head (Trưởng phòng TC-KT)** | Responsible for managing the asset budget, approving purchases, overseeing the asset registry, and generating financial reports. |
 | **Asset Staff (Nhân viên quản lý tài sản)** | The primary operator of the system. Responsibilities include physical inventory, updating asset status, managing maintenance requests, and executing transfers. |
-| **Head of Department (Trưởng bộ môn)** | Responsible for assets assigned to their department. Initiates requests for new equipment and approves transfers within their department. |
-| **Teacher (Giáo viên)** | End-users of assets. They report issues (damages/loss) and can view the assets assigned to the rooms they are teaching in. |
+| **Head of Department (Trưởng bộ môn)** | Responsible for assets assigned to their department. Initiates requests for new equipment, reports damages, and approves transfers within their department. |
 
 ## 3. Business Processes
 The system supports the following core business processes:
 
 *   **category_management_flow:** Finance Head creates and manages asset categories -> System generates codes automatically.
-*   **provisioning_flow (Quy trình Cung ứng):** Teacher/HOD Request -> Asset Staff Summarizes -> Principal Approves -> Export Proposal to Ministry (Gửi Tờ trình lên Sở/Bộ) -> Ministry Delivers Assets (Cấp hiện vật) -> Asset Staff Inputs New Asset (Nhập kho từ Biên bản bàn giao).
+*   **provisioning_flow (Quy trình Cung ứng):** HOD Request -> Asset Staff Summarizes -> Principal Approves -> Export Proposal to Ministry (Gửi Tờ trình lên Sở/Bộ) -> Ministry Delivers Assets (Cấp hiện vật) -> Asset Staff Inputs New Asset (Nhập kho từ Biên bản bàn giao).
 *   **asset_transfer_flow:** Asset Staff initiates Transfer Ticket -> Finance Head Approves -> Current HOD hands over -> New HOD accepts.
-*   **maintenance_flow:** Teacher reports damage -> Asset Staff verifies -> Finance Head approves repair -> Status updated to "Maintenance" -> Repair completed -> Status updated to "In Use".
+*   **maintenance_flow:** HOD reports damage -> Asset Staff verifies -> Finance Head approves repair -> Status updated to "Maintenance" -> Repair completed -> Status updated to "In Use".
 *   **liquidation_flow:** Asset Staff identifies broken/obsolete assets -> Proposal created -> Finance Head & Principal Approve -> Asset Status set to "Liquidated".
 
 ## 4. User Requirements
@@ -45,9 +44,9 @@ User requirements are defined as Use Cases (UC) categorized by user roles and mo
     *   UC08: Search and View Asset Details
     *   UC09: Delete Asset (Soft delete)
 
-*   **Group 3: Acquisition & Procurement** (Primary: Teacher, HOD, Finance Head)
-    *   UC10: Submit Resource Request (Teacher/Staff)
-    *   UC11: Review & Approve Request (HOD/Principal)
+*   **Group 3: Acquisition & Procurement** (Primary: HOD, Finance Head)
+    *   UC10: Submit Resource Request (HOD)
+    *   UC11: Review & Approve Request (Principal/Finance Head)
     *   UC12: Create Procurement Plan
     *   UC13: Approve Procurement Plan
 
@@ -93,17 +92,17 @@ The system navigation is designed based on user roles. Below are the primary scr
 ### 5.2. Screen Authorization Matrix
 Key: **C** (Create), **R** (Read/View), **U** (Update/Edit), **D** (Delete), **A** (Approve), **X** (No Access)
 
-| Feature / Module | Principal | Finance Head | Asset Staff | HOD | Teacher |
-| :--- | :---: | :---: | :---: | :---: | :---: |
-| **Dashboard** | R (Executive) | R (Financial) | R (Operational) | R (Dept) | R (Personal) |
-| **Category Mgmt** | R | C, R, U, D | R | X | X |
-| **Asset Mgmt** | R | C, R, U, D | C, R, U | R (Dept Assets) | R (Room Assets) |
-| **Request Creation** | C, R | C, R | C, R | C, R | C, R |
-| **Request Approval** | **A** (High Value) | **A** (Budget) | R | **A** (Dept Level) | R (Own only) |
-| **Procurement Plan** | **A** | C, R, U | R | R | X |
-| **Transfer Ticket** | **A** | **A** | C, R, U | **A** (Dept Transfer) | X |
-| **Reports** | R, Export | R, Export | R (Basic) | R (Dept) | X |
-| **User Mgmt** | R | R | X | X | X |
+| Feature / Module | Principal | Finance Head | Asset Staff | HOD |
+| :--- | :---: | :---: | :---: | :---: |
+| **Dashboard** | R (Executive) | R (Financial) | R (Operational) | R (Dept) |
+| **Category Mgmt** | R | C, R, U, D | R | X |
+| **Asset Mgmt** | R | C, R, U, D | C, R, U | R (Dept Assets) |
+| **Request Creation** | C, R | C, R | C, R | C, R |
+| **Request Approval** | **A** (High Value) | **A** (Budget) | R | X |
+| **Procurement Plan** | **A** | C, R, U | R | R |
+| **Transfer Ticket** | **A** | **A** | C, R, U | **A** (Dept Transfer) |
+| **Reports** | R, Export | R, Export | R (Basic) | R (Dept) |
+| **User Mgmt** | R | R | X | X |
 
 ### 5.3. Non-UI Functions (System Services)
 These functions run in the background without direct user interaction via screens:
@@ -187,13 +186,13 @@ Handles the flow from "Need" to "Plan".
 
 ### 3.1. Request Submission (UC10)
 *   **Screen:** `My Requests` -> `New Request`
-*   **Actor:** Teacher, Staff.
-*   **Description:** Form to request general supplies or specific equipment.
+*   **Actor:** HOD.
+*   **Description:** Form to request general supplies or specific equipment for the department.
 *   **Fields:** Item Name, Quantity, Urgency (Low/Med/High), Justification, Desired Date.
 
 ### 3.2. Request Approval (UC11)
 *   **Screen:** `Pending Approvals`
-*   **Actor:** HOD, Finance Head, Principal.
+*   **Actor:** Finance Head, Principal.
 *   **Description:** List of requests waiting for action.
 *   **Actions:** Approve, Reject (with reason), Request Info.
 
@@ -229,7 +228,7 @@ Strictly controls asset movement between locations/owners.
 *(Assuming UC18-20 are Maintenance, UC21-27 are Reporting based on typical AMS structure)*
 
 ### 5.1. Maintenance Feature (UC18, UC19, UC20)
-*   **UC18: Report Damage:** Teacher reports an issue -> Asset Status becomes "Reported".
+*   **UC18: Report Damage:** HOD reports an issue -> Asset Status becomes "Reported".
 *   **UC19: Verify Damage:** Asset Staff checks -> Status becomes "Broken" or "Maintenance".
 *   **UC20: Record Repair Result:** Updates cost of repair and sets status back to "In Use".
 
@@ -311,7 +310,7 @@ Strictly controls asset movement between locations/owners.
     *   `password` (VARCHAR, Not Null): Hashed Password.
     *   `full_name` (NVARCHAR, Not Null)
     *   `email` (VARCHAR, Unique)
-    *   `role` (ENUM): 'PRINCIPAL', 'FINANCE', 'STAFF', 'HOD', 'TEACHER'.
+    *   `role` (ENUM): 'PRINCIPAL', 'FINANCE', 'STAFF', 'HOD'.
     *   `dept_id` (INT, FK): Link tới bảng `departments`.
     *   `status` (ENUM): 'ACTIVE', 'INACTIVE'.
 
@@ -421,16 +420,16 @@ Strictly controls asset movement between locations/owners.
 ### 4.2. Quy trình 2: Cung ứng & Tiếp nhận (Provisioning Process)
 *Trong trường công, trường không tự mua mà xin cấp phát từ cơ quan chủ quản (Sở/Bộ).*
 
-*   **Bước 1 - Xin cấp (UC10):** Giáo viên/Nhân viên tạo đề xuất nhu cầu.
+*   **Bước 1 - Xin cấp (UC10):** HOD tạo đề xuất nhu cầu cho bộ môn.
     *   **DB:** `INSERT INTO requests` (Header) và `request_items` (Detail). Trạng thái ban đầu: `PENDING`.
-*   **Bước 2 - Duyệt nội bộ (UC11):** Tổ trưởng & Hiệu trưởng phê duyệt.
+*   **Bước 2 - Duyệt nội bộ (UC11):** Hiệu trưởng phê duyệt (Bỏ qua bước duyệt HOD vì HOD là người tạo).
     *   **DB:** `UPDATE requests SET status='APPROVED_PRINCIPAL'`.
 *   **Bước 3 - Gửi Tờ trình (Offline):** Hệ thống xuất báo cáo tổng hợp các Request đã duyệt để trường làm văn bản gửi Sở.
     *   **DB:** Không thay đổi dữ liệu, chỉ đọc (`SELECT`).
 *   **Bước 4 - Sở cấp hiện vật & Nhập kho (UC05):** Khi xe chở hàng của Sở về trường kèm Biên bản bàn giao.
     *   **DB:** Nhân viên thực hiện `INSERT INTO assets` dựa trên thực tế nhận được. 
     *   **Lưu ý:** Đây là thời điểm **Tài sản thực (Asset Entity)** chính thức được sinh ra trong hệ thống.
-    *   *(Logic nâng cao)*: Hệ thống có thể đánh dấu `requests.status = 'COMPLETED'` để đóng quy trình xin.
+    *(Logic nâng cao)*: Hệ thống có thể đánh dấu `requests.status = 'COMPLETED'` để đóng quy trình xin.
 
 ### 4.3. Quy trình 3: Quản lý Tài sản (Core Asset Operations)
 *   **Sinh mã tự động (System):** Khi nhập mới (UC05), `asset_code` được tạo tự động = `categories.prefix_code` + Năm + Số thứ tự tăng dần.

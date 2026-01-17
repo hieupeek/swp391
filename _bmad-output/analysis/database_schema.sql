@@ -43,7 +43,7 @@ CREATE TABLE users (
     password VARCHAR(255) NOT NULL, -- Stored as BCrypt hash
     full_name NVARCHAR(100) NOT NULL,
     email VARCHAR(100) UNIQUE,
-    role ENUM('PRINCIPAL', 'FINANCE', 'STAFF', 'HOD', 'TEACHER') NOT NULL,
+    role ENUM('PRINCIPAL', 'FINANCE', 'STAFF', 'HOD') NOT NULL,
     dept_id INT,
     status ENUM('ACTIVE', 'INACTIVE') DEFAULT 'ACTIVE',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
