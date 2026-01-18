@@ -107,6 +107,19 @@ def add_formatted_text(paragraph, text):
             paragraph.add_run(part)
 
 if __name__ == "__main__":
-    md_file = "/Users/vuhieu/Documents/swp391/_bmad-output/analysis/vision-and-scope.md"
-    docx_file = "/Users/vuhieu/Documents/swp391/_bmad-output/analysis/vision-and-scope.docx"
-    create_docx_from_md(md_file, docx_file)
+    import argparse
+    import sys
+
+    parser = argparse.ArgumentParser(description="Convert Markdown to Docx")
+    parser.add_argument("input_md", help="Input Markdown file path")
+    parser.add_argument("output_docx", help="Output Docx file path")
+
+    # If no arguments provided, use defaults (backward compatibility or test)
+    if len(sys.argv) == 1:
+        md_file = "/Users/vuhieu/Documents/swp391/_bmad-output/analysis/vision-and-scope.md"
+        docx_file = "/Users/vuhieu/Documents/swp391/_bmad-output/analysis/vision-and-scope.docx"
+        print(f"No arguments provided. Using defaults:\nInput: {md_file}\nOutput: {docx_file}")
+        create_docx_from_md(md_file, docx_file)
+    else:
+        args = parser.parse_args()
+        create_docx_from_md(args.input_md, args.output_docx)
