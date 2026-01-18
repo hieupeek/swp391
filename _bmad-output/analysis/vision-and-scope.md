@@ -104,7 +104,7 @@ Bảng dưới đây mô tả lộ trình phát triển của các tính năng q
 
 *Lưu ý: Release 1.0 tập trung hoàn toàn vào việc thay thế quy trình giấy tờ thủ công bằng quy trình số hóa trên nền tảng Web.*
 
-### 2.4. Limitations and Exclusions (Giới hạn và Các phần loại trừ)
+### 2.3. Limitations and Exclusions (Giới hạn và Các phần loại trừ)
 *   **EX-1 (Không quản lý tài chính chi tiết):** Hệ thống chỉ ghi nhận giá trị mua sắm ban đầu và duyệt đề xuất, KHÔNG thực hiện thanh toán, xuất hóa đơn hay hạch toán kế toán chi tiết.
 *   **EX-2 (Không tương tác với Nhà cung cấp):** Hệ thống không gửi đơn hàng trực tiếp cho nhà cung cấp (Vendor). Việc liên hệ và mua hàng diễn ra bên ngoài hệ thống.
 *   **EX-3 (Không hỗ trợ Offline):** Hệ thống yêu cầu kết nối Internet liên tục để hoạt động, không có chế độ offline-sync.
