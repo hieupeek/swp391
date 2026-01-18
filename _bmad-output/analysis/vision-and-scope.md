@@ -123,18 +123,15 @@ Bảng dưới đây mô tả lộ trình phát triển của các tính năng q
 | **Trưởng bộ môn (HOD)** | Nắm rõ tài sản của bộ môn mình, chủ động trong việc đề xuất mua mới. | Mong muốn quy trình xin duyệt nhanh gọn hơn. | Quản lý tài sản phòng thí nghiệm/chức năng, xác nhận bàn giao nội bộ. | Chỉ quan tâm đến tài sản thuộc phạm vi quản lý của mình. |
 
 ### 3.2. Project Priorities (Các ưu tiên dự án)
-Để hỗ trợ việc ra quyết định khi có xung đột về tài nguyên, các ưu tiên dự án được xác định theo 3 chiều:
+Bảng dưới đây xác định các ưu tiên của dự án theo 3 chiều để hỗ trợ ra quyết định:
 
-*   **Ràng buộc (Constraints - Phải tuân thủ tuyệt đối):**
-    *   **Lịch trình (Schedule):** Dự án phải hoàn thành phiên bản 1.0 trước [Ngày kết thúc kỳ học/Dự án] để kịp nghiệm thu.
-    *   **Ngân sách (Budget):** Chi phí triển khai gần như bằng 0 (Sử dụng nhân lực sinh viên, server cây nhà lá vườn hoặc free tier).
-
-*   **Động lực (Drivers - Yếu tố then chốt để thành công):**
-    *   **Chất lượng (Quality):** Tính chính xác của dữ liệu tài sản và sự ổn định của hệ thống là quan trọng nhất. Dữ liệu sai lệch sẽ dẫn đến việc Kế toán từ chối sử dụng.
-    *   **Tính dễ sử dụng (Usability):** Do nhân viên trường học không chuyên về IT, giao diện phải cực kỳ thân thiện và trực quan.
-
-*   **Độ linh hoạt (Degrees of Freedom - Có thể điều chỉnh):**
-    *   **Phạm vi (Scope):** Các tính năng nâng cao (như Mobile App, Tích hợp Accounting System, QR Code Scanner phức tạp) có thể cắt giảm hoặc đẩy sang Release 2.0 nếu bị chậm tiến độ.
+| Dimension (Khía cạnh) | Constraint (Ràng buộc - Phải tuân thủ) | Driver (Động lực - Quan trọng nhất) | Degree of Freedom (Độ linh hoạt - Có thể điều chỉnh) |
+| :--- | :--- | :--- | :--- |
+| **Lịch trình (Schedule)** | Phải hoàn thành Release 1.0 trước [Ngày kết thúc kỳ học/Dự án] để nghiệm thu. | | |
+| **Ngân sách (Budget)** | Chi phí triển khai gần như bằng 0 (Sử dụng nhân lực sinh viên, server có sẵn). | | |
+| **Chất lượng (Quality)** | | Tính chính xác của dữ liệu tài sản là sống còn. Ổn định, không mất dữ liệu. | |
+| **Tính khả dụng (Usability)** | | Giao diện cực kỳ thân thiện cho nhân viên không chuyên IT. | |
+| **Phạm vi (Scope)** | | | Các tính năng nâng cao (Mobile App, API Kế toán) có thể cắt giảm hoặc đẩy sang Release 2.0. |
 
 ### 3.3. Deployment Considerations (Các cân nhắc khi triển khai)
 *   **Hạ tầng kỹ thuật:**

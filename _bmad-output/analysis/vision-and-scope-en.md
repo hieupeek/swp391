@@ -123,18 +123,15 @@ The table below describes the feature development roadmap across versions:
 | **Head of Dept (HOD)** | clear view of dept assets, proactive in new purchase proposals. | Desires streamlined approval process. | Managing lab/functional room assets, confirming internal handovers. | Only interested in assets within their management scope. |
 
 ### 3.2. Project Priorities
-To support decision-making when resource conflicts arise, project priorities are defined in 3 dimensions:
+The table below defines the project priorities across three dimensions to facilitate decision-making:
 
-*   **Constraints (Must adhere to):**
-    *   **Schedule:** Project must complete Version 1.0 before [Semester End Date] for acceptance.
-    *   **Budget:** Implementation cost is nearly zero (Using student manpower, local server or free tier).
-
-*   **Drivers (Key success factors):**
-    *   **Quality:** Data accuracy and system stability are paramount. Inaccurate data will lead to rejection by Finance.
-    *   **Usability:** Since school staff are not IT experts, the interface must be extremely friendly and intuitive.
-
-*   **Degrees of Freedom (Adjustable):**
-    *   **Scope:** Advanced features (Mobile App, Accounting Integration, Complex QR Scanner) can be cut or pushed to Release 2.0 if behind schedule.
+| Dimension | Constraint (Must adhere to) | Driver (Key success factor) | Degree of Freedom (Adjustable) |
+| :--- | :--- | :--- | :--- |
+| **Schedule** | Must complete Release 1.0 before [End Date] for acceptance. | | |
+| **Budget** | Implementation cost ~0 (Using student manpower, free tier). | | |
+| **Quality** | | Data accuracy is paramount. System stability. | |
+| **Usability** | | Extremely friendly interface for non-IT staff. | |
+| **Scope** | | | Advanced features (Mobile App, Accounting API) can be cut or delayed to Release 2.0. |
 
 ### 3.3. Deployment Considerations
 *   **Technical Infrastructure:**
