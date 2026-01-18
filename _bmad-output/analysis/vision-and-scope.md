@@ -121,7 +121,6 @@ Bảng dưới đây mô tả lộ trình phát triển của các tính năng q
 | **Trưởng phòng TC-KT (Finance Head)** | Giảm thời gian kiểm kê, báo cáo chính xác số liệu khấu hao. | Rất quan tâm đến tính chính xác của dữ liệu. | Quản lý danh mục chuẩn, kiểm soát quy trình mua sắm, báo cáo quyết toán. | Cần hệ thống tuân thủ đúng quy tắc tài chính kế toán nhà nước. |
 | **Nhân viên quản lý tài sản (Asset Staff)** | Giảm tải việc nhập liệu thủ công (Excel), dễ dàng tra cứu vị trí tài sản. | Sẵn sàng học hỏi công nghệ mới để giảm việc tay chân. | Theo dõi vòng đời tài sản (nhập, xuất, hỏng, hủy), in tem nhãn/mã vạch. | Trình độ CNTT có thể không đồng đều, cần giao diện đơn giản. |
 | **Trưởng bộ môn (HOD)** | Nắm rõ tài sản của bộ môn mình, chủ động trong việc đề xuất mua mới. | Mong muốn quy trình xin duyệt nhanh gọn hơn. | Quản lý tài sản phòng thí nghiệm/chức năng, xác nhận bàn giao nội bộ. | Chỉ quan tâm đến tài sản thuộc phạm vi quản lý của mình. |
-| **Giáo viên (Teacher)** | Dễ dàng báo hỏng thiết bị để được sửa chữa kịp thời phục vụ dạy học. | Mong muốn sự tiện lợi, không rườm rà thủ tục. | Báo hỏng nhanh, xem lịch sử sửa chữa, đăng ký mượn thiết bị. | Sử dụng chủ yếu trên điện thoại hoặc máy tính chung tại phòng giáo viên. |
 
 ### 3.2. Project Priorities (Các ưu tiên dự án)
 Để hỗ trợ việc ra quyết định khi có xung đột về tài nguyên, các ưu tiên dự án được xác định theo 3 chiều:
