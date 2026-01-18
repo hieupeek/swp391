@@ -9,7 +9,7 @@
 ## 1. System Context
 The Asset Management System (AMS) is a web-based platform designed for public high schools. It streamlines the lifecycle of assets—from the initial request, procurement, allocation, maintenance, to final liquidation. It replaces manual, paper-based tracking and Excel spreadsheets with a centralized digital ledger to ensure accountability, transparency, and efficiency in school resource management.
 
-The system interacts with various stakeholders within the school (Principal, Finance Head, Staff, HOD) to facilitate asset tracking and reporting.
+The system interacts with various stakeholders within the school (Principal, Finance Head, Staff, Teachers) to facilitate asset tracking and reporting.
 
 ## 2. External Entities
 | Entity | Description |
@@ -17,15 +17,16 @@ The system interacts with various stakeholders within the school (Principal, Fin
 | **Principal (Hiệu trưởng)** | The highest authority in the school, responsible for final approval of procurement and high-value asset transfers. Needs comprehensive reports for decision making. |
 | **Finance Head (Trưởng phòng TC-KT)** | Responsible for managing the asset budget, approving purchases, overseeing the asset registry, and generating financial reports. |
 | **Asset Staff (Nhân viên quản lý tài sản)** | The primary operator of the system. Responsibilities include physical inventory, updating asset status, managing maintenance requests, and executing transfers. |
-| **Head of Department (Trưởng bộ môn)** | Responsible for assets assigned to their department. Initiates requests for new equipment, reports damages, and approves transfers within their department. |
+| **Head of Department (Trưởng bộ môn)** | Responsible for assets assigned to their department. Initiates requests for new equipment and approves transfers within their department. |
+| **Teacher (Giáo viên)** | End-users of assets. They report issues (damages/loss) and can view the assets assigned to the rooms they are teaching in. |
 
 ## 3. Business Processes
 The system supports the following core business processes:
 
 *   **category_management_flow:** Finance Head creates and manages asset categories -> System generates codes automatically.
-*   **provisioning_flow (Quy trình Cung ứng):** HOD Request -> Asset Staff Summarizes -> Principal Approves -> Export Proposal to Ministry (Gửi Tờ trình lên Sở/Bộ) -> Ministry Delivers Assets (Cấp hiện vật) -> Asset Staff Inputs New Asset (Nhập kho từ Biên bản bàn giao).
+*   **acquisition_flow:** Teacher/HOD Request -> Asset Staff Checks Inventory -> Finance Head Approves -> Procurement (Outside System) -> Asset Staff Inputs New Asset -> Asset Assigned.
 *   **asset_transfer_flow:** Asset Staff initiates Transfer Ticket -> Finance Head Approves -> Current HOD hands over -> New HOD accepts.
-*   **maintenance_flow:** HOD reports damage -> Asset Staff verifies -> Finance Head approves repair -> Status updated to "Maintenance" -> Repair completed -> Status updated to "In Use".
+*   **maintenance_flow:** Teacher reports damage -> Asset Staff verifies -> Finance Head approves repair -> Status updated to "Maintenance" -> Repair completed -> Status updated to "In Use".
 *   **liquidation_flow:** Asset Staff identifies broken/obsolete assets -> Proposal created -> Finance Head & Principal Approve -> Asset Status set to "Liquidated".
 
 ## 4. User Requirements
@@ -44,9 +45,9 @@ User requirements are defined as Use Cases (UC) categorized by user roles and mo
     *   UC08: Search and View Asset Details
     *   UC09: Delete Asset (Soft delete)
 
-*   **Group 3: Acquisition & Procurement** (Primary: HOD, Finance Head)
-    *   UC10: Submit Resource Request (HOD)
-    *   UC11: Review & Approve Request (Principal/Finance Head)
+*   **Group 3: Acquisition & Procurement** (Primary: Teacher, HOD, Finance Head)
+    *   UC10: Submit Resource Request (Teacher/Staff)
+    *   UC11: Review & Approve Request (HOD/Principal)
     *   UC12: Create Procurement Plan
     *   UC13: Approve Procurement Plan
 
@@ -92,17 +93,17 @@ The system navigation is designed based on user roles. Below are the primary scr
 ### 5.2. Screen Authorization Matrix
 Key: **C** (Create), **R** (Read/View), **U** (Update/Edit), **D** (Delete), **A** (Approve), **X** (No Access)
 
-| Feature / Module | Principal | Finance Head | Asset Staff | HOD |
-| :--- | :---: | :---: | :---: | :---: |
-| **Dashboard** | R (Executive) | R (Financial) | R (Operational) | R (Dept) |
-| **Category Mgmt** | R | C, R, U, D | R | X |
-| **Asset Mgmt** | R | C, R, U, D | C, R, U | R (Dept Assets) |
-| **Request Creation** | C, R | C, R | C, R | C, R |
-| **Request Approval** | **A** (High Value) | **A** (Budget) | R | X |
-| **Procurement Plan** | **A** | C, R, U | R | R |
-| **Transfer Ticket** | **A** | **A** | C, R, U | **A** (Dept Transfer) |
-| **Reports** | R, Export | R, Export | R (Basic) | R (Dept) |
-| **User Mgmt** | R | R | X | X |
+| Feature / Module | Principal | Finance Head | Asset Staff | HOD | Teacher |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **Dashboard** | R (Executive) | R (Financial) | R (Operational) | R (Dept) | R (Personal) |
+| **Category Mgmt** | R | C, R, U, D | R | X | X |
+| **Asset Mgmt** | R | C, R, U, D | C, R, U | R (Dept Assets) | R (Room Assets) |
+| **Request Creation** | C, R | C, R | C, R | C, R | C, R |
+| **Request Approval** | **A** (High Value) | **A** (Budget) | R | **A** (Dept Level) | R (Own only) |
+| **Procurement Plan** | **A** | C, R, U | R | R | X |
+| **Transfer Ticket** | **A** | **A** | C, R, U | **A** (Dept Transfer) | X |
+| **Reports** | R, Export | R, Export | R (Basic) | R (Dept) | X |
+| **User Mgmt** | R | R | X | X | X |
 
 ### 5.3. Non-UI Functions (System Services)
 These functions run in the background without direct user interaction via screens:
@@ -186,13 +187,13 @@ Handles the flow from "Need" to "Plan".
 
 ### 3.1. Request Submission (UC10)
 *   **Screen:** `My Requests` -> `New Request`
-*   **Actor:** HOD.
-*   **Description:** Form to request general supplies or specific equipment for the department.
+*   **Actor:** Teacher, Staff.
+*   **Description:** Form to request general supplies or specific equipment.
 *   **Fields:** Item Name, Quantity, Urgency (Low/Med/High), Justification, Desired Date.
 
 ### 3.2. Request Approval (UC11)
 *   **Screen:** `Pending Approvals`
-*   **Actor:** Finance Head, Principal.
+*   **Actor:** HOD, Finance Head, Principal.
 *   **Description:** List of requests waiting for action.
 *   **Actions:** Approve, Reject (with reason), Request Info.
 
@@ -228,7 +229,7 @@ Strictly controls asset movement between locations/owners.
 *(Assuming UC18-20 are Maintenance, UC21-27 are Reporting based on typical AMS structure)*
 
 ### 5.1. Maintenance Feature (UC18, UC19, UC20)
-*   **UC18: Report Damage:** HOD reports an issue -> Asset Status becomes "Reported".
+*   **UC18: Report Damage:** Teacher reports an issue -> Asset Status becomes "Reported".
 *   **UC19: Verify Damage:** Asset Staff checks -> Status becomes "Broken" or "Maintenance".
 *   **UC20: Record Repair Result:** Updates cost of repair and sets status back to "In Use".
 
@@ -259,196 +260,27 @@ Strictly controls asset movement between locations/owners.
 
 # III. SYSTEM DESIGN
 
-## 1. Software Architecture (Kiến trúc phần mềm)
-*   **Architecture Pattern:** MVC (Model-View-Controller) layered architecture.
-*   **Frontend:** JSP, JSTL, HTML5, CSS3, JavaScript (Bootstrap 5).
-*   **Backend:** Java Servlet API.
-*   **Database:** MySQL 8.0.
-*   **Security:** Session-based Authentication, Role-based Authorization (Filter).
+## 1. Software Architecture
+*   **Architecture Pattern:** MVC (Model-View-Controller) using JSP/Servlet.
+*   **Frontend:** JSP, HTML5, CSS3, JavaScript (Bootstrap/Plain CSS).
+*   **Backend:** Java Servlets.
+*   **Database:** MySQL.
+*   **External Diagram:** (See `architecture.png` - *to be created*)
 
 ## 2. Code Package Design
-*   `com.ams.controller`: Servlet classes handling HTTP requests (LoginServlet, AssetServlet).
-*   `com.ams.service`: Business logic layer (AssetService, TransferService).
-*   `com.ams.dao`: Data Access Object classes (AssetDAO, UserDAO).
-*   `com.ams.model`: Entity POJOs (Asset, User, Category).
-*   `com.ams.filter`: Authentication & Authorization Filters.
-*   `com.ams.utils`: Database connection, Constants, Helper functions.
+*   `com.ams.controller`: Servlet classes handling HTTP requests.
+*   `com.ams.model`: JAVA POJO classes representing DB entities (Asset, User, Category).
+*   `com.ams.dao`: Data Access Object classes for DB interaction.
+*   `com.ams.service`: Business logic layer.
+*   `com.ams.utils`: Helper classes (DBConnection, PasswordHasher).
 
-## 3. Database Design (13 Tables)
+## 3. Database Design
+### 3.1. Database Schema
+*(Placeholder for ERD Image)*
 
-### 3.1. Group 1: Master Data (Dữ liệu nền tảng)
-
-#### `departments` (Phòng ban/Bộ môn)
-*   **Purpose:** Quản lý các đơn vị trong trường (Tổ Lý, Tổ Hóa, Phòng Kế toán...).
-*   **Columns:**
-    *   `dept_id` (INT, PK, AI): ID phòng ban.
-    *   `dept_name` (NVARCHAR, Not Null): Tên phòng ban (e.g., "Tổ Vật Lý").
-    *   `dept_type` (ENUM): 'ACADEMIC' (Bộ môn), 'ADMIN' (Hành chính).
-
-#### `rooms` (Phòng học/Phòng chức năng)
-*   **Purpose:** Định vị vị trí vật lý của tài sản.
-*   **Columns:**
-    *   `room_id` (INT, PK, AI)
-    *   `room_name` (NVARCHAR, Not Null): Tên phòng (e.g., "Phòng Lab 101").
-    *   `capacity` (INT): Sức chứa (Optional).
-    *   `dept_id` (INT, FK): Phòng này thuộc quyền quản lý của bộ môn nào (Optional).
-
-#### `categories` (Danh mục tài sản) - *UC01, UC02, UC04*
-*   **Purpose:** Phân loại tài sản và quy định mã hóa.
-*   **Columns:**
-    *   `cate_id` (INT, PK, AI)
-    *   `cate_name` (NVARCHAR, Not Null): Tên loại (e.g., "Laptop", "Microscope").
-    *   `prefix_code` (VARCHAR(10), Unique): Mã tiền tố (e.g., "LAP", "MIC").
-    *   `life_span` (INT): Số năm sử dụng dự kiến (để tính khấu hao).
-    *   `active` (BOOLEAN): Trạng thái (để Soft Delete UC03).
-
-#### `users` (Người dùng) - *UC28, UC30, UC31*
-*   **Purpose:** Quản lý tài khoản đăng nhập.
-*   **Columns:**
-    *   `user_id` (INT, PK, AI)
-    *   `username` (VARCHAR, Unique, Not Null)
-    *   `password` (VARCHAR, Not Null): Hashed Password.
-    *   `full_name` (NVARCHAR, Not Null)
-    *   `email` (VARCHAR, Unique)
-    *   `role` (ENUM): 'PRINCIPAL', 'FINANCE', 'STAFF', 'HOD'.
-    *   `dept_id` (INT, FK): Link tới bảng `departments`.
-    *   `status` (ENUM): 'ACTIVE', 'INACTIVE'.
-
-### 3.2. Group 2: Core Asset Data (Dữ liệu lõi)
-
-#### `assets` (Tài sản) - *UC05, UC06, UC08, UC09*
-*   **Purpose:** Bảng trung tâm lưu trữ thông tin từng tài sản.
-*   **Columns:**
-    *   `asset_id` (INT, PK, AI)
-    *   `asset_code` (VARCHAR(20), Unique): Generated (e.g., "LAP-2024-001").
-    *   `asset_name` (NVARCHAR, Not Null)
-    *   `cate_id` (INT, FK): Link tới `categories`.
-    *   `purchase_date` (DATE): Ngày mua.
-    *   `price` (DECIMAL): Giá trị ban đầu.
-    *   `warranty_expiry` (DATE): Hạn bảo hành.
-    *   `current_status` (ENUM): 'NEW', 'IN_USE', 'BROKEN', 'UNDER_MAINTENANCE', 'LIQUIDATED', 'LOST'.
-    *   `current_room_id` (INT, FK): Link tới `rooms` - Vị trí hiện tại.
-    *   `image_url` (VARCHAR): Link ảnh tài sản.
-
-#### `asset_history` (Lịch sử tài sản)
-*   **Purpose:** Nhật ký Audit log (Ai làm gì với tài sản vào lúc nào?).
-*   **Columns:**
-    *   `log_id` (INT, PK, AI)
-    *   `asset_id` (INT, FK)
-    *   `action` (VARCHAR): 'CREATE', 'UPDATE_INFO', 'TRANSFER', 'MAINTENANCE', 'LIQUIDATE'.
-    *   `performed_by` (INT, FK -> Users): Người thực hiện.
-    *   `performed_at` (TIMESTAMP): Thời gian.
-    *   `description` (TEXT): Chi tiết thay đổi (e.g., "Moved from Room 101 to 102").
-
-### 3.3. Group 3: Transactional Data (Quy trình nghiệp vụ)
-
-#### `requests` (Yêu cầu Mua sắm/Cấp phát) - *UC10, UC11, UC12*
-*   **Purpose:** Giáo viên gửi yêu cầu mua sắm/vật tư.
-*   **Columns:**
-    *   `request_id` (INT, PK, AI)
-    *   `requester_id` (INT, FK): Giáo viên yêu cầu.
-    *   `request_date` (TIMESTAMP)
-    *   `urgency` (ENUM): 'LOW', 'MEDIUM', 'HIGH'.
-    *   `status` (ENUM): 'PENDING', 'APPROVED_HOD', 'APPROVED_PRINCIPAL', 'REJECTED', 'COMPLETED'.
-    *   `approver_note` (TEXT): Lý do từ chối/duyệt.
-
-#### `request_items` (Chi tiết yêu cầu)
-*   **Purpose:** Một phiếu yêu cầu có thể gồm nhiều món (VD: 10 Bút, 2 Thước).
-*   **Columns:**
-    *   `item_id` (INT, PK, AI)
-    *   `request_id` (INT, FK)
-    *   `item_name` (NVARCHAR)
-    *   `quantity` (INT)
-    *   `reason` (TEXT)
-
-#### `transfer_tickets` (Phiếu điều chuyển) - *UC14, UC15, UC16, UC17*
-*   **Purpose:** Quản lý lệnh chuyển tài sản giữa các phòng.
-*   **Columns:**
-    *   `transfer_id` (INT, PK, AI)
-    *   `created_by` (INT, FK): Staff tạo phiếu.
-    *   `created_at` (TIMESTAMP)
-    *   `src_room_id` (INT, FK): Phòng đi.
-    *   `dest_room_id` (INT, FK): Phòng đến.
-    *   `status` (ENUM): 'PENDING', 'APPROVED', 'HANDOVER_CONFIRMED', 'COMPLETED', 'REJECTED'.
-    *   `manager_approval_date` (TIMESTAMP): Kế toán/Hiệu trưởng duyệt (nếu cần).
-
-#### `transfer_details` (Chi tiết điều chuyển)
-*   **Purpose:** Danh sách tài sản trong 1 phiếu điều chuyển.
-*   **Columns:**
-    *   `detail_id` (INT, PK, AI)
-    *   `transfer_id` (INT, FK)
-    *   `asset_id` (INT, FK)
-    *   `note` (TEXT): Ghi chú tình trạng lúc chuyển (VD: "Xước nhẹ").
-
-#### `maintenance_tickets` (Phiếu báo hỏng/Sửa chữa) - *UC18, UC19, UC20*
-*   **Purpose:** Quản lý việc sửa chữa.
-*   **Columns:**
-    *   `ticket_id` (INT, PK, AI)
-    *   `asset_id` (INT, FK)
-    *   `reported_by` (INT, FK): Người báo hỏng.
-    *   `reported_date` (TIMESTAMP)
-    *   `issue_description` (TEXT): Mô tả lỗi.
-    *   `cost` (DECIMAL): Chi phí sửa chữa.
-    *   `status` (ENUM): 'REPORTED', 'IN_PEOGRESS', 'COMPLETED', 'CANNOT_FIX'.
-    *   `technician_note` (TEXT): Ghi chú của thợ/Staff.
-
-#### `liquidation_minutes` (Biên bản thanh lý) - *UC27*
-*   **Purpose:** Quản lý quy trình thải loại tài sản.
-*   **Columns:**
-    *   `liquidation_id` (INT, PK, AI)
-    *   `created_by` (INT, FK)
-    *   `created_date` (TIMESTAMP)
-    *   `status` (ENUM): 'PENDING', 'APPROVED', 'FINALIZED'.
-    *   `total_amount` (DECIMAL): Tổng tiền thu về (nếu bán thanh lý).
-
-#### `liquidation_details`
-*   **Purpose:** Các tài sản nằm trong biên bản thanh lý.
-*   **Columns:**
-    *   `detail_id` (INT, PK, AI)
-    *   `liquidation_id` (INT, FK)
-    *   `asset_id` (INT, FK)
-    *   `reason` (TEXT): Lý do thanh lý (Hỏng, Hết khấu hao).
-    *   `resale_price` (DECIMAL): Giá bán lại (nếu có).
-
-## 4. Data Logic & Process Mapping (Giải thích Luồng Dữ liệu)
-
-### 4.1. Quy trình 1: Quản lý Danh mục (Category Mgmt)
-*   **Hành động (UC01):** Kế toán định nghĩa nhóm tài sản mới (Ví dụ: "Máy chiếu").
-*   **DB Action:** `INSERT INTO categories`.
-*   **Ý nghĩa:** Thiết lập quy tắc sinh mã (`prefix_code`) và định mức khấu hao (`life_span`). Đây là dữ liệu nền tảng bắt buộc phải có trước khi nhập bất kỳ tài sản nào.
-
-### 4.2. Quy trình 2: Cung ứng & Tiếp nhận (Provisioning Process)
-*Trong trường công, trường không tự mua mà xin cấp phát từ cơ quan chủ quản (Sở/Bộ).*
-
-*   **Bước 1 - Xin cấp (UC10):** HOD tạo đề xuất nhu cầu cho bộ môn.
-    *   **DB:** `INSERT INTO requests` (Header) và `request_items` (Detail). Trạng thái ban đầu: `PENDING`.
-*   **Bước 2 - Duyệt nội bộ (UC11):** Hiệu trưởng phê duyệt (Bỏ qua bước duyệt HOD vì HOD là người tạo).
-    *   **DB:** `UPDATE requests SET status='APPROVED_PRINCIPAL'`.
-*   **Bước 3 - Gửi Tờ trình (Offline):** Hệ thống xuất báo cáo tổng hợp các Request đã duyệt để trường làm văn bản gửi Sở.
-    *   **DB:** Không thay đổi dữ liệu, chỉ đọc (`SELECT`).
-*   **Bước 4 - Sở cấp hiện vật & Nhập kho (UC05):** Khi xe chở hàng của Sở về trường kèm Biên bản bàn giao.
-    *   **DB:** Nhân viên thực hiện `INSERT INTO assets` dựa trên thực tế nhận được. 
-    *   **Lưu ý:** Đây là thời điểm **Tài sản thực (Asset Entity)** chính thức được sinh ra trong hệ thống.
-    *(Logic nâng cao)*: Hệ thống có thể đánh dấu `requests.status = 'COMPLETED'` để đóng quy trình xin.
-
-### 4.3. Quy trình 3: Quản lý Tài sản (Core Asset Operations)
-*   **Sinh mã tự động (System):** Khi nhập mới (UC05), `asset_code` được tạo tự động = `categories.prefix_code` + Năm + Số thứ tự tăng dần.
-*   **Traceability (Audit Log):** Mọi hành động cập nhật thông tin (UC06) hay đổi trạng thái (UC07) đều kích hoạt Trigger (hoặc Service Logic) để `INSERT INTO asset_history`.
-    *   Giúp trả lời câu hỏi: *"Ai đã chuyển cái máy tính này đi? Vào lúc nào?"*.
-
-### 4.4. Quy trình 4: Điều chuyển (Transfer Flow)
-*   **Bước 1 - Tạo lệnh (UC14):**
-    *   **DB:** `INSERT INTO transfer_tickets` (Ghi nhận Nguồn/Đích, Status=`PENDING`) + `transfer_details` (Danh sách ID các tài sản cần chuyển).
-*   **Bước 2 - Phê duyệt & Bàn giao (UC15, 16, 17):**
-    *   **DB:** Cập nhật `status` của ticket qua các bước: `APPROVED` -> `HANDOVER_CONFIRMED`.
-*   **Bước 3 - Hoàn tất (System Auto):**
-    *   Khi người nhận xác nhận (`COMPLETED`): Hệ thống tự động chạy `UPDATE assets SET current_room_id = [Dest_Room_ID]` cho tất cả tài sản trong phiếu.
-    *   Đồng thời ghi log vào `asset_history`.
-
-### 4.5. Quy trình 5: Bảo trì & Thanh lý
-*   **Bảo trì (Maintenance):**
-    *   Báo hỏng (UC18) -> `INSERT INTO maintenance_tickets` + `UPDATE assets SET current_status='BROKEN'`.
-    *   Sửa xong (UC20) -> Cập nhật `maintenance_tickets` (điền chi phí `cost`, ngày xong) + `UPDATE assets SET current_status='IN_USE'`.
-*   **Thanh lý (Liquidation):**
-    *   Tương tự điều chuyển, cần tạo Biên bản thanh lý (`liquidation_minutes`).
-    *   Khi hoàn tất -> `UPDATE assets SET current_status='LIQUIDATED'`. Tài sản này sẽ không còn hiện ra trong danh sách tìm kiếm thông thường nữa (nhưng vẫn còn trong DB để báo cáo lịch sử).
+### 3.2. Table Descriptions
+*   **Users:** `user_id` (PK), `username`, `password`, `role`, `full_name`, `email`.
+*   **Categories:** `category_id` (PK), `name`, `code_prefix`.
+*   **Assets:** `asset_id` (PK), `category_id` (FK), `name`, `code`, `status`, `location_id` (FK).
+*   **Requests:** `request_id` (PK), `requester_id` (FK), `type`, `status`, `created_date`.
+*   **Transfers:** `transfer_id` (PK), `asset_id` (FK), `from_room`, `to_room`, `status`.

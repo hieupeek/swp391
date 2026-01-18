@@ -88,22 +88,21 @@ Hệ thống được tổ chức thành 6 nhóm tính năng chính:
     *   Đăng nhập/Đăng xuất bảo mật.
     *   Quản lý hồ sơ cá nhân và đổi mật khẩu.
 
-### 2.2. Scope of Initial Release (Phạm vi phát hành ban đầu - Release 1.0)
-Trong phiên bản đầu tiên (MVP), hệ thống sẽ tập trung vào các chức năng cốt lõi để vận hành quy trình cơ bản:
+### 2.2. Scope of Initial and Subsequent Releases (Phạm vi phát hành)
 
-*   **Quản lý danh mục & Tài sản:** Hoàn thiện việc nhập liệu và quản lý trạng thái tài sản (FE-1, FE-2).
-*   **Quy trình Điều chuyển:** Triển khai đầy đủ để kiểm soát việc mất mát tài sản (FE-4).
-*   **Mua sắm cơ bản:** Cho phép tạo yêu cầu và duyệt yêu cầu cấp phát/mua sắm (FE-3).
-*   **Báo cáo cơ bản:** Xuất danh sách tài sản và lịch sử sử dụng (Phần FE-5).
-*   *Mục tiêu:* Thay thế hoàn toàn việc theo dõi tài sản bằng file Excel.
+Bảng dưới đây mô tả lộ trình phát triển của các tính năng qua từng phiên bản:
 
-### 2.3. Scope of Subsequent Releases (Phạm vi các bản phát hành sau)
-Các tính năng nâng cao sẽ được phát triển trong các giai đoạn tiếp theo (Release 2.0+):
+| Feature Group | Release 1.0 (Current MVP) | Release 2.0 (Future Enhancement) |
+| :--- | :--- | :--- |
+| **FE-1: Category Mgmt** | **Full:** Tạo, sửa, xóa, phân quyền danh mục. | - |
+| **FE-2: Asset Mgmt** | **Core:** Nhập liệu, cập nhật trạng thái thủ công, tìm kiếm cơ bản. | **Advanced:** Tự động tính khấu hao (Depreciation Auto-calc). |
+| **FE-3: Acquisition** | **Basic:** Tạo yêu cầu, quy trình duyệt 2 cấp (HOD -> Principal). | **Integration:** Kết nối API gửi email tự động cho nhà cung cấp (Vendor). |
+| **FE-4: Asset Transfer** | **Full:** Quy trình điều chuyển nội bộ và xác nhận bàn giao (Handover). | **History Visualization:** Biểu đồ dòng chảy lịch sử tài sản trực quan. |
+| **FE-5: Reporting** | **Standard:** Xuất báo cáo tồn kho, báo cáo theo bộ môn (PDF/Excel). | **Analytics:** Dashboard phân tích xu hướng mua sắm, dự báo ngân sách (AI). |
+| **FE-6: Common** | **Basic Auth:** Đăng nhập, phân quyền Role, đổi mật khẩu. | **SSO:** Tích hợp đăng nhập một lần (Single Sign-On) với hệ thống email trường. |
+| **Platform Support** | **Web App (Desktop Focus):** Tối ưu cho PC/Laptop của nhân viên hành chính. | **Mobile Web:** Tối ưu giao diện cho HOD duyệt nhanh trên điện thoại. |
 
-*   **Tích hợp Barcode/QR Code:** Cho phép quét mã để kiểm kê nhanh trên thiết bị di động.
-*   **Mô-đun Khấu hao tự động:** Tính toán giá trị còn lại của tài sản theo thời gian thực.
-*   **Cảnh báo bảo trì định kỳ:** Tự động gửi email nhắc nhở bảo trì cho các thiết bị máy móc.
-*   **Tích hợp API:** Kết nối với phần mềm Kế toán của nhà trường (nếu có).
+*Lưu ý: Release 1.0 tập trung hoàn toàn vào việc thay thế quy trình giấy tờ thủ công bằng quy trình số hóa trên nền tảng Web.*
 
 ### 2.4. Limitations and Exclusions (Giới hạn và Các phần loại trừ)
 *   **EX-1 (Không quản lý tài chính chi tiết):** Hệ thống chỉ ghi nhận giá trị mua sắm ban đầu và duyệt đề xuất, KHÔNG thực hiện thanh toán, xuất hóa đơn hay hạch toán kế toán chi tiết.
