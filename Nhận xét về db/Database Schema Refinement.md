@@ -6,7 +6,7 @@ Note: _This is purely the output of the chat conversation and does not contain a
 ### User Input
 
 ok, tiếp theo chúng ta sẽ đi tới db, đây là db mà tôi đã phân tích, bạn hãy xem xem đã đúng với bài toán chưa:
-/Users/vuhieu/Documents/swp391/_bmad-output/SQL/db_draft.sql
+[db_draft.sql](../_bmad-output/SQL/db_draft.sql)
 
 ### Planner Response
 
@@ -14,11 +14,11 @@ Tôi sẽ đọc nội dung file SQL để đánh giá sự phù hợp với bà
 
 
 
-*Viewed [db_draft.sql](file:///Users/vuhieu/Documents/swp391/_bmad-output/SQL/db_draft.sql) *
+*Viewed [db_draft.sql](../_bmad-output/SQL/db_draft.sql) *
 
 ### Planner Response
 
-Tôi đã phân tích kỹ file [db_draft.sql](cci:7://file:///Users/vuhieu/Documents/swp391/_bmad-output/SQL/db_draft.sql:0:0-0:0). Về tổng quan, cấu trúc Database này đã bao phủ được khoảng 80-90% yêu cầu của bài toán AMS mà chúng ta đã thống nhất.
+Tôi đã phân tích kỹ file [db_draft.sql](../_bmad-output/SQL/db_draft.sql). Về tổng quan, cấu trúc Database này đã bao phủ được khoảng 80-90% yêu cầu của bài toán AMS mà chúng ta đã thống nhất.
 
 Tuy nhiên, có một số điểm cần điều chỉnh để khớp chính xác hơn với **Scope Final** và các quy trình mà chúng ta vừa định nghĩa lại (đặc biệt là việc bỏ vai trò Teacher và cách luồng HOD hoạt động).
 
@@ -84,25 +84,25 @@ Chưa thấy bảng quản lý đề xuất thanh lý (liquidation_requests). M�
 
 ### Planner Response
 
-Tôi xin giải thích chi tiết từng điểm thiếu sót và dẫn chứng cụ thể từ các tài liệu chúng ta đã chốt ([vision-and-scope.md](cci:7://file:///Users/vuhieu/Documents/swp391/_bmad-output/analysis/vision-and-scope.md:0:0-0:0) và [context-diagram.md](cci:7://file:///Users/vuhieu/Documents/swp391/_bmad-output/analysis/context-diagram.md:0:0-0:0)).
+Tôi xin giải thích chi tiết từng điểm thiếu sót và dẫn chứng cụ thể từ các tài liệu chúng ta đã chốt ([vision-and-scope.md](../_bmad-output/analysis/vision-and-scope.md) và [context-diagram.md](../_bmad-output/analysis/context-diagram.md)).
 
 ---
 
 ### **1. Handover Check (Biên bản bàn giao)**
 
 **Dẫn chứng tài liệu:**
-*   **Trong Context Diagram ([context-diagram.md](cci:7://file:///Users/vuhieu/Documents/swp391/_bmad-output/analysis/context-diagram.md:0:0-0:0)):**
+*   **Trong Context Diagram ([context-diagram.md](../_bmad-output/analysis/context-diagram.md)):**
     *   Tại mục **2. External Entity Interactions - 1. Head of Department**:
         *   Input: `Handover Confirmation` (Xác nhận bàn giao - Confirming assets leaving their department).
         *   Input: `Receipt Confirmation` (Xác nhận nhận - Confirming assets arriving at their department).
     *   Điều này khẳng định quy trình điều chuyển không chỉ là tạo lệnh là xong, mà cần **2 bước xác nhận kỹ thuật số**: Trưởng bộ môn nguồn xác nhận "Tôi đã giao" và Trưởng bộ môn đích xác nhận "Tôi đã nhận".
 
-*   **Trong Vision & Scope ([vision-and-scope.md](cci:7://file:///Users/vuhieu/Documents/swp391/_bmad-output/analysis/vision-and-scope.md:0:0-0:0)):**
+*   **Trong Vision & Scope ([vision-and-scope.md](../_bmad-output/analysis/vision-and-scope.md)):**
     *   Tại mục **2.2 (Release Roadmap) - FE-4: Asset Transfer**:
         *   Mô tả: *"Quy trình điều chuyển nội bộ và xác nhận bàn giao (Handover)."*
     *   Ở bản cũ (mục 2.1 cũ FE-4): *"Quy trình điều chuyển chặt chẽ 4 bước: Tạo phiếu -> Kế toán duyệt -> Bàn giao (nguồn) -> Xác nhận nhận (đích)."*
 
-**Phân tích DB hiện tại ([db_draft.sql](cci:7://file:///Users/vuhieu/Documents/swp391/_bmad-output/SQL/db_draft.sql:0:0-0:0)):**
+**Phân tích DB hiện tại ([db_draft.sql](../_bmad-output/SQL/db_draft.sql)):**
 *   Bảng `transfer_orders` chỉ có cột `status` (Pending/Approved/Completed).
 *   **Vấn đề:** Chỉ có 1 status không thể hiện được trạng thái lưng chừng "Đã giao nhưng chưa nhận". Nếu chỉ dùng status `Approved` cho cả hai trường hợp thì không rõ ràng trách nhiệm pháp lý nếu tài sản bị mất trong lúc di chuyển.
 *   **Đề xuất:** Thêm cột thời gian xác thực để lưu vết:
