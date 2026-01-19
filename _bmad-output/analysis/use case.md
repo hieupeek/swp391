@@ -1,11 +1,10 @@
 # HỆ THỐNG QUẢN LÝ TÀI SẢN THIẾT BỊ TRƯỜNG HỌC
 
-## CÁC ACTOR CHÍNH (5 actors)
-*   **Hiệu trưởng/Phó hiệu trưởng** - Quản lý cấp cao, phê duyệt mua sắm lớn, giám sát hệ thống
+## CÁC ACTOR CHÍNH (4 actors)
+*   **Hiệu trưởng** - Quản lý cấp cao, phê duyệt mua sắm lớn, giám sát hệ thống
 *   **Trưởng phòng Tài chính - Kế toán** - Quản lý tài sản, quản lý hệ thống
 *   **Nhân viên quản lý tài sản** - Thực hiện các nghiệp vụ quản lý tài sản hàng ngày, phê duyệt yêu cầu cấp phát
 *   **Trưởng/Phụ trách bộ môn** - Yêu cầu và quản lý tài sản cho bộ môn/phòng học
-*   **Giáo viên** - Sử dụng và báo cáo tình trạng tài sản
 
 ---
 
@@ -48,7 +47,7 @@
 *   **Mô tả:** Chỉnh sửa thông tin chi tiết, giá trị tài sản
 
 ### UC09: Cập nhật trạng thái tài sản
-*   **Actor:** Nhân viên quản lý tài sản, Giáo viên
+*   **Actor:** Nhân viên quản lý tài sản
 *   **Mô tả:** Thay đổi trạng thái (Mới, Đang sử dụng, Hỏng, Bảo trì, Thanh lý), báo cáo tình trạng
 
 ### UC10: Xóa/Thanh lý tài sản
@@ -60,11 +59,11 @@
 ## NHÓM 3: GHI NHẬN TĂNG TÀI SẢN (9 use cases)
 
 ### UC11: Tạo yêu cầu cấp phát tài sản
-*   **Actor:** Trưởng bộ môn, Giáo viên
+*   **Actor:** Trưởng bộ môn
 *   **Mô tả:** Gửi yêu cầu cần tài sản cho phòng học/bộ môn
 
 ### UC12: Xem danh sách yêu cầu cấp phát tài sản
-*   **Actor:** Nhân viên quản lý tài sản, Trưởng phòng TC-KT, Trưởng bộ môn, Giáo viên
+*   **Actor:** Nhân viên quản lý tài sản, Trưởng phòng TC-KT, Trưởng bộ môn
 *   **Mô tả:** Xem các yêu cầu cấp phát tài sản theo trạng thái (chờ duyệt, đã duyệt, từ chối)
 
 ### UC13: Kiểm tra tồn kho tài sản
@@ -76,7 +75,7 @@
 *   **Mô tả:** Xét duyệt hoặc từ chối các yêu cầu cấp phát tài sản (kèm lý do nếu từ chối)
 
 ### UC15: Hủy yêu cầu cấp phát tài sản
-*   **Actor:** Trưởng bộ môn, Giáo viên (người tạo yêu cầu)
+*   **Actor:** Trưởng bộ môn (người tạo yêu cầu)
 *   **Mô tả:** Hủy yêu cầu cấp phát đã tạo khi chưa được phê duyệt
 
 ### UC16: Tạo yêu cầu mua sắm tài sản
@@ -84,11 +83,11 @@
 *   **Mô tả:** Lập đề xuất mua sắm khi không có tài sản trong kho để đáp ứng yêu cầu
 
 ### UC17: Xem danh sách yêu cầu mua sắm tài sản
-*   **Actor:** Nhân viên quản lý tài sản, Trưởng phòng TC-KT, Hiệu trưởng/Phó hiệu trưởng
+*   **Actor:** Nhân viên quản lý tài sản, Trưởng phòng TC-KT, Hiệu trưởng
 *   **Mô tả:** Xem các yêu cầu mua sắm theo trạng thái (chờ duyệt, đã duyệt, từ chối)
 
 ### UC18: Phê duyệt/Từ chối yêu cầu mua sắm
-*   **Actor:** Hiệu trưởng/Phó hiệu trưởng
+*   **Actor:** Hiệu trưởng
 *   **Mô tả:** Phê duyệt hoặc từ chối đề xuất mua sắm tài sản mới (đặc biệt với giá trị lớn), kèm lý do nếu từ chối
 
 ### UC19: Hủy yêu cầu mua sắm tài sản
@@ -128,10 +127,10 @@
 ## NHÓM 5: BÁO CÁO VÀ PHÂN TÍCH (2 use cases)
 
 ### UC26: Xem báo cáo tài sản
-*   **Actor:** Hiệu trưởng/Phó hiệu trưởng, Trưởng phòng TC-KT, Nhân viên quản lý tài sản, Trưởng bộ môn
+*   **Actor:** Hiệu trưởng, Trưởng phòng TC-KT, Nhân viên quản lý tài sản, Trưởng bộ môn
 *   **Mô tả:** Xem các loại báo cáo với khả năng lọc và tùy chỉnh theo quyền hạn:
 
-1.  **Hiệu trưởng/Phó hiệu trưởng:**
+1.  **Hiệu trưởng:**
     *   Báo cáo tổng quan tài sản (dashboard): thống kê tổng số lượng, giá trị, phân bổ theo danh mục/phòng/trạng thái
     *   Báo cáo yêu cầu và mua sắm: tổng hợp yêu cầu cấp phát, mua sắm theo thời gian và trạng thái
 2.  **Trưởng phòng TC-KT:**
@@ -148,7 +147,7 @@
     *   Báo cáo yêu cầu: lịch sử yêu cầu cấp phát của bộ môn
 
 ### UC27: Xuất báo cáo ra file
-*   **Actor:** Hiệu trưởng/Phó hiệu trưởng, Trưởng phòng TC-KT, Nhân viên quản lý tài sản, Trưởng bộ môn
+*   **Actor:** Hiệu trưởng, Trưởng phòng TC-KT, Nhân viên quản lý tài sản, Trưởng bộ môn
 *   **Mô tả:** Xuất các báo cáo đã xem/lọc ra file Excel, PDF để lưu trữ hoặc trình bày (chỉ xuất được các báo cáo mà actor có quyền xem)
 
 ---
@@ -185,15 +184,14 @@
 *   **Mã tài sản tự động:** Khi thêm tài sản mới (UC05), hệ thống tự động tạo mã dựa theo quy tắc của danh mục
 
 **Quy trình Yêu cầu Tài sản:**
-1.  Giáo viên/Trưởng bộ môn tạo yêu cầu cấp phát (UC11)
+1.  Trưởng bộ môn tạo yêu cầu cấp phát (UC11)
 2.  Nhân viên quản lý tài sản kiểm tra tồn kho (UC13)
 3.  Nếu có: Nhân viên phê duyệt và cấp phát (UC14)
 4.  Nếu không có: Nhân viên tạo yêu cầu mua sắm (UC16)
-5.  Hiệu trưởng/Phó hiệu trưởng phê duyệt mua sắm (UC18)
+5.  Hiệu trưởng phê duyệt mua sắm (UC18)
 
 **Phân quyền theo cấp:**
-*   **Hiệu trưởng/Phó hiệu trưởng:** Phê duyệt mua sắm lớn, xem các báo cáo chiến lược
+*   **Hiệu trưởng:** Phê duyệt mua sắm lớn, xem các báo cáo chiến lược
 *   **Trưởng phòng TC-KT:** Quản lý danh mục, thanh lý tài sản, phê duyệt điều chuyển, quản lý hệ thống
 *   **Nhân viên quản lý tài sản:** Thực hiện nghiệp vụ hàng ngày, phê duyệt yêu cầu cấp phát
 *   **Trưởng bộ môn:** Yêu cầu và quản lý tài sản cấp bộ môn, xác nhận điều chuyển
-*   **Giáo viên:** Yêu cầu tài sản, báo cáo tình trạng

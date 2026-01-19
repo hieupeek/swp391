@@ -32,7 +32,7 @@
 
 ## MAIN PROCESS 2: QUẢN LÝ TÀI SẢN
 
-**Actor chính:** Nhân viên quản lý tài sản, Trưởng phòng TC-KT, Giáo viên
+**Actor chính:** Nhân viên quản lý tài sản, Trưởng phòng TC-KT
 
 **Quy trình A: Thêm mới và cập nhật tài sản (Nhân viên quản lý tài sản)**
 
@@ -70,9 +70,9 @@
 
 ## MAIN PROCESS 3: GHI NHẬN TĂNG TÀI SẢN (YÊU CẦU VÀ MUA SẮM)
 
-**Actor:** Giáo viên/Trưởng bộ môn → Nhân viên quản lý tài sản → Hiệu trưởng/Phó hiệu trưởng
+**Actor:** Trưởng bộ môn → Nhân viên quản lý tài sản → Hiệu trưởng
 
-### BƯỚC 1: Tạo yêu cầu cấp phát (Giáo viên/Trưởng bộ môn)
+### BƯỚC 1: Tạo yêu cầu cấp phát (Trưởng bộ môn)
 
 *   **Đăng nhập hệ thống** (UC28)
 *   **UC11: Tạo yêu cầu cấp phát tài sản**
@@ -115,7 +115,7 @@
         *   **Chuyển sang BƯỚC 3**
 *   **Đăng xuất** (UC29)
 
-### BƯỚC 3: Phê duyệt mua sắm (Hiệu trưởng/Phó hiệu trưởng)
+### BƯỚC 3: Phê duyệt mua sắm (Hiệu trưởng)
 
 *   **Đăng nhập hệ thống** (UC28)
 *   **UC17: Xem danh sách yêu cầu mua sắm tài sản**
@@ -220,7 +220,7 @@
 
 ## MAIN PROCESS 5: BÁO CÁO VÀ PHÂN TÍCH
 
-**Actor:** Hiệu trưởng/Phó hiệu trưởng, Trưởng phòng TC-KT, Nhân viên quản lý tài sản, Trưởng bộ môn
+**Actor:** Hiệu trưởng, Trưởng phòng TC-KT, Nhân viên quản lý tài sản, Trưởng bộ môn
 
 **Quy trình chung cho tất cả Actor:**
 
@@ -228,7 +228,7 @@
 *   **Truy cập module Báo cáo**
 *   **UC26: Xem báo cáo tài sản**
     *   **Decision Point:** Chọn loại báo cáo (tùy theo quyền hạn của actor)
-*   **Hiệu trưởng/Phó hiệu trưởng:**
+*   **Hiệu trưởng:**
     *   Chọn "Báo cáo tổng quan tài sản (Dashboard)"
     *   Chọn "Báo cáo yêu cầu và mua sắm"
     *   Thiết lập bộ lọc (thời gian, trạng thái...)
