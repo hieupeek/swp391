@@ -1,16 +1,16 @@
-# AMS CONTEXT DIAGRAM DETAIL
-**Project:** School Asset Management System (AMS)
+# CFMS CONTEXT DIAGRAM DETAIL
+**Project:** Classroom Facilities Management System (CFMS)
 **Version:** 2.0 (Finalized Scope)
 
 ---
 
 ## 1. Visual Context Diagram
-Below is the Context Diagram for the AMS based on the finalized scope description.
+Below is the Context Diagram for the CFMS based on the finalized scope description.
 
 ```mermaid
 graph TD
     %% System Entity (The Black Box)
-    System((SCHOOL ASSET<br/>MANAGEMENT SYSTEM))
+    System((CLASSROOM FACILITIES<br/>MANAGEMENT SYSTEM))
 
     %% External Entities (Terminators)
     HOD[Head of Dept<br/>Trưởng bộ môn]
@@ -83,7 +83,7 @@ graph TD
 ---
 
 ## 3. Boundary Definition (Out of Scope)
-To clarify the system boundaries, the following are explicitly **NOT** handled by AMS:
+To clarify the system boundaries, the following are explicitly **NOT** handled by CFMS:
 1.  **Vendor Management:** No direct ordering integration with suppliers.
 2.  **Accounting Integration:** No API connection to external accounting software.
 3.  **Teacher Access:** Teachers do not log in directly; they report needs through their HOD.

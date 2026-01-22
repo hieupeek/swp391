@@ -1,4 +1,4 @@
-# ASSET MANAGEMENT SYSTEM (AMS) - REQUIREMENTS SPECIFICATION
+# CLASSROOM FACILITIES MANAGEMENT SYSTEM (CFMS) - REQUIREMENTS SPECIFICATION
 **Version:** 2.0 (Restructured based on RDS Template)
 **Date:** 2026-01-15
 
@@ -7,9 +7,9 @@
 # I. OVERVIEW
 
 ## 1. System Context
-The Asset Management System (AMS) is a web-based platform designed for public high schools. It streamlines the lifecycle of assets—from the initial request, procurement, allocation, maintenance, to final liquidation. It replaces manual, paper-based tracking and Excel spreadsheets with a centralized digital ledger to ensure accountability, transparency, and efficiency in school resource management.
+The Classroom Facilities Management System (CFMS) is a web-based platform designed for public high schools. It streamlines the lifecycle of assets—from the initial request, procurement, allocation, maintenance, to final liquidation. It replaces manual, paper-based tracking and Excel spreadsheets with a centralized digital ledger to ensure accountability, transparency, and efficiency in school resource management.
 
-The system interacts with various stakeholders within the school (Principal, Finance Head, Staff, Teachers) to facilitate asset tracking and reporting.
+The system interacts with various stakeholders within the school (Principal, Finance Head, Staff, Classroom Managers) to facilitate asset tracking and reporting.
 
 ## 2. External Entities
 | Entity | Description |
@@ -225,7 +225,7 @@ Strictly controls asset movement between locations/owners.
 *   **Logic:** Trigger SCH-03 (Update Asset Location) upon Step 2.
 
 ## 5. Feature Group: Maintenance & Reporting (Map to UC18-UC27)
-*(Assuming UC18-20 are Maintenance, UC21-27 are Reporting based on typical AMS structure)*
+*(Assuming UC18-20 are Maintenance, UC21-27 are Reporting based on typical CFMS structure)*
 
 ### 5.1. Maintenance Feature (UC18, UC19, UC20)
 *   **UC18: Report Damage:** HOD reports an issue -> Asset Status becomes "Reported".
@@ -267,11 +267,11 @@ Strictly controls asset movement between locations/owners.
 *   **External Diagram:** (See `architecture.png` - *to be created*)
 
 ## 2. Code Package Design
-*   `com.ams.controller`: Servlet classes handling HTTP requests.
-*   `com.ams.model`: JAVA POJO classes representing DB entities (Asset, User, Category).
-*   `com.ams.dao`: Data Access Object classes for DB interaction.
-*   `com.ams.service`: Business logic layer.
-*   `com.ams.utils`: Helper classes (DBConnection, PasswordHasher).
+*   `com.cfms.controller`: Servlet classes handling HTTP requests.
+*   `com.cfms.model`: JAVA POJO classes representing DB entities (Asset, User, Category).
+*   `com.cfms.dao`: Data Access Object classes for DB interaction.
+*   `com.cfms.service`: Business logic layer.
+*   `com.cfms.utils`: Helper classes (DBConnection, PasswordHasher).
 
 ## 3. Database Design
 ### 3.1. Database Schema

@@ -1,4 +1,4 @@
-# HỆ THỐNG QUẢN LÝ TÀI SẢN THIẾT BỊ TRƯỜNG HỌC
+# HỆ THỐNG QUẢN LÝ CƠ SỞ VẬT CHẤT LỚP HỌC (CFMS)
 
 ## CÁC ACTOR CHÍNH (4 actors)
 *   **Hiệu trưởng** - Quản lý cấp cao, phê duyệt mua sắm lớn, giám sát hệ thống

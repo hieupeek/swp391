@@ -1,6 +1,6 @@
 ---
 title: Vision and Scope Document
-project: School Asset Management System (AMS)
+project: Classroom Facilities Management System (CFMS)
 version: 1.0
 date: 2026-01-15
 author: Business Analyst Team
@@ -8,7 +8,7 @@ template_source: "Software Requirements, 3rd Edition (Wiegers & Beatty) - Chapte
 ---
 
 # VISION AND SCOPE DOCUMENT
-**Dự án:** Hệ thống Quản lý Tài sản Thiết bị Trường học (AMS)
+**Dự án:** Hệ thống Quản lý Cơ sở vật chất Lớp học (CFMS)
 
 ---
 
@@ -22,7 +22,7 @@ Hiện tại, việc quản lý tài sản tại trường Trung học phổ th�
 *   Việc kiểm kê cuối kỳ mất nhiều thời gian và độ chính xác không cao do dữ liệu không được cập nhật tập trung.
 
 ### 1.2. Business Opportunity (Cơ hội kinh doanh)
-Việc triển khai Hệ thống Quản lý Tài sản (AMS) sẽ mang lại cơ hội:
+Việc triển khai Hệ thống Quản lý Cơ sở vật chất Lớp học (CFMS) sẽ mang lại cơ hội:
 *   **Số hóa toàn diện:** Chuyển đổi quy trình quản lý thủ công sang nền tảng số, giúp dữ liệu được lưu trữ tập trung và nhất quán.
 *   **Tối ưu hóa nguồn lực:** Giúp nhà trường tận dụng tối đa tài sản hiện có, tránh mua sắm lãng phí các thiết bị đã có nhưng bị "bỏ quên" trong kho.
 *   **Minh bạch hóa:** Mọi quy trình từ yêu cầu cấp phát, phê duyệt mua sắm đến điều chuyển đều được ghi lại trên hệ thống, đảm bảo tính minh bạch và trách nhiệm giải trình.
@@ -42,7 +42,7 @@ Sự thành công của dự án sẽ được đo lường qua các chỉ số:
 *   **SM-4:** Không còn tình trạng trùng lặp mã tài sản hoặc sai lệch thông tin vị trí giữa thực tế và sổ sách.
 
 ### 1.5. Vision Statement (Tuyên bố tầm nhìn)
-> *"Dành cho Ban giám hiệu, cán bộ quản lý và giáo viên, những người cần quản lý và sử dụng hiệu quả cơ sở vật chất, Hệ thống Quản lý Tài sản Trường học (AMS) là một nền tảng quản lý tập trung, cung cấp khả năng theo dõi toàn bộ vòng đời tài sản từ lúc mua sắm đến khi thanh lý. Khác với quy trình quản lý thủ công bằng Excel hiện tại, sản phẩm của chúng tôi tự động hóa quy trình phê duyệt, cung cấp báo cáo trực quan tức thời và đảm bảo tính chính xác tuyệt đối của dữ liệu kiểm kê, giúp nhà trường tối ưu hóa ngân sách và nâng cao chất lượng phục vụ giảng dạy."*
+> *"Dành cho Ban giám hiệu, cán bộ quản lý và giáo viên, những người cần quản lý và sử dụng hiệu quả cơ sở vật chất, Hệ thống Quản lý Cơ sở vật chất Lớp học (CFMS) là một nền tảng quản lý tập trung, cung cấp khả năng theo dõi toàn bộ vòng đời tài sản từ lúc mua sắm đến khi thanh lý. Khác với quy trình quản lý thủ công bằng Excel hiện tại, sản phẩm của chúng tôi tự động hóa quy trình phê duyệt, cung cấp báo cáo trực quan tức thời và đảm bảo tính chính xác tuyệt đối của dữ liệu kiểm kê, giúp nhà trường tối ưu hóa ngân sách và nâng cao chất lượng phục vụ giảng dạy."*
 
 ### 1.6. Business Risks (Rủi ro kinh doanh)
 *   **RI-1 (Sự kháng cự của người dùng):** Giáo viên lớn tuổi hoặc nhân viên quen với cách làm cũ có thể ngại sử dụng phần mềm mới.

@@ -1,6 +1,6 @@
 ---
 title: Vision and Scope Document
-project: School Asset Management System (AMS)
+project: Classroom Facilities Management System (CFMS)
 version: 1.0 (English Version)
 date: 2026-01-15
 author: Business Analyst Team
@@ -8,7 +8,7 @@ template_source: "Software Requirements, 3rd Edition (Wiegers & Beatty) - Chapte
 ---
 
 # VISION AND SCOPE DOCUMENT
-**Project:** School Asset Management System (AMS)
+**Project:** Classroom Facilities Management System (CFMS)
 
 ---
 
@@ -22,7 +22,7 @@ Currently, asset management in the High School is mainly performed through paper
 *   End-of-term inventory checks are time-consuming and inaccurate due to non-centralized data.
 
 ### 1.2. Business Opportunity
-Implementing the Asset Management System (AMS) presents the following opportunities:
+Implementing the Classroom Facilities Management System (CFMS) presents the following opportunities:
 *   **Comprehensive Digitalization:** Transforming manual management processes to a digital platform, ensuring centralized and consistent data storage.
 *   **Resource Optimization:** Maximizing the use of existing assets, avoiding wasteful purchases of equipment that already exists but is "forgotten" in storage.
 *   **Transparency:** All processes from allocation requests, procurement approvals to transfers are recorded on the system, ensuring compliance and accountability.
@@ -42,7 +42,7 @@ Project success will be measured by the following metrics:
 *   **SM-4:** Elimination of duplicate asset codes or location discrepancies between physical reality and records.
 
 ### 1.5. Vision Statement
-> *"For the School Board, managers, and teachers who need to manage and utilize facilities effectively, the School Asset Management System (AMS) is a centralized management platform that provides the ability to track the entire asset lifecycle from procurement to liquidation. Unlike the current manual Excel-based process, our product automates the approval workflow, provides instant visual reports, and guarantees absolute accuracy of inventory data, helping the school optimize budgets and improve the quality of teaching services."*
+> *"For the School Board, managers, and teachers who need to manage and utilize facilities effectively, the Classroom Facilities Management System (CFMS) is a centralized management platform that provides the ability to track the entire asset lifecycle from procurement to liquidation. Unlike the current manual Excel-based process, our product automates the approval workflow, provides instant visual reports, and guarantees absolute accuracy of inventory data, helping the school optimize budgets and improve the quality of teaching services."*
 
 ### 1.6. Business Risks
 *   **RI-1 (User Resistance):** Older teachers or staff accustomed to the old ways may be reluctant to use new software.

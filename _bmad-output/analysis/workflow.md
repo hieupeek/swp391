@@ -1,4 +1,4 @@
-# QUẢN LÝ TÀI SẢN
+# HỆ THỐNG QUẢN LÝ CƠ SỞ VẬT CHẤT LỚP HỌC (CFMS) - QUY TRÌNH NGHIỆP VỤ
 
 ## MAIN PROCESS 1: QUẢN LÝ DANH MỤC TÀI SẢN
 

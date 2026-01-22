@@ -6,14 +6,14 @@ GO
 create database swp_draft
 use swp_draft
 -- Kiểm tra nếu DB tồn tại thì xóa (Cẩn thận khi chạy trên Production)
-IF EXISTS (SELECT name FROM sys.databases WHERE name = N'AMS_DB')
-    DROP DATABASE AMS_DB;
+IF EXISTS (SELECT name FROM sys.databases WHERE name = N'CFMS_DB')
+    DROP DATABASE CFMS_DB;
 GO
 
-CREATE DATABASE AMS_DB;
+CREATE DATABASE CFMS_DB;
 GO
 
-USE AMS_DB;
+USE CFMS_DB;
 GO
 
 -- ==========================================================
