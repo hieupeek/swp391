@@ -276,6 +276,14 @@ INSERT INTO categories (category_name, prefix_code) VALUES
 -- Seed Admin User (Finance Head)
 -- Lưu ý: ID của Roles/Dept phụ thuộc vào thứ tự insert, trong MySQL auto_increment bắt đầu từ 1.
 -- Principal=1, Finance_Head=2, Asset_Staff=3, Head_of_Dept=4
--- Ban Giám Hiệu=1, Phòng Hành chính - Kế toán=2
-INSERT INTO users (username, password_hash, full_name, email, role_id, dept_id) VALUES 
-('admin', 'HASH_PASS_123', 'Nguyễn Văn Kế Toán', 'finance@school.edu.vn', 2, 2);
+-- Ban Giám Hiệu=1, Phòng Hành chính - Kế toán=2, Tổ Kỹ thuật=3, Tin học=4, Vật lý=5
+
+-- Password cho tất cả users: "123456" (BCrypt hash với 12 rounds)
+-- Hash được generate bằng: BCrypt.hashpw("123456", BCrypt.gensalt(12))
+INSERT INTO users (username, password_hash, full_name, email, role_id, dept_id, status) VALUES 
+('principal', '$2a$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/X4JH5.AQMxqDM.ZSq', 'Nguyễn Văn Hiệu', 'principal@school.edu.vn', 1, 1, 'Active'),
+('finance', '$2a$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/X4JH5.AQMxqDM.ZSq', 'Trần Thị Kế Toán', 'finance@school.edu.vn', 2, 2, 'Active'),
+('staff', '$2a$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/X4JH5.AQMxqDM.ZSq', 'Lê Văn Thiết Bị', 'staff@school.edu.vn', 3, 3, 'Active'),
+('hod_it', '$2a$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/X4JH5.AQMxqDM.ZSq', 'Phạm Văn Tin', 'hodit@school.edu.vn', 4, 4, 'Active'),
+('hod_physics', '$2a$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/X4JH5.AQMxqDM.ZSq', 'Hoàng Thị Lý', 'hodphysics@school.edu.vn', 4, 5, 'Active');
+

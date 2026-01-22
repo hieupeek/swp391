@@ -17,8 +17,9 @@ _This file contains critical rules and patterns that AI agents must follow when 
 ## Technology Stack & Versions
 
 - **Language:** Java 21 (LTS)
-- **Web Framework:** Jakarta Servlet 4.0.1 (javax.servlet), JSP 2.3.3
-- **Template Engine:** JSTL 1.2 (for JSP)
+- **Web Framework:** Jakarta Servlet 6.0 (jakarta.servlet), JSP 3.1
+- **Template Engine:** Jakarta Pages JSTL 3.0
+- **Server:** Tomcat 10.x (Required for Jakarta EE 10)
 - **Database driver:** MySQL Connector/J 8.0.33
 - **Build Tool:** Maven 3+ (packaging: war)
 - **Utilities:** 
@@ -41,7 +42,7 @@ _This file contains critical rules and patterns that AI agents must follow when 
 
 ### Framework-Specific Rules (Servlet/JSP/JDBC)
 
-- **No Frameworks:** DO NOT use Spring, Hibernate, or JPA. This is a raw Servlet/JDBC project.
+- **Jakarta Namespace:** ALWAYS use `jakarta.*` packages (e.g., `jakarta.servlet.*`) instead of `javax.*`.
 - **Architecture:** Follow the layered pattern:
   - `com.ams.controller` (Servlets)
   - `com.ams.service` (Business Logic)
@@ -52,8 +53,8 @@ _This file contains critical rules and patterns that AI agents must follow when 
   - Place valid JSPs inside `WEB-INF` to prevent direct access.
   - Use `request.getRequestDispatcher("/WEB-INF/views/...").forward(req, resp)`.
 - **Frontend Logic:** 
-  - PREFER JSTL (`<c:forEach>`, `<c:if>`) and EL (`${user.name}`) over Java Scriptlets (`<% ... %>`).
-  - Keep JSPs logic-free; do all processing in the Servlet.
+  - PREFER Jakarta Tags (JSTL 3.0: `jakarta.tags.core`) and EL (`${user.name}`) over Java Scriptlets.
+  - Taglib URIs must use the `jakarta.tags.*` format.
 
 ### Testing Rules
 
@@ -77,7 +78,11 @@ _This file contains critical rules and patterns that AI agents must follow when 
   - Constants: `UPPER_SNAKE_CASE`.
   - Database: `snake_case` for tables and columns.
 - **Lombok Usage:** Use `@Data`, `@NoArgsConstructor`, `@AllArgsConstructor` for models to reduce boilerplate.
-- **Comments:** Javadoc for public methods in Service/DAO interfaces. Inline comments for complex regex or business logic logic.
+- **Minimal Commenting (Critical):**
+  - **Prioritize Clean Code:** Write self-documenting code (meaningful names, small methods) so comments are UNNECESSARY.
+  - **Avoid Redundant Comments:** Do not comment on WHAT the code is doing (the code itself should show that).
+  - **Targeted Documentation ONLY:** USE Javadoc only for public API interfaces (Service/DAO) if critical. Use brief inline comments ONLY for extremely complex logic or non-obvious business rules.
+  - **No Placeholders:** Remove standard "Getter for X", "Constructor", or "Init method" comments.
 - **Package Structure:** strict adherence to `com.ams.*`.
 
 ### Development Workflow Rules
