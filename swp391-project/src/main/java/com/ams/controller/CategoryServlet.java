@@ -4,7 +4,7 @@ import com.ams.config.Constants;
 import com.ams.model.Category;
 
 import com.ams.service.CategoryService;
-import com.ams.service.CategoryServiceImpl;
+import com.ams.service.impl.CategoryServiceImpl;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

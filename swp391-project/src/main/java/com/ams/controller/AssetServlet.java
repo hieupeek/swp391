@@ -2,15 +2,15 @@ package com.ams.controller;
 
 import com.ams.config.Constants;
 import com.ams.dao.CategoryDAO;
-import com.ams.dao.CategoryDAOImpl;
+import com.ams.dao.impl.CategoryDAOImpl;
 import com.ams.dao.RoomDAO;
-import com.ams.dao.RoomDAOImpl;
+import com.ams.dao.impl.RoomDAOImpl;
 import com.ams.dao.SupplierDAO;
-import com.ams.dao.SupplierDAOImpl;
+import com.ams.dao.impl.SupplierDAOImpl;
 import com.ams.model.Asset;
 import com.ams.model.User;
 import com.ams.service.AssetService;
-import com.ams.service.AssetServiceImpl;
+import com.ams.service.impl.AssetServiceImpl;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

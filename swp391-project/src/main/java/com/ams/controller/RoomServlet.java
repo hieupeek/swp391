@@ -2,11 +2,11 @@ package com.ams.controller;
 
 import com.ams.config.Constants;
 import com.ams.dao.DepartmentDAO;
-import com.ams.dao.DepartmentDAOImpl;
+import com.ams.dao.impl.DepartmentDAOImpl;
 
 import com.ams.model.Room;
 import com.ams.service.RoomService;
-import com.ams.service.RoomServiceImpl;
+import com.ams.service.impl.RoomServiceImpl;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

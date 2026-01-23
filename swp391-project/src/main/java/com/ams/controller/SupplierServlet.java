@@ -3,7 +3,7 @@ package com.ams.controller;
 import com.ams.config.Constants;
 import com.ams.model.Supplier;
 import com.ams.service.SupplierService;
-import com.ams.service.SupplierServiceImpl;
+import com.ams.service.impl.SupplierServiceImpl;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

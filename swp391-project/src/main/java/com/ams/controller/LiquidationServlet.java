@@ -6,7 +6,7 @@ import com.ams.model.LiquidationDetail;
 import com.ams.model.LiquidationMinute;
 import com.ams.model.User;
 import com.ams.service.LiquidationService;
-import com.ams.service.LiquidationServiceImpl;
+import com.ams.service.impl.LiquidationServiceImpl;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

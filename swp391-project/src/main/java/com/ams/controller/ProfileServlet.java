@@ -3,7 +3,7 @@ package com.ams.controller;
 import com.ams.config.Constants;
 import com.ams.model.User;
 import com.ams.service.UserService;
-import com.ams.service.UserServiceImpl;
+import com.ams.service.impl.UserServiceImpl;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
