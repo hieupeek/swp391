@@ -31,6 +31,11 @@
                                     <span class="icon">📈</span>
                                     <span>Báo cáo</span>
                                 </a>
+                                <a href="${pageContext.request.contextPath}/liquidation"
+                                    class="nav-item ${currentPage == 'liquidation' ? 'active' : ''}">
+                                    <span class="icon">📋</span>
+                                    <span>Thanh lý TS</span>
+                                </a>
                             </c:if>
 
                             <%-- Finance Head Menu Items --%>
@@ -39,6 +44,16 @@
                                         class="nav-item ${currentPage == 'categories' ? 'active' : ''}">
                                         <span class="icon">📁</span>
                                         <span>Danh mục</span>
+                                    </a>
+                                    <a href="${pageContext.request.contextPath}/rooms"
+                                        class="nav-item ${currentPage == 'rooms' ? 'active' : ''}">
+                                        <span class="icon">🏢</span>
+                                        <span>Phòng ban</span>
+                                    </a>
+                                    <a href="${pageContext.request.contextPath}/suppliers"
+                                        class="nav-item ${currentPage == 'suppliers' ? 'active' : ''}">
+                                        <span class="icon">🏭</span>
+                                        <span>Nhà cung cấp</span>
                                     </a>
                                     <a href="${pageContext.request.contextPath}/assets"
                                         class="nav-item ${currentPage == 'assets' ? 'active' : ''}">
@@ -55,10 +70,25 @@
                                         <span class="icon">📈</span>
                                         <span>Báo cáo</span>
                                     </a>
+                                    <a href="${pageContext.request.contextPath}/liquidation"
+                                        class="nav-item ${currentPage == 'liquidation' ? 'active' : ''}">
+                                        <span class="icon">📋</span>
+                                        <span>Thanh lý TS</span>
+                                    </a>
                                 </c:if>
 
                                 <%-- Asset Staff Menu Items --%>
                                     <c:if test="${roleName == 'Asset_Staff'}">
+                                        <a href="${pageContext.request.contextPath}/rooms"
+                                            class="nav-item ${currentPage == 'rooms' ? 'active' : ''}">
+                                            <span class="icon">🏢</span>
+                                            <span>Phòng ban</span>
+                                        </a>
+                                        <a href="${pageContext.request.contextPath}/suppliers"
+                                            class="nav-item ${currentPage == 'suppliers' ? 'active' : ''}">
+                                            <span class="icon">🏭</span>
+                                            <span>Nhà cung cấp</span>
+                                        </a>
                                         <a href="${pageContext.request.contextPath}/assets"
                                             class="nav-item ${currentPage == 'assets' ? 'active' : ''}">
                                             <span class="icon">📦</span>
@@ -73,6 +103,11 @@
                                             class="nav-item ${currentPage == 'maintenance' ? 'active' : ''}">
                                             <span class="icon">🔧</span>
                                             <span>Bảo trì</span>
+                                        </a>
+                                        <a href="${pageContext.request.contextPath}/liquidation"
+                                            class="nav-item ${currentPage == 'liquidation' ? 'active' : ''}">
+                                            <span class="icon">📋</span>
+                                            <span>Thanh lý TS</span>
                                         </a>
                                     </c:if>
 

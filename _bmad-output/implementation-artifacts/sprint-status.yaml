@@ -47,12 +47,12 @@ development_status:
   1-4-category-management: done
   epic-1-retrospective: done
 
-  epic-2: backlog
-  2-1-master-data-management-rooms-suppliers: in-progress
-  2-2-add-new-assets: backlog
-  2-3-asset-list-search: backlog
-  2-4-asset-details-history: backlog
-  2-5-update-asset-status-liquidation: backlog
+  epic-2: done
+  2-1-master-data-management-rooms-suppliers: done
+  2-2-add-new-assets: done
+  2-3-asset-list-search: done
+  2-4-asset-details-history: done
+  2-5-update-asset-status-liquidation: done
   epic-2-retrospective: optional
 
   epic-3: backlog
